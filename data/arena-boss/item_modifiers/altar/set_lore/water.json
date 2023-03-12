@@ -1,0 +1,15 @@
+[
+  {
+    "function": "minecraft:set_lore",
+    "entity": "this",
+    "lore": [
+      [
+        {
+          "translate": "arena.boss.enchantment_altar.enchantment.water",
+          "with": [{"nbt":"Altar.EnchantmentLevel","storage": "arena-boss:temp","color": "blue", "italic": false}]
+        }
+      ]
+    ],
+    "replace": false
+  }
+]

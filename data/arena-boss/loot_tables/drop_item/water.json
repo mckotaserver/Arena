@@ -1,0 +1,79 @@
+{
+    "pools": [
+      {
+        "rolls": {
+          "type": "minecraft:score",
+          "target": {
+            "type": "minecraft:fixed",
+            "name": "$RollCount"
+          },
+          "score": "ArenaBoss.Temp",
+          "scale": 1
+        },
+        "entries": [
+          {
+            "type": "minecraft:loot_table",
+            "name": "arena-boss:misc/enchantment_shard/water",
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": 1,
+                "add": true,
+                "conditions": [
+                  {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.25
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": 1,
+                "add": true,
+                "conditions": [
+                  {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.125
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": 1,
+                "add": true,
+                "conditions": [
+                  {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.0625
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": 1,
+                "add": true,
+                "conditions": [
+                  {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.03125
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": 1,
+                "add": true,
+                "conditions": [
+                  {
+                    "condition": "minecraft:random_chance",
+                    "chance": 0.015625
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,20 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:enchanting_table"
+      },
+      "title": {
+        "text": "祭壇を開く(仮)"
+      },
+      "description": "エンチャントの祭壇を開く。",
+      "show_toast": true,
+      "announce_to_chat": true
+    },
+    "parent": "arena:display/first_join",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+        }
+      }
+    }
+  

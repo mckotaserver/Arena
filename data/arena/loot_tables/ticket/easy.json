@@ -1,0 +1,49 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:paper",
+            "functions": [
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{Arena:TicketEasy,CustomModelData:320001}"
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "translate": "arena.item.lore.ticket-reward"
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "translate": "arena.item.name.ticket-easy"
+                }
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "type": "minecraft:score",
+                  "target": {
+                    "type": "minecraft:fixed",
+                    "name": "$TicketCount"
+                  },
+                  "score": "Arena.Temp",
+                  "scale": 1
+                },
+                "add": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
