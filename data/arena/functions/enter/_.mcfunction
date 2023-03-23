@@ -1,3 +1,6 @@
+# Arena.Timer削除
+kill @e[tag=Arena.Timer]
+
 # 入場可否判定
 data modify storage arena:temp Enterable set value true
 
