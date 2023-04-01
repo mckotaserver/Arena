@@ -13,10 +13,7 @@
     "parent": "arena:display/root",
   "criteria": {
     "requirement": {
-      "trigger": "minecraft:changed_dimension",
-      "conditions": {
-        "to": "minecraft:arena"
-      }
+      "trigger": "minecraft:impossible"
     }
   }
 }

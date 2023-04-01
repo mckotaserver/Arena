@@ -34,3 +34,4 @@ data modify storage arena: PlayerData set from storage arena:temp MergingRecord.
 
 # ランキングデータを更新, 適応
 schedule function arena:record/update_ranking 1t
+

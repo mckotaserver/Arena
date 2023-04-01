@@ -1,6 +1,6 @@
 # tick
-execute as @e[tag=ArenaBoss.Core,distance=..64] at @s run function arena-boss:animation/tick
-execute if data storage arena-boss: {Animation:{Name:"Spawning"}} as @e[tag=ArenaBoss.StageCore,distance=..64] at @s run function arena-boss:animation/spawning
+execute as @e[tag=ArenaBoss.Core,distance=..128] at @s run function arena-boss:animation/tick
+execute if data storage arena-boss: {Animation:{Name:"Spawning"}} as @e[tag=ArenaBoss.StageCore,sort=nearest,limit=1] at @s run function arena-boss:animation/spawning
 
 # function呼び出し
 execute as @e[tag=ArenaBoss.Core,distance=..64] at @s run function arena-boss:behavior/movement/_

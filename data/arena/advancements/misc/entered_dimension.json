@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:arena"
+      }
+    }
+  },
+  "rewards": {
+    "function": "arena:misc/entered_dimension"
+  }
+}

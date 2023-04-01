@@ -28,6 +28,8 @@ execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run 
 execute if data storage arena:temp {NoticeInfo:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"translate":"arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "yellow","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "yellow","bold": true}]}]
 execute if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"translate":"arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "red","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "red","bold": true}]}]
 
+execute as @a[tag=Arena.Notice] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.75
+
 # 実績解除検知
     ## 初クリア
     execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/easy

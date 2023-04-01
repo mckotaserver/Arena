@@ -11,5 +11,8 @@ data modify storage arena:temp Enterable set value true
     # 同じArenaスコアを持つ人がいる(このアリーナがプレイ中である)場合にエラー
     execute if score $PlayerCount Arena.Temp <= $MaxPlayerCount Arena.Temp as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena run data modify storage arena:temp Enterable set value false
 
-execute if data storage arena:temp {Enterable:true} at @e[tag=Arena.Entrance,sort=nearest,limit=1] run function arena:enter/success
-execute if data storage arena:temp {Enterable:false} at @e[tag=Arena.Entrance,sort=nearest,limit=1] run function arena:enter/failed
+execute if data storage arena:temp {Enterable:true} at @e[tag=Arena.Entrance,sort=nearest,limit=1] as @a[distance=..3.5] run function arena:enter/success
+execute if data storage arena:temp {Enterable:false} at @e[tag=Arena.Entrance,sort=nearest,limit=1] as @a[distance=..3.5] run function arena:enter/failed
+
+
+say enter/_

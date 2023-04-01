@@ -7,8 +7,6 @@ execute if data storage arena-boss: {Animation:{Flag:{NoMove:false}}} if entity 
 execute as @e[tag=ArenaBoss.Part08,distance=..2] positioned as @s in minecraft:arena run tp @s ~ ~ ~ ~ ~
 
 # 位置同期
-execute rotated as @e[tag=ArenaBoss.Core,limit=1] positioned as @e[tag=ArenaBoss.Part08,limit=1] in minecraft:arena run tp @e[tag=ArenaBoss.Part08,limit=1] ~ ~ ~ ~ ~
-
 execute positioned as @s in minecraft:arena run tp @e[tag=ArenaBoss.Hitbox,limit=1] ~ ~ ~
 
 execute positioned as @e[tag=ArenaBoss.Extra01] in minecraft:arena run tp @e[tag=ArenaBoss.Element-Parts] ~ ~ ~

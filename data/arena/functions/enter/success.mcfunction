@@ -1,11 +1,11 @@
 # APあるか判定
     # AP不足
-    execute as @a[distance=..3.5] unless score @s arena matches 1.. run tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.not_enough_arena_point"}]
-    execute as @a[distance=..3.5] unless score @s arena matches 1.. run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
+    execute unless score @s arena matches 1.. run tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.not_enough_arena_point"}]
+    execute unless score @s arena matches 1.. run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     # APあり
-    execute as @a[distance=..3.5] if score @s arena matches 1.. run tag @s add Arena.Player
-    execute as @a[distance=..3.5] if score @s arena matches 1.. run scoreboard players set @s Arena 0
+    execute if score @s arena matches 1.. run tag @s add Arena.Player
+    execute if score @s arena matches 1.. run scoreboard players set @s Arena 0
 
     scoreboard players remove @a[tag=Arena.Player,scores={Arena=0},tag=!Arena.Debug] arena 1
 
@@ -21,3 +21,5 @@ scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[ta
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run playsound entity.experience_orb.pickup master @a ~ ~ ~ 5 2
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} run tellraw @a[tag=Arena.Player,distance=..20] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.how_to_change_modes"}]
 
+
+say enter/succes
