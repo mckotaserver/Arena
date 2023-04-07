@@ -36,5 +36,4 @@ bossbar set arena-boss: color yellow
 bossbar set arena-boss: style notched_10
 
 # 攻撃行動
-data modify storage arena-boss: Name set value "Fire"
 schedule function arena-boss:behavior/_ 2s

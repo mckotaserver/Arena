@@ -5,6 +5,9 @@ advancement revoke @s only arena:player_killed
 # 実績解除処理
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless,Wave:-1}}} run advancement grant @s only arena:display/endless/young_challenger
 
+# ボス: プレイヤーいなくなったらリセット
+execute unless entity @a[tag=Arena.Player,scores={Arena=101..}] run function arena-boss:core/reset
+
 # エンドレス: 死んだ者からデータをマーカーに一時的に保管
 execute if score @s Arena matches ..-1 run tag @s add Arena.DeadPlayer
 

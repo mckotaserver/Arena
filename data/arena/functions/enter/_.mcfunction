@@ -1,4 +1,5 @@
 # 入場可否判定
+say 01
 data modify storage arena:temp Enterable set value true
 
     # 5人以上いる場合はエラー
@@ -14,5 +15,3 @@ data modify storage arena:temp Enterable set value true
 execute if data storage arena:temp {Enterable:true} at @e[tag=Arena.Entrance,sort=nearest,limit=1] as @a[distance=..3.5] run function arena:enter/success
 execute if data storage arena:temp {Enterable:false} at @e[tag=Arena.Entrance,sort=nearest,limit=1] as @a[distance=..3.5] run function arena:enter/failed
 
-
-say enter/_

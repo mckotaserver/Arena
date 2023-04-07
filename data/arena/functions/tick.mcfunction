@@ -24,3 +24,4 @@ execute as @a[tag=Arena.Debug] at @s run function arena:debug/tick
 
 # ボス
 execute at @r[tag=Arena.Player,scores={Arena=101..}] as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run function arena-boss:tick
+execute unless entity @a[tag=Arena.Player,scores={Arena=101..}] run function arena-boss:core/reset

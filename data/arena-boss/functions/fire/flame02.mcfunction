@@ -8,4 +8,4 @@ execute unless entity @e[tag=ArenaBoss.Core,distance=..16] run kill @s
 
 # 当たり判定
 execute unless block ~ ~ ~ air run function arena-boss:skill/fire/shot/hit-block
-execute as @a[tag=Arena.Player,distance=..1.25] at @s run function arena-boss:skill/fire/shot/hit-player
+execute as @a[tag=Arena.Player,distance=..50] positioned ~-50 ~-50 ~-50 if predicate hitbox:hitbox at @s run function arena-boss:skill/fire/shot/hit-player

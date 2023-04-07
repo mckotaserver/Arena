@@ -20,6 +20,3 @@ scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[ta
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..3.5] @s
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run playsound entity.experience_orb.pickup master @a ~ ~ ~ 5 2
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} run tellraw @a[tag=Arena.Player,distance=..20] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.how_to_change_modes"}]
-
-
-say enter/succes

@@ -48,7 +48,7 @@ execute at @e[tag=Arena.Core,sort=nearest,limit=1] if score $MobType Arena match
 
 # 看板設置
 setblock ~ ~ ~ air
-setblock ~ ~ ~ oak_wall_sign[facing=north]{Text1:'{"text":"［アリーナの種類］","bold": true,"color": "yellow","clickEvent":{"action":"run_command","value":"function arena:click_sign"}}',Text2:'{"text":"モブの種類が入るよ"}',Text3:'{"text":"〈難易度〉","bold": true,"color": "yellow"}',Text4:'{"text":"難易度が入るよ"}'} replace
+setblock ~ ~ ~ oak_wall_sign[facing=north]{Text1:'{"text":"［アリーナの種類］","bold": true,"color": "yellow","clickEvent":{"action":"run_command","value":"execute unless entity @e[tag=Arena.Timer,distance=..3] run function arena:click_sign"}}',Text2:'{"text":"モブの種類が入るよ"}',Text3:'{"text":"〈難易度〉","bold": true,"color": "yellow"}',Text4:'{"text":"難易度が入るよ"}'} replace
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run setblock ~ ~ ~ air
 
     # 看板文字データ変更

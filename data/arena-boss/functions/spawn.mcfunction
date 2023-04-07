@@ -6,4 +6,6 @@ data modify storage arena-boss: Name set from storage arena-boss: SummoningBoss
 data modify storage arena-boss: Animation.Name set value "Spawning"
 
 # タイマーリセット
+scoreboard players set $AnimationTimer ArenaBoss 0
+
 scoreboard players set $StartTimer ArenaBoss -1
