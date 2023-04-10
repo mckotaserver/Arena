@@ -5,14 +5,10 @@ kill @e[tag=Arena.RankingDisplay-Note]
 kill @e[tag=Arena.RankingDisplay]
 
 # 各種表示用エンティティ召喚
-summon armor_stand ~ ~2.75 ~ {Tags:["Arena.RankingDisplay.Note-0","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "red","bold": true}',CustomNameVisible:true,Silent:true}
-summon armor_stand ~ ~2.5 ~ {Tags:["Arena.RankingDisplay.Note-1","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "gold","bold": true}',CustomNameVisible:true,Silent:true}
+summon text_display ~ ~2.75 ~ {Tags:["Arena.RankingDisplay.Note-0","Arena.RankingDisplay-Note"],text:'{"text":" ","color": "red","bold": true}'}
+summon text_display ~ ~2.5 ~ {Tags:["Arena.RankingDisplay.Note-1","Arena.RankingDisplay-Note"],text:'{"text":" ","color": "gold","bold": true}'}
 
-summon armor_stand ~ ~2.1 ~ {Tags:["Arena.RankingDisplay-0","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
-summon armor_stand ~ ~1.65 ~ {Tags:["Arena.RankingDisplay-1","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
-summon armor_stand ~ ~1.2 ~ {Tags:["Arena.RankingDisplay-2","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
-summon armor_stand ~ ~0.75 ~ {Tags:["Arena.RankingDisplay-3","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
-summon armor_stand ~ ~0.3 ~ {Tags:["Arena.RankingDisplay-4","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
+summon text_display ~ ~ ~ {Tags:["Arena.RankingDisplay-0","Arena.RankingDisplay"],text:'[{"nbt":"Ranking[0]","storage": "arena:temp","interpret": true},"\\n",{"nbt":"Ranking[1]","storage": "arena:temp","interpret": true},"\\n",{"nbt":"Ranking[2]","storage": "arena:temp","interpret": true}]'}
 
 # 表示データを取得
 data modify storage arena:temp Ranking set value []
@@ -34,15 +30,8 @@ execute unless data storage arena:temp Ranking[2] run kill @e[tag=Arena.RankingD
 execute unless data storage arena:temp Ranking[0] run kill @e[tag=Arena.RankingDisplay-0]
 
 execute unless data storage arena:temp Ranking[1] if data storage arena:temp Ranking[0] run kill @e[tag=Arena.RankingDisplay-1]
-execute unless data storage arena:temp Ranking[0] run data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] CustomName set value '{"text":"記録なし","color": "gray","bold": true}'
+execute unless data storage arena:temp Ranking[0] run data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] text set value '{"text":"記録なし","color": "gray","bold": true}'
 
-# データ表示
-# ランキング部分
-data modify entity @e[tag=Arena.RankingDisplay-0,limit=1] CustomName set from storage arena:temp Ranking[0]
-data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] CustomName set from storage arena:temp Ranking[1]
-data modify entity @e[tag=Arena.RankingDisplay-2,limit=1] CustomName set from storage arena:temp Ranking[2]
-data modify entity @e[tag=Arena.RankingDisplay-3,limit=1] CustomName set from storage arena:temp Ranking[3]
-data modify entity @e[tag=Arena.RankingDisplay-4,limit=1] CustomName set from storage arena:temp Ranking[4]
 
 # 上の表示
 function arena:record/display/prepare_note

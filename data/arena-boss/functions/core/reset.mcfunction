@@ -7,6 +7,7 @@ kill @e[tag=ArenaBoss.Element]
 kill @e[tag=ArenaBoss.Minion]
 
 kill @e[tag=ArenaBoss.Minion]
+kill @e[tag=ArenaBoss.SkillMarker]
 
 # プレイヤーの与ダメージリセット
 execute as @a if score @s ArenaBoss.DamageDealt matches 1.. run scoreboard players set @s ArenaBoss.DamageDealt 0

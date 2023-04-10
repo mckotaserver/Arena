@@ -12,14 +12,14 @@ execute if score $AnimationTimer ArenaBoss matches 51.. run function arena-boss:
 
 # 召喚 & 地面から生やす
 #Memo: 破壊したらボスにまあまあなダメージ
-execute if score $AnimationTimer ArenaBoss matches 1 run summon armor_stand ~4 ~-5 ~4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],ArmorItems:[{},{},{},{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}],Invisible:true,Marker:true,Fire:20000}
-execute if score $AnimationTimer ArenaBoss matches 1 run summon armor_stand ~-4 ~-5 ~-4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],ArmorItems:[{},{},{},{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}],Invisible:true,Marker:true,Fire:20000}
-execute if score $AnimationTimer ArenaBoss matches 1 run summon armor_stand ~4 ~-5 ~-4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],ArmorItems:[{},{},{},{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}],Invisible:true,Marker:true,Fire:20000}
-execute if score $AnimationTimer ArenaBoss matches 1 run summon armor_stand ~-4 ~-5 ~4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],ArmorItems:[{},{},{},{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}],Invisible:true,Marker:true,Fire:20000}
+execute if score $AnimationTimer ArenaBoss matches 1 run summon item_display ~4 ~-5 ~4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],item:{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}}
+execute if score $AnimationTimer ArenaBoss matches 1 run summon item_display ~-4 ~-5 ~-4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],item:{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}}
+execute if score $AnimationTimer ArenaBoss matches 1 run summon item_display ~4 ~-5 ~-4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],item:{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}}
+execute if score $AnimationTimer ArenaBoss matches 1 run summon item_display ~-4 ~-5 ~4 {Tags:["ArenaBoss.Skill03","ArenaBoss.SkillMarker"],item:{id:"minecraft:orange_dye",Count:1b,tag:{CustomModelData:490101}}}
 
-execute if score $AnimationTimer ArenaBoss matches 1..40 as @e[tag=ArenaBoss.Skill03,distance=..16] at @s unless block ~ ~ ~ air run tp @s ~ ~0.125 ~ ~6 ~
+execute if score $AnimationTimer ArenaBoss matches 1..40 as @e[tag=ArenaBoss.Skill03,distance=..16] at @s run tp @s ~ ~0.125 ~ ~6 ~
 
-execute if score $AnimationTimer ArenaBoss matches 40 at @e[tag=ArenaBoss.Skill03,distance=..16] run summon armor_stand ~ ~-0.5 ~ {Tags:["ArenaBoss.SkillMarker"],Small:true,Marker:true,Invisible:true,Passengers:[{id:"minecraft:enderman",Tags:["ArenaBoss.Skill03-Hitbox","ArenaBoss.SkillMarker"],DeathLootTable:"empty",ActiveEffects:[{Id:14,Duration:2147483647,ShowParticles:false}],Silent:true,NoAI:true,NoGravity:true,Health:300.0f,Attributes:[{Name:"minecraft:generic.max_health",Base:300.0d}]}]}
+execute if score $AnimationTimer ArenaBoss matches 40 at @e[tag=ArenaBoss.Skill03,distance=..16] run summon item_display ~ ~-0.5 ~ {Tags:["ArenaBoss.SkillMarker"],Passengers:[{id:"minecraft:enderman",Tags:["ArenaBoss.Skill03-Hitbox","ArenaBoss.SkillMarker"],DeathLootTable:"empty",ActiveEffects:[{Id:14,Duration:-1,ShowParticles:false}],Silent:true,NoAI:true,NoGravity:true,Health:300.0f,Attributes:[{Name:"minecraft:generic.max_health",Base:300.0d}]}]}
 
 # 爆破
 execute if score $AnimationTimer ArenaBoss matches 200 as @e[tag=ArenaBoss.Skill03,distance=..16] at @s run function arena-boss:skill/fire/burning_pillar/explode

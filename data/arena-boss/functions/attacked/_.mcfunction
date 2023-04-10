@@ -5,6 +5,7 @@ advancement revoke @s only arena-boss:attacked
 execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health 100
 execute if data storage arena-boss: {Name:"Fire"} run function arena-boss:attacked/fire
 execute if data storage arena-boss: {Name:"Water"} run function arena-boss:attacked/water
+execute if data storage arena-boss: {Name:"Thunder"} run function arena-boss:attacked/thunder
 
 # プレイヤーの与ダメージスコア加算 (100倍値)
 scoreboard players operation @s ArenaBoss.DamageDealt += $DamageDealt ArenaBoss.Temp

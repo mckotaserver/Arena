@@ -1,7 +1,7 @@
 # モブの行動
 
 # 再帰
-schedule function arena-boss:behavior/_ 3s
+schedule function arena-boss:behavior/_ 2s
 
 # アニメーション中なら中断
 execute unless data storage arena-boss: {Animation:{Name:"Regular"}} run function arena:stop_process

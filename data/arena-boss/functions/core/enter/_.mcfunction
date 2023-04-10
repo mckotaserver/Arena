@@ -56,9 +56,9 @@ execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tag @a[distance=.
 execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run scoreboard players operation @a[distance=..3.5] arena -= $TicketRequired ArenaBoss.Temp
 
 # 通知
-execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_announce","with":[{"text":"40","color": "gold","bold": true,"underlined": true}]}]
+scoreboard players set $StartTimer ArenaBoss 3
+execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_announce","with":[{"score":{"name": "$StartTimer","objective": "ArenaBoss"},"color": "gold","bold": true,"underlined": true}]}]
 
-scoreboard players set $StartTimer ArenaBoss 40
 scoreboard players operation $StartTimer ArenaBoss *= #20 Constant
 
 # tp, リセット処理諸々
