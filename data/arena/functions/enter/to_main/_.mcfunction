@@ -1,11 +1,10 @@
 # 入場可否判定
-say 01
 data modify storage arena:temp Enterable set value true
 
     # 5人以上いる場合はエラー
     execute store result score $MaxPlayerCount Arena.Temp run data get storage arena:core MaxPlayerCount
     execute store result score $PlayerCount Arena.Temp at @e[tag=Arena.Entrance,sort=nearest,limit=1] if entity @a[distance=..3.5]
-    execute unless score $PlayerCount Arena.Temp <= $MaxPlayerCount Arena.Temp at @e[tag=Arena.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.too_many_players","with":[{"nbt":"MaxPlayerCount","storage":"arena:core"}]}]
+    execute unless score $PlayerCount Arena.Temp <= $MaxPlayerCount Arena.Temp at @e[tag=Arena.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MaxPlayerCount","storage":"arena:core"}]}]
     execute unless score $PlayerCount Arena.Temp <= $MaxPlayerCount Arena.Temp at @e[tag=Arena.Entrance,sort=nearest,limit=1] run playsound entity.experience_orb.pickup master @a[distance=..3.5] ~ ~ ~ 1 0.5
     execute unless score $PlayerCount Arena.Temp <= $MaxPlayerCount Arena.Temp run data modify storage arena:temp Enterable set value false
 

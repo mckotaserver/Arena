@@ -1,5 +1,5 @@
 # プレイヤーに通知
-tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.reward_given"}]
+tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.reward_given"}]
 playsound entity.player.levelup master @a[tag=Arena.Player,distance=..32] ~ ~ ~ 1 1.75
 
 # 報酬配布

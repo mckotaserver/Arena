@@ -18,15 +18,15 @@ execute if data storage arena:temp {NoticeInfo:{Name:5}} run data modify storage
 execute if data storage arena:temp {NoticeInfo:{Name:6}} run data modify storage arena:temp NoticeInfo.Name set value "ガーディアン"
 
 # クリアタイム通知
-tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayTime","entity":"@s","interpret":true,"color": "aqua","bold": true}]}]
+tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayTime","entity":"@s","interpret":true,"color": "aqua","bold": true}]}]
 
 # ソロなら記録リストに追加
 execute if data entity @s {data:{Arena:{Solo:true}}} if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run function arena:record/add
 
 # 難易度別で色分け
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"translate":"arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "green","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "green","bold": true}]}]
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"translate":"arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "yellow","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "yellow","bold": true}]}]
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"translate":"arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "red","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "red","bold": true}]}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"translate":"kota-server.arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "green","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "green","bold": true}]}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"translate":"kota-server.arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "yellow","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "yellow","bold": true}]}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"translate":"kota-server.arena.game.message.clear_announce","with":[{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "red","bold": true},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "red","bold": true}]}]
 
 execute as @a[tag=Arena.Notice] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.75
 

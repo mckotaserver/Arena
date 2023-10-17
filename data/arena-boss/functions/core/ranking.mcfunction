@@ -67,7 +67,7 @@ execute in minecraft:arena run setblock 0 0 0 bedrock
     execute as @a[tag=ArenaBoss.RankedPlayer] at @s run loot spawn ~ ~ ~ loot arena:ticket/hard
 
 ## 表示
-execute as @a[tag=Arena.Player] if score @s Arena matches 101.. run tellraw @s [{"translate":"arena.boss.game.message.end_ranking-main","with":[{"nbt":"Ranking[-1].Rank","storage":"arena-boss:temp","color": "white","bold": true},{"nbt":"Ranking[-1].Suffix","storage":"arena-boss:temp","color": "white","bold": true},{"nbt":"Ranking[-1].Name","storage":"arena-boss:temp","color": "yellow","bold": true},{"nbt":"Ranking[-1].DamageDealt[0]","storage":"arena-boss:temp","color": "red"},{"nbt":"Ranking[-1].DamageDealt[1]","storage":"arena-boss:temp","color": "red"}]}]
+execute as @a[tag=Arena.Player] if score @s Arena matches 101.. run tellraw @s [{"translate":"kota-server.arena.boss.game.message.end_ranking-main","with":[{"nbt":"Ranking[-1].Rank","storage":"arena-boss:temp","color": "white","bold": true},{"nbt":"Ranking[-1].Suffix","storage":"arena-boss:temp","color": "white","bold": true},{"nbt":"Ranking[-1].Name","storage":"arena-boss:temp","color": "yellow","bold": true},{"nbt":"Ranking[-1].DamageDealt[0]","storage":"arena-boss:temp","color": "red"},{"nbt":"Ranking[-1].DamageDealt[1]","storage":"arena-boss:temp","color": "red"}]}]
 
 ## 後処理
 scoreboard players set @a[tag=ArenaBoss.RankedPlayer] ArenaBoss.DamageDealt -1

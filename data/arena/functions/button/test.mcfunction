@@ -13,8 +13,8 @@ execute unless data storage arena:temp {StageType:Normal} if score $Temp.MobCoun
 # 通知・効果音
 execute if data storage arena:temp {NextWave:false} run playsound entity.shulker.hurt master @a ~ ~ ~ 1 1
 
-execute if data storage arena:temp {NextWave:false} unless data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.clear_all_mobs"}]
-execute if data storage arena:temp {NextWave:false} if data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.too_many_mobs"}]
+execute if data storage arena:temp {NextWave:false} unless data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.clear_all_mobs"}]
+execute if data storage arena:temp {NextWave:false} if data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.too_many_mobs"}]
 
 execute if data storage arena:temp {StageType:Endless} if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 1.. run data modify storage arena:temp StageType set value Normal
 

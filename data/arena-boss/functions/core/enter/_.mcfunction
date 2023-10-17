@@ -15,7 +15,7 @@ playsound ui.button.click master @a ~ ~ ~ 1 1
 
     execute if score $PlayerCount ArenaBoss.Temp > $MaxPlayerCount ArenaBoss.Temp run data modify storage arena:temp Enterable set value false
     
-    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.too_many_players","with":[{"nbt":"Boss.StageInfo[0].MaxPlayerCount","storage": "arena:temp"}]}]
+    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"Boss.StageInfo[0].MaxPlayerCount","storage": "arena:temp"}]}]
     execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 0.5
     execute if data storage arena:temp {Enterable:false} run function arena:stop_process
 
@@ -23,14 +23,14 @@ playsound ui.button.click master @a ~ ~ ~ 1 1
     execute store result score $TicketRequired ArenaBoss.Temp run data get entity @e[tag=ArenaBoss.StageSelector.Core,limit=1] data.Arena.StageInfo.TicketRequired
     execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] as @a[distance=..3.5] unless score @s arena >= $TicketRequired ArenaBoss.Temp run data modify storage arena:temp Enterable set value false
 
-    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.not_enough_arena_point"}]
+    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.not_enough_arena_point"}]
     execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 0.5
     execute if data storage arena:temp {Enterable:false} run function arena:stop_process
 
     # 既に入場者がいないか判定
     execute if data storage arena-boss: {Status:{IsPlaying:true}} run data modify storage arena:temp Enterable set value false
 
-    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.someone_already_playing"}]
+    execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.game.message.error.someone_already_playing"}]
     execute if data storage arena:temp {Enterable:false} at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 0.5
     execute if data storage arena:temp {Enterable:false} run function arena:stop_process
 
@@ -57,7 +57,7 @@ execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run scoreboard player
 
 # 通知
 scoreboard players set $StartTimer ArenaBoss 3
-execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_announce","with":[{"score":{"name": "$StartTimer","objective": "ArenaBoss"},"color": "gold","bold": true,"underlined": true}]}]
+execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"kota-server.arena.game.message.prefix"},{"translate":"kota-server.arena.boss.game.message.start_announce","with":[{"score":{"name": "$StartTimer","objective": "ArenaBoss"},"color": "gold","bold": true,"underlined": true}]}]
 
 scoreboard players operation $StartTimer ArenaBoss *= #20 Constant
 
