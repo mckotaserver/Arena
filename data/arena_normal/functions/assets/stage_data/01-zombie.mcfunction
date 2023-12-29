@@ -4,7 +4,10 @@ data modify storage arena:assets stage_data append value {id:"01-zombie"}
 
 #> 召喚データ
 # Mob ID
-data modify storage arena:assets stage_data[-1].mob_data set value [{id:"minecraft:zombie",weight:5,Multiplier:1.00},{id:"minecraft:zombie",weight:2,data:{"IsBaby":true},Multiplier:0.80},{id:"minecraft:zombie",weight:1,data:{ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b}],HandItems:[{id:"minecraft:wooden_sword",Count:1b},{}]},Multiplier:1.2}]
+data modify storage arena:assets stage_data[-1].mob_data set value []
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:5,Multiplier:1.00}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:2,Multiplier:0.80,data:{"IsBaby":true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:1,Multiplier:1.20,data:{ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b}],HandItems:[{id:"minecraft:wooden_sword",Count:1b},{}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [12, 16, 20, 24, 28]

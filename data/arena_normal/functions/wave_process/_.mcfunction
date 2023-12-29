@@ -9,6 +9,9 @@ scoreboard players add #Wave Arena.Temp 1
 
 execute store result entity @s data.Arena.Wave int 1 run scoreboard players get #Wave Arena.Temp
 
+# 開始直後 → 記録関連処理
+execute if score #Wave Arena.Temp matches 1 store result entity @s data.Arena.Recording.StartTick int 1 run time query gametime
+
 #> モブの召喚
 # データ参照, 保管
 function arena_normal:misc/data_search with entity @s data.Arena.StageData

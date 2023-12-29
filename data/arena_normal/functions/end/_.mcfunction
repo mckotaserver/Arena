@@ -6,6 +6,9 @@ tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-serv
 execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run playsound entity.player.levelup master @s ~ ~ ~ 1 0.8
 execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 2
 
+# 記録関連処理
+execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} run function arena_normal:recording/_
+
 # タイマー関連処理
 execute store result score #EndTick Arena.Temp run time query gametime
 scoreboard players add #EndTick Arena.Temp 300
