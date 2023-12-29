@@ -1,0 +1,19 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:player_killed_entity",
+        "conditions": {
+          "player": {
+            "nbt": "{Tags:[\"Arena.Normal-Stage.Player\"]}"
+          },
+          "entity": {
+            "nbt": "{Tags:[\"Arena.Normal-Stage.Mob\"]}"
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena_normal:wave_process/mob_killed"
+    }
+  }
+  

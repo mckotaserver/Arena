@@ -1,0 +1,60 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:paper",
+            "functions": [
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{Arena:Ticket-Easy,CustomModelData:2000031}"
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "text": "アリーナのショップでの交換に使えるチケット。",
+                    "color": "white",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "text": "アリーナチケット",
+                  "color": "gold",
+                  "italic": false,
+                  "extra": [
+                      {
+                          "text": "【初級】",
+                          "color": "green",
+                          "italic": false
+                      }
+                  ]
+                }
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "type": "minecraft:score",
+                  "target": {
+                    "type": "minecraft:fixed",
+                    "name": "#Reward.TicketCount"
+                  },
+                  "score": "Arena.Temp",
+                  "scale": 1
+                },
+                "add": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

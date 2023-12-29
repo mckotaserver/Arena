@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "entity": {
+          "nbt": "{Tags:[\"Arena.Normal-Stage.Selector.Interaction-05\"]}"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "arena_normal:entrance/stage_selector/on_click/confirm"
+  }
+}
