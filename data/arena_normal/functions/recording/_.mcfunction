@@ -20,7 +20,7 @@ function arena_normal:recording/time_conversion
 setblock ~ -64 ~ air replace
 setblock ~ -64 ~ barrel replace
 
-execute as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:recording/register
+execute as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
 tag @a[tag=Arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
 
 setblock ~ -64 ~ air replace

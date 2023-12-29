@@ -14,6 +14,10 @@ execute if data entity @s {data:{Arena:{StageData:{Difficulty:0}}}} as @a[tag=Ar
 execute if data entity @s {data:{Arena:{StageData:{Difficulty:1}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/normal
 execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/hard
 
+# 記録表示
+tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayRecord","entity": "@s","interpret": true,"color": "yellow"}]}]
+
+
 #> ロビー抽選
 # 適当なロビー(人いない) , すべて埋まってるならランダム を選択
 execute as @e[tag=Arena.Normal-Stage.Lobby] at @s unless entity @p[distance=..48] run tag @s add Arena.Temp-EmptyLobby
