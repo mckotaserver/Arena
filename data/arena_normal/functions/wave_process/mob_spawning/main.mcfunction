@@ -47,6 +47,7 @@ scoreboard players operation #SpawnDataModifier Arena.Temp /= #100 Constant
 # → エフェクトで対応
 execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:guardian"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
 execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:elder_guardian"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
+execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:blaze"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
 
 execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] active_effects[{id:"minecraft:strength"}].amplifier byte 0.0199 run scoreboard players get #SpawnDataModifier Arena.Temp
 

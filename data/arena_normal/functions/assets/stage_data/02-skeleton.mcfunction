@@ -5,8 +5,9 @@ data modify storage arena:assets stage_data append value {id:"02-skeleton"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:3,Multiplier:1.00,data:{HandItems:[{id:"minecraft:bow",Count:1b},{}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:1,Multiplier:1.20,data:{ArmorItems:[{id:"minecraft:chainmail_boots",Count:1b},{},{},{}],HandItems:[{id:"minecraft:iron_axe",Count:1b},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.15,Operation:2,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:6,Multiplier:1.00,Condition:{Wave:{Min:1,Max:5},Difficulty:{Min:0,Max:2}},data:{HandItems:[{id:"minecraft:bow",Count:1b},{}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:2,Multiplier:1.15,Condition:{Wave:{Min:2,Max:5},Difficulty:{Min:0,Max:2}},data:{ArmorItems:[{id:"minecraft:chainmail_boots",Count:1b},{},{},{}],HandItems:[{id:"minecraft:iron_axe",Count:1b},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.15,Operation:2,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:1,Multiplier:1.30,Condition:{Wave:{Min:3,Max:5},Difficulty:{Min:1,Max:2}},data:{ArmorItems:[{id:"minecraft:golden_boots",Count:1b},{},{},{id:"minecraft:golden_helmet",Count:1b}],HandItems:[{id:"minecraft:bow",Count:1b,Enchantments:[{id:"minecraft:flame",lvl:0s}]},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.15,Operation:2,UUID:[I;0,0,0,0]}]}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]
@@ -26,13 +27,13 @@ data modify storage arena:assets stage_data[-1].speed set value [0.25f, 0.26f, 0
 
 #> その他ステージ情報
 # 報酬: reward
-data modify storage arena:assets stage_data[-1].reward set value [2, 3, 4]
+data modify storage arena:assets stage_data[-1].reward set value [3, 3, 3]
 
 # 入場可能人数
 data modify storage arena:assets stage_data[-1].max_player set value 4
 
 # 必要AP: required_ap
-data modify storage arena:assets stage_data[-1].required_ap set value 2
+data modify storage arena:assets stage_data[-1].required_ap set value 1
 
 # 名称: name
 data modify storage arena:assets stage_data[-1].name set value "スケルトン"

@@ -1,4 +1,8 @@
 ## モブ召喚処理
+# プレイヤーいなければ中止
+execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:misc/stage_reset
+execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run return -1
+
 # 重複防止
 tag @s add Arena.Temp-RecentSpawnedPos
 
@@ -10,8 +14,10 @@ execute store result score #Spawning.Random Arena.Temp run random value 0..99
 data modify storage arena:temp SpawningData.SelectedMob set value {}
 function arena_normal:wave_process/mob_spawning/weight_calc/_
 
+tellraw @a ["Spawning: ",{"nbt":"SpawningData.SelectedMob.id","storage":"arena:temp"},", ",{"nbt":"SpawningData.SelectedMob.Multiplier","storage":"arena:temp"}]
+
 # 召喚
-data modify storage arena:temp SpawningData.SelectedMob.data merge value {Tags:["Arena.Normal-Stage.Mob"],Motion: [0.0d, 0.25d, 0.0d]}
+data modify storage arena:temp SpawningData.SelectedMob.data merge value {Tags:["Arena.Normal-Stage.Mob"],Motion: [0.0d, 0.25d, 0.0d],Team:"Arena.Mobs"}
 function arena_normal:wave_process/mob_spawning/main with storage arena:temp SpawningData.SelectedMob
 
 # 再起可能性
@@ -24,4 +30,5 @@ scoreboard players add #EndTick Arena.Temp 20
 
 execute store result entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
 schedule function arena_normal:wave_process/mob_spawning/delay 20t
+
 

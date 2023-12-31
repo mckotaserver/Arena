@@ -1,4 +1,8 @@
 #> 前処理
+# プレイヤーいなければ中止
+execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:misc/stage_reset
+execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run return -1
+
 # Timerリセット
 data modify entity @s data.Arena.Timer.EndTick set value -1
 

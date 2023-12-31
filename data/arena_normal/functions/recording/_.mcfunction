@@ -24,6 +24,3 @@ execute as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_no
 tag @a[tag=Arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
 
 setblock ~ -64 ~ air replace
-
-#> ディスプレイ関連
-# 
