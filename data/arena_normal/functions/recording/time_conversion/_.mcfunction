@@ -33,27 +33,4 @@ scoreboard players operation #Recording.Time-Decimal Arena.Temp *= #5 Constant
 execute store result storage arena:temp Recording.Time.Raw.Decimal int 1 run scoreboard players get #Recording.Time-Decimal Arena.Temp
 
 #> 表示データの作成 (0パディングもするよ)
-# リセット
-data modify storage arena:temp Recording.Time.Display set value []
-
-# 時間
-data modify storage arena:temp Recording.Time.Display append string storage arena:temp Recording.Time.Raw.Hour
-
-data modify storage arena:temp Recording.Time.Display append value ":"
-
-# 分
-execute if score #Recording.Time-Minute Arena.Temp matches ..9 run data modify storage arena:temp Recording.Time.Display append value "0"
-
-data modify storage arena:temp Recording.Time.Display append string storage arena:temp Recording.Time.Raw.Minute
-data modify storage arena:temp Recording.Time.Display append value ":"
-
-# 秒
-execute if score #Recording.Time-Second Arena.Temp matches ..9 run data modify storage arena:temp Recording.Time.Display append value "0"
-
-data modify storage arena:temp Recording.Time.Display append string storage arena:temp Recording.Time.Raw.Second
-data modify storage arena:temp Recording.Time.Display append value "."
-
-# 小数点以下
-execute if score #Recording.Time-Decimal Arena.Temp matches ..9 run data modify storage arena:temp Recording.Time.Display append value "0"
-
-data modify storage arena:temp Recording.Time.Display append string storage arena:temp Recording.Time.Raw.Decimal
+function arena_normal:recording/time_conversion/zero_padding with storage arena:temp Recording.Time.Raw

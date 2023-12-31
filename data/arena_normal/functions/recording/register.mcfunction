@@ -4,7 +4,7 @@ data modify storage arena:temp Recording.Compound set value {}
 
 #> 各データをまとめ
 # 表示データ
-data modify storage arena:temp Recording.Compound.DisplayData set from storage arena:temp Recording.Time.Display
+data modify storage arena:temp Recording.Compound.DisplayData set from storage arena:temp Recording.Time.DisplayData
 
 # 実記録 (tick)
 data modify storage arena:temp Recording.Compound.Record set from storage arena:temp Recording.Time.Tick

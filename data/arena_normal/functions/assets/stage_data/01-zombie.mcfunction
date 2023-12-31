@@ -36,4 +36,4 @@ data modify storage arena:assets stage_data[-1].max_player set value 4
 data modify storage arena:assets stage_data[-1].required_ap set value 1
 
 # 名称: name
-data modify storage arena:assets stage_data[-1].name set value '{"text":"ゾンビ", "color":"#ddffff", "bold": true}'
+data modify storage arena:assets stage_data[-1].name set value "ゾンビ"

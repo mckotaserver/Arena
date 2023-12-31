@@ -16,7 +16,9 @@ execute if data storage arena:temp {SpawningData:{Difficulty:1}} run scoreboard 
 execute if data storage arena:temp {SpawningData:{Difficulty:2}} run scoreboard players set #SpawnDataModifier Arena.Temp 180
 
 scoreboard players operation #SpawnDataModifier Arena.Temp *= #DataModifier-Unique Arena.Temp
-execute store result storage arena:temp SpawningData.DataModifier.Multiplier float 0.0001 run scoreboard players get #SpawnDataModifier Arena.Temp
+scoreboard players operation #SpawnDataModifier Arena.Temp /= #100 Constant
+
+execute store result storage arena:temp SpawningData.DataModifier.Multiplier float 0.01 run scoreboard players get #SpawnDataModifier Arena.Temp
 
 data modify storage arena:temp SpawningData.Detail-Original set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
 
@@ -34,12 +36,26 @@ execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] 
 execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.attack_damage"}].Base double 0.01 run data get storage arena:temp SpawningData.Detail-Modified.strength 100
 execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.movement_speed"}].Base double 0.01 run data get storage arena:temp SpawningData.Detail-Modified.speed 100
 
-# attributesから攻撃力設定ができないmob → エフェクトで対応
-execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:skeleton"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
+#> 例外: attributesから攻撃力設定ができない場合
+# ウェーブボーナスの計算
+execute store result score #DataModifier-Wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave 50
+scoreboard players add #DataModifier-Wave Arena.Temp 100
+
+scoreboard players operation #SpawnDataModifier Arena.Temp *= #DataModifier-Wave Arena.Temp
+scoreboard players operation #SpawnDataModifier Arena.Temp /= #100 Constant
+
+# → エフェクトで対応
 execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:guardian"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
 execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:elder_guardian"}}} run effect give @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] strength infinite 0 true
 
-execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] active_effects[{id:"minecraft:strength"}].amplifier byte 0.9999 run data get storage arena:temp SpawningData.DataModifier 
+execute store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] active_effects[{id:"minecraft:strength"}].amplifier byte 0.0199 run scoreboard players get #SpawnDataModifier Arena.Temp
+
+# それでもできない弓扱いmob → 弓のデータを変更
+execute if data storage arena:temp {SpawningData:{SelectedMob:{data:{HandItems:[{id:"minecraft:bow"}]}}}} run data modify entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] HandItems[{id:"minecraft:bow"}].tag.Enchantments set value [{id:"minecraft:power",lvl:0s}]
+execute if data storage arena:temp {SpawningData:{SelectedMob:{data:{HandItems:[{id:"minecraft:bow"}]}}}} run data modify entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] HandDropChances[0] set value -1E40f
+
+scoreboard players remove #SpawnDataModifier Arena.Temp 100
+execute if data storage arena:temp {SpawningData:{SelectedMob:{data:{HandItems:[{id:"minecraft:bow"}]}}}} store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] HandItems[{id:"minecraft:bow"}].tag.Enchantments[0].lvl short 0.04 run scoreboard players get #SpawnDataModifier Arena.Temp
 
 # モブ固有データを設定
 execute if data storage arena:temp {SpawningData:{SelectedMob:{id:"minecraft:creeper"}}} store result entity @e[tag=Arena.Normal-Stage.Mob,sort=nearest,limit=1] ExplosionRadius byte 1 run data get storage arena:temp SpawningData.Detail-Modified.ExplosionRadius

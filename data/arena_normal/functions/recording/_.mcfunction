@@ -14,7 +14,7 @@ execute if score #CurrentTick Arena.Temp matches 720000.. run scoreboard players
 execute store result storage arena:temp Recording.Time.Tick int 1 run scoreboard players get #CurrentTick Arena.Temp
 
 # 時 / 分 / 秒 / 小数点以下 に変換, 表示データの作成
-function arena_normal:recording/time_conversion
+function arena_normal:recording/time_conversion/_
 
 #> データベースへの登録
 setblock ~ -64 ~ air replace

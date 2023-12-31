@@ -3,16 +3,7 @@
 # アイテムの回収 
 tp @e[type=item,distance=..48] @r[tag=Arena.Normal-Stage.Player,distance=..48] 
 
-# チケットの配布
-function arena_normal:misc/data_search with entity @s data.Arena.StageData
 
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:0}}}} store result score #Reward.TicketCount Arena.Temp run data get storage arena:temp MatchingStageData.reward[0]
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:1}}}} store result score #Reward.TicketCount Arena.Temp run data get storage arena:temp MatchingStageData.reward[1]
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} store result score #Reward.TicketCount Arena.Temp run data get storage arena:temp MatchingStageData.reward[2]
- 
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:0}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/easy
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:1}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/normal
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/hard
 
 # 記録表示
 tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayRecord","entity": "@s","interpret": true,"color": "yellow"}]}]
