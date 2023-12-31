@@ -12,9 +12,9 @@
 
   以上のセットアップのみで、簡単にアリーナを動作させることが可能です。
 
-  ## 注意点
-    - 同梱ストラクチャを使用した場合のみサポートしています。
-    - #arena_normal:marker_placement/lobby 実行時には, 引数にLobbyType(Normal|Endless)を設定してください。
+### 注意点
+  - 同梱ストラクチャを使用した場合のみサポートしています。
+  - #arena_normal:marker_placement/lobby 実行時には, 引数にLobbyType(Normal|Endless)を設定してください。
 
 ### 動作環境
 - Minecraft JE 1.20.2 -
