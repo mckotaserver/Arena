@@ -26,3 +26,6 @@ execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} store result
 execute if data entity @s {data:{Arena:{StageData:{Difficulty:0}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/easy
 execute if data entity @s {data:{Arena:{StageData:{Difficulty:1}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/normal
 execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} as @a[tag=Arena.Normal-Stage.Player,distance=..48] run loot give @s loot arena_normal:ticket/hard
+
+# クリア判定抑制のためデータ削除
+data modify entity @s data.Arena.Timer.WaveWaiting set value true

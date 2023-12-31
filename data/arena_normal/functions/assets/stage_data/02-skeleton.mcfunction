@@ -5,15 +5,15 @@ data modify storage arena:assets stage_data append value {id:"02-skeleton"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:6,Multiplier:1.00,Condition:{Wave:{Min:1,Max:5},Difficulty:{Min:0,Max:2}},data:{HandItems:[{id:"minecraft:bow",Count:1b},{}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:2,Multiplier:1.15,Condition:{Wave:{Min:2,Max:5},Difficulty:{Min:0,Max:2}},data:{ArmorItems:[{id:"minecraft:chainmail_boots",Count:1b},{},{},{}],HandItems:[{id:"minecraft:iron_axe",Count:1b},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.15,Operation:2,UUID:[I;0,0,0,0]}]}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:1,Multiplier:1.30,Condition:{Wave:{Min:3,Max:5},Difficulty:{Min:1,Max:2}},data:{ArmorItems:[{id:"minecraft:golden_boots",Count:1b},{},{},{id:"minecraft:golden_helmet",Count:1b}],HandItems:[{id:"minecraft:bow",Count:1b,Enchantments:[{id:"minecraft:flame",lvl:0s}]},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.15,Operation:2,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:6,Multiplier:1.00,Condition:{Wave:{Min:1},Difficulty:{Min:0,Max:2}},data:{HandItems:[{id:"minecraft:bow",Count:1b},{}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:2,Multiplier:1.15,Condition:{Wave:{Min:2},Difficulty:{Min:0,Max:2}},data:{ArmorItems:[{id:"minecraft:chainmail_boots",Count:1b},{},{},{}],HandItems:[{id:"minecraft:iron_axe",Count:1b},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.1,Operation:0,UUID:[I;0,0,0,0]}]},{Name:"minecraft:generic.attack_damage",Modifiers:[{Amount:-0.3,Operation:2,UUID:[I;0,0,0,1]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:skeleton",weight:1,Multiplier:1.30,Condition:{Wave:{Min:4},Difficulty:{Min:1,Max:2}},data:{ArmorItems:[{id:"minecraft:iron_boots",Count:1b},{},{},{id:"minecraft:golden_helmet",Count:1b}],ArmorDropChances:[0.01f,0.01f,0.01f,0.01f],HandItems:[{id:"minecraft:bow",Count:1b,tag:{Enchantments:[{id:"minecraft:flame",lvl:1s},{id:"minecraft:punch",lvl:1s}]}},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.1,Operation:0,UUID:[I;0,0,0,0]}]}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]
 
 # 体力値: health
-data modify storage arena:assets stage_data[-1].health set value [20.0f, 25.0f, 30.0f, 35.0f, 40.0f]
+data modify storage arena:assets stage_data[-1].health set value [16.0f, 20.0f, 24.0f, 28.0f, 32.0f]
 
 # 攻撃力: strength
 data modify storage arena:assets stage_data[-1].strength set value [3.0f, 3.5f, 4.0f, 4.5f, 5.0f]

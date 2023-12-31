@@ -10,6 +10,8 @@ execute store result score #Spawning.CheckingLimit Arena.Temp run data get entit
 execute store result score #Spawning.Wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
 execute store result score #Spawning.Difficulty Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.Difficulty
 
+data modify storage arena:temp SpawningData.Detail-Original set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
+
 function arena_normal:wave_process/mob_spawning/weight_calc/sum with storage arena:temp SpawningData.WeightCalc
 
 # 全体の割合から召喚mobを決定

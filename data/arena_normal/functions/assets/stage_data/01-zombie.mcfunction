@@ -5,9 +5,10 @@ data modify storage arena:assets stage_data append value {id:"01-zombie"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:5,Multiplier:1.00}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:2,Multiplier:0.80,data:{"IsBaby":true}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:1,Multiplier:1.20,data:{ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b}],HandItems:[{id:"minecraft:wooden_sword",Count:1b},{}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:5,Condition:{Wave:{Min:1},Difficulty:{Min:0,Max:2}},Multiplier:1.00}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:3,Condition:{Wave:{Min:1},Difficulty:{Min:0,Max:2}},Multiplier:0.80,data:{"IsBaby":true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:2,Condition:{Wave:{Min:3},Difficulty:{Min:1,Max:2}},Multiplier:1.20,data:{ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b}],HandItems:[{id:"minecraft:wooden_sword",Count:1b},{}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:zombie",weight:1,Condition:{Wave:{Min:4},Difficulty:{Min:2,Max:2}},Multiplier:1.30,data:{ArmorItems:[{},{},{},{id:"minecraft:diamond_helmet",Count:1b}],HandItems:[{id:"minecraft:golden_hoe",Count:1b},{}],ArmorDropChances:[-1E40f,-1E40f,-1E40f,-1E40f],Attributes:[{Name:"minecraft:generic.attack_damage",Modifiers:[{Amount:6,Operation:0,UUID:[I;0,0,0,0]}]},{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.1,Operation:0,UUID:[I;0,0,0,1]}]}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [12, 16, 20, 24, 28]

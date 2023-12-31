@@ -19,7 +19,3 @@ $execute store result storage arena:temp SpawningData.Detail-Modified.strength f
 data modify storage arena:temp SpawningData.Detail-Modified.speed set value 0
 $execute store result storage arena:temp SpawningData.Detail-Modified.speed float 0.001 run data get storage arena:temp SpawningData.Detail-Original.speed[$(Wave)] 1000
 
-
-# ExplosionRadius
-data modify storage arena:temp SpawningData.Detail-Modified.ExplosionRadius set value 0
-$execute store result storage arena:temp SpawningData.Detail-Modified.ExplosionRadius byte 1 run data get storage arena:temp SpawningData.Detail-Original.ExplosionRadius[$(Wave)]

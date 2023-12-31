@@ -9,9 +9,15 @@ data modify storage arena:temp SpawningData.WeightCalc.Ignore set value true
     $execute store result score #Spawning.Checking.Wave-Min Arena.Temp run data get storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Wave.Min
     $execute store result score #Spawning.Checking.Wave-Max Arena.Temp run data get storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Wave.Max
 
+    $execute unless data storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Wave.Min run scoreboard players set #Spawning.Checking.Wave-Min Arena.Temp 0
+    $execute unless data storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Wave.Max run scoreboard players set #Spawning.Checking.Wave-Max Arena.Temp 2048
+
     # Difficulty
     $execute store result score #Spawning.Checking.Difficulty-Min Arena.Temp run data get storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Difficulty.Min
     $execute store result score #Spawning.Checking.Difficulty-Max Arena.Temp run data get storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Difficulty.Max
+
+    $execute unless data storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Difficulty.Min run scoreboard players set #Spawning.Checking.Difficulty-Min Arena.Temp 0
+    $execute unless data storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)].Condition.Difficulty.Max run scoreboard players set #Spawning.Checking.Difficulty-Max Arena.Temp 2048
 
     execute if score #Spawning.Checking.Difficulty-Min Arena.Temp <= #Spawning.Difficulty Arena.Temp if score #Spawning.Difficulty Arena.Temp <= #Spawning.Checking.Difficulty-Max Arena.Temp if score #Spawning.Checking.Wave-Min Arena.Temp <= #Spawning.Wave Arena.Temp if score #Spawning.Wave Arena.Temp <= #Spawning.Checking.Wave-Max Arena.Temp run data modify storage arena:temp SpawningData.WeightCalc.Ignore set value false
 

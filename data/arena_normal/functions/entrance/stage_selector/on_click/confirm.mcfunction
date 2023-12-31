@@ -7,35 +7,57 @@ advancement revoke @s only arena_normal:stage_selector/on_click/confirm/right
 playsound ui.button.click master @s ~ ~ ~ 1 2
 
 #> 入場可否
-# データを取得 / 必要APを取得
+# 必要データの取得
 function arena_normal:misc/data_search with entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
-execute store result score #APRequired Arena.Temp run data get storage arena:temp MatchingStageData.data.required_ap
 
-# 比較
-data modify storage arena:temp StageJoinable set value true
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] if score #APRequired Arena.Temp > @s arena run data modify storage arena:temp StageJoinable set value false
+# エンドレスの場合 → 適当な値に設定
+execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {data:{Arena:{LobbyType:"Endless"}}} run function arena_normal:endless/entrance_setting
 
-# 入場判定 → 不可なら警告して処理中止
-execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.not_enough_arena_point"}]
-execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
+    #> AP の不足
+    # 必要APを取得
+    execute store result score #Entrance.APRequired Arena.Temp run data get storage arena:temp MatchingStageData.required_ap
 
-execute if data storage arena:temp {StageJoinable:false} run return -1
+    # 比較
+    data modify storage arena:temp StageJoinable set value true
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] if score #Entrance.APRequired Arena.Temp > @s arena run data modify storage arena:temp StageJoinable set value false
 
-# 入場判定: 空きステージがあるか判定
-execute as @e[tag=Arena.Normal-Stage.Stage-Core] at @s unless entity @a[tag=Arena.Normal-Stage.Player,distance=..48] run tag @s add Arena.Temp-EmptyStage
+    # 入場判定 → 不可なら警告して処理中止
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.not_enough_arena_point"}]
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-execute unless entity @e[tag=Arena.Temp-EmptyStage] run data modify storage arena:temp StageJoinable set value false
+    execute if data storage arena:temp {StageJoinable:false} run return -1
 
-tag @e[tag=Arena.Temp-EmptyStage] remove Arena.Temp-EmptyStage
+    #> 空きステージの有無
+    # 空きステージにタグ付与
+    execute as @e[tag=Arena.Normal-Stage.Stage-Core] at @s unless entity @a[tag=Arena.Normal-Stage.Player,distance=..48] run tag @s add Arena.Temp-EmptyStage
 
-# 入場判定 → 不可なら警告して処理中止
-execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.no_available_stage"}]
-execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
+    data modify storage arena:temp StageJoinable set value true
+    execute unless entity @e[tag=Arena.Temp-EmptyStage] run data modify storage arena:temp StageJoinable set value false
 
-execute if data storage arena:temp {StageJoinable:false} run return -1
+    tag @e[tag=Arena.Temp-EmptyStage] remove Arena.Temp-EmptyStage
+
+    # 入場判定 → 不可なら警告して処理中止
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.no_available_stage"}]
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
+
+    execute if data storage arena:temp {StageJoinable:false} run return -1
+
+    #> 人数判定
+    # エリア内の人数, 規定人数を取得
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] store result score #Entrance.PlayerCount Arena.Temp if entity @a[distance=..4]
+    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena:temp MatchingStageData.max_player
+
+    data modify storage arena:temp StageJoinable set value true
+    execute if score #Entrance.PlayerCount Arena.Temp > #Entrance.PlayerCount-Max Arena.Temp run data modify storage arena:temp StageJoinable set value false
+
+    # 規定人数を超えている場合 → 警告して処理中止
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MatchingStageData.data.max_player","storage":"arena:temp","color": "yellow","bold": true}]}]
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
+
+    execute if data storage arena:temp {StageJoinable:false} run return -1
 
 # 入場判定 → 可なら減算
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #APRequired Arena.Temp
+execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #Entrance.APRequired Arena.Temp
 
 #> 入場処理など
 # 範囲内のプレイヤーをタグ付け
@@ -63,13 +85,20 @@ data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.Wav
 schedule function arena_normal:misc/wave_timer 1s
 
 # プレイヤー TP
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_first","with":[{"text": "15","color": "yellow"}]}]
+execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome"}]
+execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_first"}]
 
 execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] at @e[tag=Arena.Temp.StageSelected] run tag @a[distance=..4] add Arena.Normal-Stage.Player
 execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=Arena.Temp.StageSelected] run tp @s ~ ~-0.25 ~ ~ ~
 
-# データを移動
+# 必要なデータをコピー
 data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
+
+    # エンドレス → 難易度を変更
+    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Difficulty set value 2
+
+    # ステージ種類データ
+    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
 
 # ストラクチャーのロード
 execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
