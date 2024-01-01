@@ -1,5 +1,6 @@
 {
   "values": [
-    "arena_normal:load"
+    "arena_normal:load",
+    "arena_utility:load"
   ]
 }
