@@ -14,7 +14,11 @@
         data modify storage arena_utility:temp Altar.ItemExtraction.Out.Count set from storage arena_utility:temp Altar.ItemExtraction.Item.Count
         data modify storage arena_utility:temp Altar.ItemExtraction.Out.tag set from storage arena_utility:temp Altar.ItemExtraction.Item.tag
 
-        execute if data storage arena_utility:temp {Altar:{ItemExtraction:{Out:{tag:{}}}}} run data remove storage arena_utility:temp Altar.ItemExtraction.Out.tag
+            # tagが空かどうか確認
+            scoreboard players set #TagCompound Arena.Temp 0
+            execute store result score #TagCompound Arena.Temp run data get storage arena_utility:temp Altar.ItemExtraction.Item.tag
+
+            execute if score #TagCompound Arena.Temp matches 0 run data remove storage arena_utility:temp Altar.ItemExtraction.Out.tag
 
         data modify storage arena_utility:temp Altar.ItemExtraction.Out.Slot set value 0b
 

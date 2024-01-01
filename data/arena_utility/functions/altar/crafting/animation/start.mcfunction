@@ -15,7 +15,11 @@ data modify entity @s data.Arena.Scheduling set value "arena_utility:altar/craft
 schedule function arena_utility:altar/crafting/animation/timer 40t 
 
 #> 成果物のデータ作成
-data modify entity @s data.Arena.Altar.Product set from storage arena_utility:temp Altar.Crafting.Refering.product
+    # アイテム出力の場合
+    execute if data storage arena_utility:temp {Altar:{Crafting:{Refering:{upgrade_recipe:false}}}} run data modify entity @s data.Arena.Altar.Product set from storage arena_utility:temp Altar.Crafting.Refering.product
+
+    # 強化レシピの場合
+    execute if data storage arena_utility:temp {Altar:{Crafting:{Refering:{upgrade_recipe:true}}}} run function arena_utility:altar/crafting/upgrade_recipe/_ with storage arena_utility:temp Altar.Crafting.Refering.lore
 
 #> 演出
     # playsound 

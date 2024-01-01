@@ -6,6 +6,10 @@ advancement revoke @s only arena_utility:altar/on_click/right
 data modify storage arena_utility:temp Altar.data set from entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar
 
 #> エラー出力
+    # クラフト中 (警告はなし)
+    execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return -1
+    execute if data entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return -1
+
     # ほかの人が使用中
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.someone_using"}]
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
@@ -18,9 +22,6 @@ data modify storage arena_utility:temp Altar.data set from entity @e[tag=Arena.U
         execute if predicate arena_utility:flags/is_sneaking if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run return -1
 
     # アイテムを持っていない
-    execute unless data entity @s SelectedItem run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.invalid_item"}]
-    execute unless data entity @s SelectedItem run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
-
     execute unless data entity @s SelectedItem run return -1
 
     # 設置限界値

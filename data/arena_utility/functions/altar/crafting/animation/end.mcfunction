@@ -1,9 +1,6 @@
 ## クラフトアニメーション 終了
 #> アイテムまわり
 # 素材アイテムは消す
-    # 配置済みアイテムの削除
-    data modify entity @s data.Arena.Altar.PlacedItem set value []
-    
     # ディスプレイのkill
     kill @e[tag=Arena.Utility.Altar.PlacedItemDisplay,distance=..2]
     kill @e[tag=Arena.Utility.Altar.PlacedItemMount,distance=..2]
@@ -14,6 +11,9 @@
 
     # 予め設定した成果物のデータを移動
     data modify entity @e[tag=Arena.Utility.Altar.ProductDisplay-Unedited,limit=1] Item set from entity @s data.Arena.Altar.Product
+
+    data modify entity @s data.Arena.Altar.PlacedItem set value []
+    data modify entity @s data.Arena.Altar.PlacedItem append from entity @s data.Arena.Altar.Product
 
     # タグ除去
     tag @e[tag=Arena.Utility.Altar.ProductDisplay-Unedited] remove Arena.Utility.Altar.ProductDisplay-Unedited
@@ -43,7 +43,3 @@
     particle soul_fire_flame ~ ~ ~ 0 0 0 1 100
     particle reverse_portal ~ ~ ~ 0 0 0 4 100
 
-#> 後処理
-    # 使用中データ
-    data modify entity @s data.Arena.Altar.isCrafting set value false
-    data modify entity @s data.Arena.Altar.isUsing set value false

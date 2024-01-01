@@ -26,3 +26,11 @@
 
     # 
     setblock ~ -64 ~ bedrock
+
+    # 配置済みアイテムの削除
+    data modify entity @s data.Arena.Altar.PlacedItem set value []
+
+    # 使用中データ
+    data modify entity @s data.Arena.Altar.isCrafting set value false
+    data modify entity @s data.Arena.Altar.isUsing set value false
+    
