@@ -1,11 +1,11 @@
 ## レシピ登録
 # 項の作成
-data modify storage arena:assets utility.altar_recipes append value {id:"001-upgrade"}
+data modify storage arena:assets utility.altar_recipes append value {id:"011-bossench_fire-1"}
 
 #> レシピデータ
 # Recipe
 data modify storage arena:assets utility.altar_recipes[-1].ingredients set value []
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {item_tag:"sword",Count:1b,tag:{Arena:{Upgrade:{test:false}}},isCore:true}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {type:"sword",Count:1b,tag:{Arena:{Upgrade:{BossEnchantments:false}}},isCore:true}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:cobblestone",Count:64b,tag:{}}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:cobblestone",Count:64b,tag:{}}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:cobblestone",Count:64b,tag:{}}

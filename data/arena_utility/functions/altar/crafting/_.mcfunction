@@ -11,7 +11,7 @@ function arena_utility:altar/crafting/recipe_check with storage arena_utility:te
 
 #> クラフト可能状態か判定
     # 合致するレシピが見つからない
-    execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:false}}} run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.invalid_recipe"},"1"]
+    execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:false}}} run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.invalid_recipe"}]
     execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:false}}} run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:false}}} run return -1
@@ -20,7 +20,7 @@ function arena_utility:altar/crafting/recipe_check with storage arena_utility:te
     execute if data storage arena_utility:temp {Altar:{Crafting:{Refering:{upgrade_recipe:true}}}} run function arena_utility:altar/crafting/upgrade_recipe/checking
     execute if data storage arena_utility:temp {Altar:{Crafting:{Refering:{upgrade_recipe:false}}}} run data modify storage arena_utility:temp Altar.Crafting.UpgradeRecipe.Available set value true 
 
-    execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.invalid_recipe"},"2"]
+    execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.invalid_recipe"}]
     execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run return -1
