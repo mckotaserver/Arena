@@ -1,6 +1,7 @@
 ## ディスプレイ表示データの更新
 # 参照元のデータをコピー
 $data modify storage arena:temp Display.Specified set from storage arena:records normal[{MobType:$(MobType)}].data
+$execute unless data storage arena:records normal[{MobType:$(MobType)}] run data modify storage arena:temp Display.Specified set value []
 
 # Ranker 
 data modify storage arena:temp Display.Macro.Ranker_1st set value ""
