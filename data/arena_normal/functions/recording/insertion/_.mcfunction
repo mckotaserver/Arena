@@ -17,7 +17,7 @@ execute store result score #Recording.Insertee Arena.Temp run data get storage a
     execute store success storage arena:temp Recording.Insertion.isDifferentOwner byte 1 run data modify storage arena:temp Recording.Insertion.RecordOwner set from storage arena:temp Recording.Compound.UUID
 
     # 一致 → 旧データは削除
-    $execute if data storage arena:temp {Recording:{Insertion:{isDifferentOwner:false}}} run data remove storage arena:records normal[{name:$(name)}].data[$(Counter)]
+    $execute if data storage arena:temp {Recording:{Insertion:{isDifferentOwner:false}}} run data remove storage arena:records normal[{name:"$(name)"}].data[$(Counter)]
 
 # 比較 → 条件に一致なら挿入
     # 通常
@@ -27,11 +27,11 @@ execute store result score #Recording.Insertee Arena.Temp run data get storage a
     execute if data storage arena:temp {Recording:{Insertion:{name:"エンドレス"}}} store success storage arena:temp Recording.Insertion.ConditionMatched byte 1 if score #Recording.Comparing Arena.Temp < #Recording.Insertee Arena.Temp
 
     # 挿入処理
-    $execute if data storage arena:temp {Recording:{Insertion:{ConditionMatched:true}}} run data modify storage arena:records normal[{name:$(name)}].data insert $(Counter) from storage arena:temp Recording.Compound
+    $execute if data storage arena:temp {Recording:{Insertion:{ConditionMatched:true}}} run data modify storage arena:records normal[{name:"$(name)"}].data insert $(Counter) from storage arena:temp Recording.Compound
     execute if data storage arena:temp {Recording:{Insertion:{ConditionMatched:true}}} run return -1
 
 # 最後まで適切な位置が見つからなければ最後尾に
-$execute unless data storage arena:temp Recording.Insertion.Categoried[$(Counter)] run data modify storage arena:records normal[{name:$(name)}].data append from storage arena:temp Recording.Compound
+$execute unless data storage arena:temp Recording.Insertion.Categoried[$(Counter)] run data modify storage arena:records normal[{name:"$(name)"}].data append from storage arena:temp Recording.Compound
 $execute unless data storage arena:temp Recording.Insertion.Categoried[$(Counter)] run return -1
 
 # 挿入不可なら再起

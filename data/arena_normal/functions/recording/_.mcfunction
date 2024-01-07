@@ -18,11 +18,11 @@
 
 #> データベースへの登録
     # player_head召喚の準備
-    setblock ~ -64 ~ air replace
+    setblock ~ -64 ~ bedrock replace
     setblock ~ -64 ~ barrel replace
 
     # 処理
-    execute as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
+    execute if data entity @s {data:{Arena:{StageData:{Difficulty:2,PlayerCount:1}}}} as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
     tag @a[tag=Arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
 
     # 後始末

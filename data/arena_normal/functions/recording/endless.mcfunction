@@ -5,8 +5,7 @@ data modify storage arena:temp Recording.Compound set value {}
 #> 各データをまとめ
 # 表示データ作成
 data modify storage arena:temp Recording.Compound.DisplayData set value ["Wave"," ",""]
-
-data modify storage arena:temp Recording.Compound.DisplayData[2] set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
+data modify storage arena:temp Recording.Compound.DisplayData[2] set string entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
 
 # 実記録 (Wave)
 data modify storage arena:temp Recording.Compound.Record set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
@@ -40,6 +39,6 @@ execute store result storage arena:temp Recording.Compound.TimeStamp int 1 run t
 
 #> 再起
 # 
-tag @s add Arena.Temp-RecordRegistered
-execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
+# tag @s add Arena.Temp-RecordRegistered
+# execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
 

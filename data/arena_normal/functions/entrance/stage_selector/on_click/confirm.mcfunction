@@ -3,7 +3,7 @@
 advancement revoke @s only arena_normal:stage_selector/on_click/confirm/left
 advancement revoke @s only arena_normal:stage_selector/on_click/confirm/right
 
-# sound
+# playsound
 playsound ui.button.click master @s ~ ~ ~ 1 2
 
 #> 入場可否
@@ -89,8 +89,11 @@ execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distan
     # ストラクチャーのロード
     execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
 
+    # プレイヤー数の取得
+    execute store result entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
+
 # 帰還用 → 入場ロビーのデータ取得
-data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyName
+data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] Tags[0]
 
 # 開始タイマー関連処理
     # 現在時刻を取得, カウント終了時刻を計算

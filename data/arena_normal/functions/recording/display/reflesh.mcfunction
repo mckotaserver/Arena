@@ -1,7 +1,7 @@
 ## ディスプレイ表示データの更新
 # 参照元のデータをコピー
-$data modify storage arena:temp Display.Specified set from storage arena:records normal[{MobType:$(MobType)}].data
-$execute unless data storage arena:records normal[{MobType:$(MobType)}] run data modify storage arena:temp Display.Specified set value []
+$data modify storage arena:temp Display.Specified set from storage arena:records normal[{name:"$(name)"}].data
+$execute unless data storage arena:records normal[{name:"$(name)"}] run data modify storage arena:temp Display.Specified set value []
 
 # Ranker 
 data modify storage arena:temp Display.Macro.Ranker_1st set value ""
@@ -30,7 +30,7 @@ data modify storage arena:temp Display.Macro.Record_4th set from storage arena:t
 data modify storage arena:temp Display.Macro.Record_5th set from storage arena:temp Display.Specified[4].DisplayData
 
 # Mob Name
-$data modify storage arena:temp Display.Macro.MobName set from storage arena:assets stage_data[$(MobType)].name
+$data modify storage arena:temp Display.Macro.MobName set value "$(name)"
 
 # マクロ実行
 function arena_normal:recording/display/assign with storage arena:temp Display.Macro

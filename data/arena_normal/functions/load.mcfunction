@@ -19,7 +19,7 @@ function arena_normal:assets/stage_data/load
 # Marker
 execute as @e[tag=Arena.Normal-Stage.Stage-Core] unless data entity @s data.Arena run data merge entity @s {data:{Arena:{isEmpty:true,StageData:{}}}}
 
-execute unless data storage arena:records normal run data modify storage arena:records normal set value [{name:"ゾンビ",data:[]},{name:"スケルトン",data:[]},{name:"ブレイズ",data:[]},{name:"スパイダー",data:[]},{name:"スライム",data:[]},{name:"クリーパー",data:[]}]
+execute unless data storage arena:records normal run data modify storage arena:records normal set value [{name:"エンドレス",data:[]},{name:"ゾンビ",data:[]},{name:"スケルトン",data:[]},{name:"ブレイズ",data:[]},{name:"スパイダー",data:[]},{name:"スライム",data:[]},{name:"クリーパー",data:[]}]
 
 # team
 team add Arena.Mobs

@@ -25,7 +25,7 @@ execute store result storage arena:temp Recording.Compound.TimeStamp int 1 run t
     execute store result score #Recording.Counter Arena.Temp run data get storage arena:temp Recording.Insertion.Counter
 
     # データセット
-    $data modify storage arena:temp Recording.Insertion.Categoried set from storage arena:records normal[{name:$(name)}].data
+    $data modify storage arena:temp Recording.Insertion.Categoried set from storage arena:records normal[{name:"$(name)"}].data
     data modify storage arena:temp Recording.Insertion.name set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail.name
 
     data modify storage arena:temp Recording.Insertion.UUID set from storage arena:temp Recording.Compound.UUID
@@ -34,6 +34,7 @@ execute store result storage arena:temp Recording.Compound.TimeStamp int 1 run t
     function arena_normal:recording/insertion/dupe_check with storage arena:temp Recording.Insertion
 
     # 挿入
+    tellraw awabi2048 {"nbt":"Recording.Insertion","storage":"arena:temp"}
     execute if data storage arena:temp {Recording:{Insertion:{Execute:true}}} run function arena_normal:recording/insertion/_ with storage arena:temp Recording.Insertion
 
 #> 再起

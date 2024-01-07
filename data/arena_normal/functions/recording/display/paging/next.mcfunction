@@ -19,7 +19,9 @@ execute if score #Display.Page Arena.Temp matches ..-1 run scoreboard players op
 execute store result entity @e[tag=Arena.Normal-Stage.Display.Core,sort=nearest,limit=1] data.Arena.Display.MobType int 1 run scoreboard players get #Display.Page Arena.Temp
 
 # 表示を更新
-function arena_normal:recording/display/reflesh with entity @e[tag=Arena.Normal-Stage.Display.Core,sort=nearest,limit=1] data.Arena.Display
+function arena_normal:misc/data_search with entity @e[tag=Arena.Normal-Stage.Display.Core,sort=nearest,limit=1] data.Arena.Display
+
+function arena_normal:recording/display/reflesh with storage arena:temp MatchingStageData
 
 # playsound 
 playsound ui.button.click master @s ~ ~ ~ 1 2
