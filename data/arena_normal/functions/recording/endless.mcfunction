@@ -3,12 +3,11 @@
 data modify storage arena:temp Recording.Compound set value {}
 
 #> 各データをまとめ
-# 表示データ作成
-data modify storage arena:temp Recording.Compound.DisplayData set value ["Wave"," ",""]
-data modify storage arena:temp Recording.Compound.DisplayData[2] set string entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
-
 # 実記録 (Wave)
-data modify storage arena:temp Recording.Compound.Record set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
+data modify storage arena:temp Recording.Compound.Record set from storage arena:temp Recording.ActualRecord
+
+# 表示データ作成
+$data modify storage arena:temp Recording.Compound.DisplayData set value "Wave $(ActualRecord)" 
 
 # UUID
 data modify storage arena:temp Recording.Compound.UUID set from entity @s UUID

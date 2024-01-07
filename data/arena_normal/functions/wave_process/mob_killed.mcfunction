@@ -11,7 +11,7 @@ execute at @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if entity 
     execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Wave:5,Spawning:{Counter:0},StageData:{Type:"Normal"}}}}
 
     
-    tellraw @a ["Wave:",{"nbt":"data.Arena.Wave","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},",Counter:",{"nbt":"data.Arena.Spawning.Counter","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},"Type:",{"nbt":"data.Arena.StageData.Type","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"}," at wave_process/mob_killed.mcf"]
+    # tellraw @a ["Wave:",{"nbt":"data.Arena.Wave","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},",Counter:",{"nbt":"data.Arena.Spawning.Counter","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},"Type:",{"nbt":"data.Arena.StageData.Type","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"}," at wave_process/mob_killed.mcf"]
     execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Wave:5,Spawning:{Counter:0},StageData:{Type:"Normal"}}}} at @s run function arena_normal:end/_
     execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Wave:5,Spawning:{Counter:0},StageData:{Type:"Normal"}}}} at @s run return -1
 

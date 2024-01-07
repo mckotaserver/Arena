@@ -109,7 +109,9 @@ data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLo
 
 # プレイヤー関連
     # tellraw
-    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome"}]
+    execute unless data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {data:{Arena:{LobbyType:"Endless"}}} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome"}]
+    execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {data:{Arena:{LobbyType:"Endless"}}} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome_endless"}]
+    
     execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_first"}]
     
     # TP

@@ -30,7 +30,7 @@ data modify storage arena:temp Display.Macro.Record_4th set from storage arena:t
 data modify storage arena:temp Display.Macro.Record_5th set from storage arena:temp Display.Specified[4].DisplayData
 
 # Mob Name
-$data modify storage arena:temp Display.Macro.MobName set value "$(name)"
+$data modify storage arena:temp Display.Macro.Name set value "$(name)"
 
 # マクロ実行
 function arena_normal:recording/display/assign with storage arena:temp Display.Macro
