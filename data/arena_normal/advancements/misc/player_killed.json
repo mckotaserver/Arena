@@ -1,0 +1,16 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:entity_killed_player",
+        "conditions": {
+          "player": {
+            "nbt": "{Tags:[\"Arena.Normal-Stage.Player\"]}"
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena_normal:endless/player_killed"
+    }
+  }
+  

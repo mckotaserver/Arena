@@ -14,7 +14,7 @@ execute store result score #Spawning.Random Arena.Temp run random value 0..99
 data modify storage arena:temp SpawningData.SelectedMob set value {}
 function arena_normal:wave_process/mob_spawning/weight_calc/_
 
-# tellraw @a ["Spawning: ",{"nbt":"SpawningData.SelectedMob.id","storage":"arena:temp"},", ",{"nbt":"SpawningData.SelectedMob.Multiplier","storage":"arena:temp"}]
+# tellraw awabi2048 ["Spawning: ",{"nbt":"SpawningData.SelectedMob.id","storage":"arena:temp"},", ",{"nbt":"SpawningData.SelectedMob.Multiplier","storage":"arena:temp"}]
 
 # 召喚
 data modify storage arena:temp SpawningData.SelectedMob.data merge value {Tags:["Arena.Normal-Stage.Mob"],Motion: [0.0d, 0.25d, 0.0d],Team:"Arena.Mobs"}

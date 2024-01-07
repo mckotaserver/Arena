@@ -8,7 +8,7 @@ execute at @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if entity 
 #> 特殊処理
     # 通常 → ステージの終了
     # 通常, Wave: 5, 残り召喚数0 → 終了処理へ
-    tellraw @a ["Wave:",{"nbt":"data.Arena.Wave","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},",Counter:",{"nbt":"data.Arena.Spawning.Counter","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},"Type:",{"nbt":"data.Arena.StageData.Type","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"}]
+    # tellraw @a ["Wave:",{"nbt":"data.Arena.Wave","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},",Counter:",{"nbt":"data.Arena.Spawning.Counter","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"},"Type:",{"nbt":"data.Arena.StageData.Type","entity":"@e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1]"}," at wave_process/mob_killed.mcf"]
     execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Wave:5,Spawning:{Counter:0},StageData:{Type:"Normal"}}}} at @s run function arena_normal:end/_
     execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Wave:5,Spawning:{Counter:0},StageData:{Type:"Normal"}}}} at @s run return -1
 
@@ -28,7 +28,7 @@ execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1
     scoreboard players add #EndTick Arena.Temp 300
 
         # エンドレス → 10Waveおき(チケット配布時)は休憩を倍に
-        execute if data storage arena:temp {isBonus:true} run scoreboard players add #EndTick Arena.Temp 300
+        execute if data storage arena:temp {isBonus:true} run scoreboard players set #EndTick Arena.Temp 600
 
     # マーカーにデータ設定
     execute store result entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp

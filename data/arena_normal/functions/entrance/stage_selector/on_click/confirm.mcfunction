@@ -60,48 +60,57 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
 execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #Entrance.APRequired Arena.Temp
 
 #> 入場処理など
-# 範囲内のプレイヤーをタグ付け
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tag @a[distance=..4] add Arena.Normal-Stage.Player
+# 前準備
+    # 範囲内のプレイヤーをタグ付け
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tag @a[distance=..4] add Arena.Normal-Stage.Player
 
-# 入場可能ステージを選定・・ の前に使われてないステージがあったらリセット
-execute as @e[tag=Arena.Normal-Stage.Stage-Core] if data entity @s {data:{Arena:{isEmpty:false}}} at @s unless entity @a[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:misc/stage_reset
+# 入場先ステージの準備
+    # 入場可能ステージを選定・・ の前に使われてないステージがあったらリセット
+    execute as @e[tag=Arena.Normal-Stage.Stage-Core] if data entity @s {data:{Arena:{isEmpty:false}}} at @s unless entity @a[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:misc/stage_reset
 
-# 入場可能ステージを選定
-execute as @e[tag=Arena.Normal-Stage.Stage-Core] if data entity @s {data:{Arena:{isEmpty:true}}} run tag @s add Arena.Temp.EmptyStage
-tag @e[tag=Arena.Temp.EmptyStage,sort=nearest,limit=1] add Arena.Temp.StageSelected
+    # 入場可能ステージを選定
+    execute as @e[tag=Arena.Normal-Stage.Stage-Core] if data entity @s {data:{Arena:{isEmpty:true}}} run tag @s add Arena.Temp.EmptyStage
+    tag @e[tag=Arena.Temp.EmptyStage,sort=nearest,limit=1] add Arena.Temp.StageSelected
 
-tag @e[tag=Arena.Temp.EmptyStage] remove Arena.Temp.EmptyStage
+    tag @e[tag=Arena.Temp.EmptyStage] remove Arena.Temp.EmptyStage
 
-# isEmpty → false
-data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.isEmpty set value false
+    # isEmpty → false
+    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.isEmpty set value false
+
+    # 選択したステージデータをコピー
+    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
+
+        # エンドレス → 難易度を固定
+        data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Difficulty set value 2
+
+        # ステージ種類データ
+        data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
+
+    # ストラクチャーのロード
+    execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
+
+# 帰還用 → 入場ロビーのデータ取得
+data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyName
 
 # 開始タイマー関連処理
-execute store result score #EndTick Arena.Temp run time query gametime
-scoreboard players add #EndTick Arena.Temp 300
+    # 現在時刻を取得, カウント終了時刻を計算
+    execute store result score #EndTick Arena.Temp run time query gametime
+    scoreboard players add #EndTick Arena.Temp 300
 
-execute store result entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
+    # 入場先マーカーのデータにコピー
+    execute store result entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
 
-data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.WaveWaiting set value true
-schedule function arena_normal:misc/wave_timer 1s
+    # カウント開始
+    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.WaveWaiting set value true
+    schedule function arena_normal:misc/wave_timer 1s
 
-# プレイヤー TP
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome"}]
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_first"}]
-
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] at @e[tag=Arena.Temp.StageSelected] run tag @a[distance=..4] add Arena.Normal-Stage.Player
-execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=Arena.Temp.StageSelected] run tp @s ~ ~-0.25 ~ ~ ~
-
-# 必要なデータをコピー
-data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
-
-    # エンドレス → 難易度を変更
-    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Difficulty set value 2
-
-    # ステージ種類データ
-    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
-
-# ストラクチャーのロード
-execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
+# プレイヤー関連
+    # tellraw
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.welcome"}]
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_first"}]
+    
+    # TP
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=Arena.Temp.StageSelected] run tp @s ~ ~-0.25 ~ ~ ~
 
 #> 後処理
 # 一時タグを処理

@@ -6,8 +6,13 @@ tp @e[type=item,distance=..48] @r[tag=Arena.Normal-Stage.Player,distance=..48]
 # ステージリセット
 function arena_normal:misc/stage_reset
 
-# 記録表示
-tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayRecord","entity": "@s","color": "yellow"}]}]
+#> 記録まわり
+    # 本人tellraw
+    tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.clear_time","with":[{"nbt":"data.Arena.DisplayRecord","entity": "@s","color": "yellow"}]}]
+
+    # 記録更新 → 特殊表示 & 鯖内通知
+    
+
 
 #> ロビー抽選
 # 適当なロビー(人いない) , すべて埋まってるならランダム を選択
