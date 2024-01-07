@@ -31,7 +31,7 @@ execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1
     scoreboard players add #EndTick Arena.Temp 300
 
         # エンドレス → 10Waveおき(チケット配布時)は休憩を倍に
-        execute if data storage arena:temp {isBonus:true} run scoreboard players set #EndTick Arena.Temp 600
+        execute if data storage arena:temp {isBonus:true} run scoreboard players add #EndTick Arena.Temp 300
 
     # マーカーにデータ設定
     execute store result entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
