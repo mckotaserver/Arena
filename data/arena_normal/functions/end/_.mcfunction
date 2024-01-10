@@ -9,8 +9,8 @@ execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run playsound b
 # 記録関連処理
 function arena_normal:recording/_ 
 
-data modify entity @s data.Arena.DisplayRecord set from storage arena:temp Recording.Compound.DisplayData
-data modify entity @s data.Arena.isNewRecord set from storage arena:temp Recording.Compound.DisplayData
+data modify entity @s data.Arena.DisplayRecord set from storage arena:temp Recording.Time.DisplayData
+data modify entity @s data.Arena.isNewRecord set from storage arena:temp Recording.Time.DisplayData
 
 # タイマー関連処理
 execute store result score #EndTick Arena.Temp run time query gametime

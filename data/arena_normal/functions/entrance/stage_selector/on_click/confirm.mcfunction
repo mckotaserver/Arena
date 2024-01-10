@@ -74,26 +74,29 @@ execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distan
 
     tag @e[tag=Arena.Temp.EmptyStage] remove Arena.Temp.EmptyStage
 
+    # データ設定用ストレージ
+    data modify storage arena:temp Entrance.data set value {}
+
     # isEmpty → false
-    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.isEmpty set value false
+    data modify storage arena:temp Entrance.data.isEmpty set value false
 
-    # 選択したステージデータをコピー
-    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
+    # 選択したステージの種類・難易度データをコピー
+    data modify storage arena:temp Entrance.data.StageData set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] data.Arena.SelectorPage
 
+    # ステージ種類データ
+    data modify storage arena:temp Entrance.data.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
+    
         # エンドレス → 難易度を固定
-        data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Difficulty set value 2
-
-        # ステージ種類データ
-        data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
+        execute if data storage arena:temp {Entrance:{data:{Type:"Endless"}}} run data modify storage arena:temp Entrance.data.StageData.Difficulty set value 2
 
     # ストラクチャーのロード
     execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
 
-    # プレイヤー数の取得
-    execute store result entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.StageData.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
+    # プレイヤー数の取得 >> 上記プレイヤー数判定で取得 を流用
+    execute store result storage arena:temp Entrance.data.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
 
 # 帰還用 → 入場ロビーのデータ取得
-data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] Tags[0]
+data modify storage arena:temp Entrance.data.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] Tags[0]
 
 # 開始タイマー関連処理
     # 現在時刻を取得, カウント終了時刻を計算
@@ -101,11 +104,14 @@ data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.EnteredLo
     scoreboard players add #EndTick Arena.Temp 300
 
     # 入場先マーカーのデータにコピー
-    execute store result entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
+    execute store result storage arena:temp Entrance.data.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
 
     # カウント開始
-    data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena.Timer.WaveWaiting set value true
+    data modify storage arena:temp Entrance.data.Timer.WaveWaiting set value true
     schedule function arena_normal:misc/wave_timer 1s
+
+# ストレージからマーカーにデータコピー
+data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena set from storage arena:temp Entrance.data
 
 # プレイヤー関連
     # tellraw

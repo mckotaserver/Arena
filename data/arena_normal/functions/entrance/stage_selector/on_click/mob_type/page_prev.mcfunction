@@ -12,6 +12,9 @@ scoreboard players remove #SelectorData.Value Arena.Temp 1
 execute store result score #SelectorData.Max Arena.Temp run data get storage arena:assets stage_data
 scoreboard players remove #SelectorData.Max Arena.Temp 1
 
+    # エンドレスが選択できないよう
+    scoreboard players remove #SelectorData.Max Arena.Temp 1
+
 execute if score #SelectorData.Value Arena.Temp matches -1 run scoreboard players operation #SelectorData.Value Arena.Temp = #SelectorData.Max Arena.Temp 
 
 # Coreにデータを戻す

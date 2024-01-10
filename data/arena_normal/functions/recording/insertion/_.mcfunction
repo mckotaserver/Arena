@@ -1,6 +1,4 @@
 ## データを適切な位置へ挿入
-$say ExeCounter:$(Counter)
-
 # [n]番目のデータと挿入予定データを取得
 scoreboard players set #Recording.Comparing Arena.Temp 0
 scoreboard players set #Recording.Insertee Arena.Temp 0

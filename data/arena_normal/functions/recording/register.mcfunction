@@ -34,7 +34,7 @@ execute store result storage arena:temp Recording.Compound.TimeStamp int 1 run t
     function arena_normal:recording/insertion/dupe_check with storage arena:temp Recording.Insertion
 
     # 挿入
-    tellraw awabi2048 {"nbt":"Recording.Insertion","storage":"arena:temp"}
+    # tellraw awabi2048 {"nbt":"Recording.Insertion","storage":"arena:temp"}
     execute if data storage arena:temp {Recording:{Insertion:{Execute:true}}} run function arena_normal:recording/insertion/_ with storage arena:temp Recording.Insertion
 
 #> 再起
