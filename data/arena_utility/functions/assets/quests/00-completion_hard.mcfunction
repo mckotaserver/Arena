@@ -16,6 +16,11 @@ data modify storage arena:assets utility.quests[-1].type set value "daily"
 # 進捗表示
 data modify storage arena:assets utility.quests[-1].progress_bar set value true
 
+# 表示データ
+data modify storage arena:assets utility.quests[-1].display set value {}
+    data modify storage arena:assets utility.quests[-1].display.name set value '{"text": "ゾンビスレイヤー","color": "green"}'
+    data modify storage arena:assets utility.quests[-1].display.description set value '{"text": "ハード・ゾンビアリーナ","color": "green"}'
+
 # 報酬
 data modify storage arena:assets utility.quests[-1].reward set value {}
     data modify storage arena:assets utility.quests[-1].reward.point set value 6

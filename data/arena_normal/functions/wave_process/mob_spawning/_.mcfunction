@@ -1,7 +1,7 @@
 ## モブ召喚処理
 # プレイヤーいなければ中止
 execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:misc/stage_reset
-execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run return -1
+execute unless entity @p[tag=Arena.Normal-Stage.Player,distance=..48] run return 0
 
 # 重複防止
 tag @s add Arena.Temp-RecentSpawnedPos
@@ -22,7 +22,7 @@ function arena_normal:wave_process/mob_spawning/main with storage arena:temp Spa
 
 # 再起可能性
 execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] store result entity @s data.Arena.Spawning.Counter int 0.9999 run data get entity @s data.Arena.Spawning.Counter
-execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] {data:{Arena:{Spawning:{Counter:0}}}} run return -1
+execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] {data:{Arena:{Spawning:{Counter:0}}}} run return 0
 
 # 20tick後に再起
 execute store result score #EndTick Arena.Temp run time query gametime 

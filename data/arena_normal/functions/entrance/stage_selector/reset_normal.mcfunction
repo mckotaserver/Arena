@@ -1,7 +1,7 @@
 ## ディスプレイ表示のリセット
 #> Kill
 # kill
-kill @e[tag=Arena.Normal-Stage.Selector,distance=..4]
+kill @e[tag=Arena.Normal-Stage.Selector,type=!marker,distance=..4]
 
 #> 各種構成エンティティを再Summon
 # text_display: 【通常アリーナ】

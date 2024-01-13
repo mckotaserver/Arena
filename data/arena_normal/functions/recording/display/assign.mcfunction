@@ -2,7 +2,7 @@
     # 記録なし
     data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Record,sort=nearest,limit=1] alignment set value "left"
 
-    execute unless data storage arena:temp Display.Specified[0] run data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Record,sort=nearest,limit=1] text set value '{"text":"-----------------------\\n\\n記録なし\\nNo Records\\n-----------------------","color": "gray"}'
+    execute unless data storage arena:temp Display.Specified[0] run data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Record,sort=nearest,limit=1] text set value '{"text":"▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\\n\\n記録なし\\nNo Records\\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬","color": "gray"}'
     execute unless data storage arena:temp Display.Specified[0] run data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Record,sort=nearest,limit=1] alignment set value "center"
 
     # ちまちま代入
@@ -15,3 +15,4 @@
     # 上部表示
     $execute unless data storage arena:temp {Display:{Macro:{Name:"エンドレス"}}} run data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Title,sort=nearest,limit=1] text set value '[{"text": "【ハード・$(Name)アリーナ】\\n","color": "red","bold": true},{"text": "クリアタイムランキング","color": "gold","bold": true}]'
     $execute if data storage arena:temp {Display:{Macro:{Name:"エンドレス"}}} run data modify entity @e[tag=Arena.Normal-Stage.Display.Text-Title,sort=nearest,limit=1] text set value '[{"text": "【$(Name)アリーナ】\\n","color": "red","bold": true},{"text": "最高到達ウェーブランキング","color": "gold","bold": true}]'
+

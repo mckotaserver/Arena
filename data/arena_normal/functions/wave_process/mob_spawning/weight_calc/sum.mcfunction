@@ -29,5 +29,5 @@ scoreboard players add #Spawning.Checking Arena.Temp 1
 execute store result storage arena:temp SpawningData.WeightCalc.Checking int 1 run scoreboard players get #Spawning.Checking Arena.Temp
 
 # 再起
-execute if score #Spawning.Checking Arena.Temp >= #Spawning.CheckingLimit Arena.Temp run return -1
+execute if score #Spawning.Checking Arena.Temp >= #Spawning.CheckingLimit Arena.Temp run return 0
 function arena_normal:wave_process/mob_spawning/weight_calc/sum with storage arena:temp SpawningData.WeightCalc

@@ -17,7 +17,7 @@ summon armor_stand ~ -64 ~ {Tags:["Arena.Utility.Altar."]}
     execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Type:"sword"}}}} if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Placed:"minecraft:diamond_sword"}}}} run data modify storage arena_utility:temp Altar.Crafting.UpgradeRecipe.Available set value true 
     execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Type:"sword"}}}} if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Placed:"minecraft:netherite_sword"}}}} run data modify storage arena_utility:temp Altar.Crafting.UpgradeRecipe.Available set value true 
 
-    execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run return -1
+    execute if data storage arena_utility:temp {Altar:{Crafting:{UpgradeRecipe:{Available:false}}}} run return 0
 
 # フラグ設定
 data modify storage arena_utility:temp Altar.Crafting.UpgradeRecipe.RequiredTag set from storage arena_utility:temp Altar.Crafting.Refering.ingredients[{isCore:true}].tag

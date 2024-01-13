@@ -29,7 +29,7 @@ execute unless score #Utility.Altar.RecipeElements-1 Arena.Temp = #Utility.Altar
 $execute unless data storage arena_utility:temp {Altar:{Crafting:{RecipeChecking:$(PlacedItem)}}} run data modify storage arena_utility:temp Altar.Crafting.RecipeMatched set value false
 # tellraw @a {"nbt":"Altar.Crafting.RecipeMatched","storage":"arena_utility:temp"}
 execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:true}}} run data modify storage arena_utility:temp Altar.Crafting.Refering set from storage arena_utility:temp Altar.Crafting.Recipes[0]
-execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:true}}} run return -1
+execute if data storage arena_utility:temp {Altar:{Crafting:{RecipeMatched:true}}} run return 0
 
 # 上記を満たさなければ[0]を削除、再起
 data remove storage arena_utility:temp Altar.Crafting.Recipes[0]

@@ -4,7 +4,7 @@
         execute at @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] run kill @e[tag=Arena.Utility.Altar.PlacedItemDisplay,distance=..2]
         execute at @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] run kill @e[tag=Arena.Utility.Altar.PlacedItemMount,distance=..2]
 
-        execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] run return -1
+        execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] run return 0
 
         # 個数を取得
         execute store result score #Utility.Altar.PlacedItemCount Arena.Temp run data get storage arena_utility:temp Altar.data.PlacedItem

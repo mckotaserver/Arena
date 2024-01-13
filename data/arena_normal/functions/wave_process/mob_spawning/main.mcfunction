@@ -22,7 +22,7 @@ data modify storage arena:temp SpawningData.DataModifier set value {}
     execute if data storage arena:temp {SpawningData:{Difficulty:2}} run scoreboard players set #SpawnDataModifier Arena.Temp 180
 
     # エンドレス → ウェーブ倍率(加算)
-    execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] {data:{Arena:{StageData:{Type:"Endless"}}}} store result score #DataModifier-Wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave 10
+    execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] {data:{Arena:{StageData:{Type:"Endless"}}}} store result score #DataModifier-Wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave 3
 
     # 合算
     scoreboard players operation #SpawnDataModifier Arena.Temp *= #DataModifier-Unique Arena.Temp

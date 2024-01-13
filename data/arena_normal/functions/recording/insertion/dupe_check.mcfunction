@@ -3,7 +3,7 @@
 $execute store success storage arena:temp Recording.Insertion.hasDupedRecord byte 1 if data storage arena:records normal[{name:"$(name)"}].data[{UUID:$(UUID)}] 
 
 execute if data storage arena:temp {Recording:{Insertion:{hasDupedRecord:false}}} run data modify storage arena:temp Recording.Insertion.Execute set value true
-execute if data storage arena:temp {Recording:{Insertion:{hasDupedRecord:false}}} run return -1
+execute if data storage arena:temp {Recording:{Insertion:{hasDupedRecord:false}}} run return 0
 
 # 新旧記録を取得
 execute store result score #Recording.DupedUUID-New Arena.Temp run data get storage arena:temp Recording.Compound.Record

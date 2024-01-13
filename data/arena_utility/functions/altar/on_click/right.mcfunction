@@ -7,28 +7,28 @@ data modify storage arena_utility:temp Altar.data set from entity @e[tag=Arena.U
 
 #> エラー出力
     # クラフト中 (警告はなし)
-    execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return -1
-    execute if data entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return -1
+    execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return 0
+    execute if data entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return 0
 
     # ほかの人が使用中
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.someone_using"}]
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run return -1
+    execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run return 0
     
         #> 割り込み処理 → クラフト
         # Core Item があるならクラフトを試みる
         execute if predicate arena_utility:flags/is_sneaking if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run function arena_utility:altar/crafting/_ with storage arena_utility:temp Altar.data
-        execute if predicate arena_utility:flags/is_sneaking if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run return -1
+        execute if predicate arena_utility:flags/is_sneaking if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run return 0
 
     # アイテムを持っていない
-    execute unless data entity @s SelectedItem run return -1
+    execute unless data entity @s SelectedItem run return 0
 
     # 設置限界値
     execute if data storage arena_utility:temp Altar.data.PlacedItem[23] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.max_placed"}]
     execute if data storage arena_utility:temp Altar.data.PlacedItem[23] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena_utility:temp Altar.data.PlacedItem[23] run return -1
+    execute if data storage arena_utility:temp Altar.data.PlacedItem[23] run return 0
 
 #> アイテム関連
 # ディスプレイの配置

@@ -13,5 +13,5 @@ function arena_normal:assets/stage_data/06-creeper
 function arena_normal:assets/stage_data/08-endless
 
 # Difficulty
-data modify storage arena:assets stage_difficulty set value [{"name":'{"text":"イージー","color":"green","bold":true}',"reward":'{"text":"初級アリーナチケット"}'}, {"name":'{"text":"ノーマル","color":"yellow","bold":true}',"reward":'{"text":"中級アリーナチケット"}'}, {"name":'{"text":"ハード","color":"red","bold":true}',"reward":'{"text":"高級アリーナチケット"}'}]
+data modify storage arena:assets stage_difficulty set value [{"name":'{"text":"イージー","color":"green","bold":true}',"reward":'{"text":"アリーナチケット","color": "gold","extra":[{"text":"【初級】","color": "green"}]}'}, {"name":'{"text":"ノーマル","color":"yellow","bold":true}',"reward":'{"text":"アリーナチケット","color": "gold","extra":[{"text":"【中級】","color": "yellow"}]}'}, {"name":'{"text":"ハード","color":"red","bold":true}',"reward":'{"text":"アリーナチケット","color": "gold","extra":[{"text":"【上級】","color": "red"}]}'}]
 

@@ -38,6 +38,6 @@ execute store result storage arena:temp Recording.Compound.TimeStamp int 1 run t
     execute if data storage arena:temp {Recording:{Insertion:{Execute:true}}} run function arena_normal:recording/insertion/_ with storage arena:temp Recording.Insertion
 
 #> 再起
-tag @s add Arena.Temp-RecordRegistered
-execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
+# tag @s add Arena.Temp-RecordRegistered
+# execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
 

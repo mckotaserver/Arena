@@ -31,7 +31,7 @@ execute if data storage arena:temp {SpawningData:{WeightCalc:{Ignore:false}}} ru
 
 # 1つ前データのWeight ≦ 生成乱数 ≦ 処理中データのWeight ⇒ 召喚
 $execute if data storage arena:temp {SpawningData:{WeightCalc:{Ignore:false}}} if score #Spawning.WeightPre Arena.Temp <= #Spawning.Random Arena.Temp if score #Spawning.Random Arena.Temp <= #Spawning.WeightChecking Arena.Temp run data modify storage arena:temp SpawningData.SelectedMob set from storage arena:temp SpawningData.Detail-Original.mob_data[$(Checking)]
-execute if data storage arena:temp {SpawningData:{WeightCalc:{Ignore:false}}} if score #Spawning.WeightPre Arena.Temp <= #Spawning.Random Arena.Temp if score #Spawning.Random Arena.Temp <= #Spawning.WeightChecking Arena.Temp run return -1
+execute if data storage arena:temp {SpawningData:{WeightCalc:{Ignore:false}}} if score #Spawning.WeightPre Arena.Temp <= #Spawning.Random Arena.Temp if score #Spawning.Random Arena.Temp <= #Spawning.WeightChecking Arena.Temp run return 0
 
 # tellraw @a [{"score":{"name": "#Spawning.WeightPre","objective": "Arena.Temp"}},"≦",{"score":{"name": "#Spawning.Random","objective": "Arena.Temp"}},"≦",{"score":{"name": "#Spawning.WeightChecking","objective": "Arena.Temp"}}]
 
@@ -41,5 +41,5 @@ execute store result storage arena:temp SpawningData.WeightCalc.Checking int 1 r
 
 # 再起
 execute if data storage arena:temp {SpawningData:{WeightCalc:{Ignore:false}}} run scoreboard players operation #Spawning.WeightPre Arena.Temp = #Spawning.WeightChecking Arena.Temp
-execute if score #Spawning.Checking Arena.Temp >= #Spawning.CheckingLimit Arena.Temp run return -1
+execute if score #Spawning.Checking Arena.Temp >= #Spawning.CheckingLimit Arena.Temp run return 0
 function arena_normal:wave_process/mob_spawning/weight_calc/convert with storage arena:temp SpawningData.WeightCalc

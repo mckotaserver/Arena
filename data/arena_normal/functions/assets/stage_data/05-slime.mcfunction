@@ -25,13 +25,9 @@ data modify storage arena:assets stage_data[-1].strength set value [3.0f, 3.5f, 
 # 移動速度: speed
 data modify storage arena:assets stage_data[-1].speed set value [0.25f, 0.26f, 0.27f, 0.28f, 0.29f]
 
-#> モブ固有データ
-# 爆発力: explosion_radius
-# data modify storage arena:assets stage_data[-1].speed set value [3, 3, 4, 4, 5]
-
 #> その他ステージ情報
 # 報酬: reward
-data modify storage arena:assets stage_data[-1].reward set value [3, 3, 3]
+data modify storage arena:assets stage_data[-1].reward set value [4, 4, 4]
 
 # 入場可能人数
 data modify storage arena:assets stage_data[-1].max_player set value 4

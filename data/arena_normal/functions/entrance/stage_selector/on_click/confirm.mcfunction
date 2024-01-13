@@ -25,7 +25,7 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.not_enough_arena_point"}]
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena:temp {StageJoinable:false} run return -1
+    execute if data storage arena:temp {StageJoinable:false} run return 0
 
     #> 空きステージの有無
     # 空きステージにタグ付与
@@ -40,7 +40,7 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.no_available_stage"}]
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena:temp {StageJoinable:false} run return -1
+    execute if data storage arena:temp {StageJoinable:false} run return 0
 
     #> 人数判定
     # エリア内の人数, 規定人数を取得
@@ -51,10 +51,10 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
     execute if score #Entrance.PlayerCount Arena.Temp > #Entrance.PlayerCount-Max Arena.Temp run data modify storage arena:temp StageJoinable set value false
 
     # 規定人数を超えている場合 → 警告して処理中止
-    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MatchingStageData.data.max_player","storage":"arena:temp","color": "yellow","bold": true}]}]
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MatchingStageData.max_player","storage":"arena:temp","color": "yellow","bold": true}]}]
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena:temp {StageJoinable:false} run return -1
+    execute if data storage arena:temp {StageJoinable:false} run return 0
 
 # 入場判定 → 可なら減算
 execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #Entrance.APRequired Arena.Temp
@@ -85,18 +85,18 @@ execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distan
 
     # ステージ種類データ
     data modify storage arena:temp Entrance.data.StageData.Type set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] data.Arena.LobbyType
-    
+
         # エンドレス → 難易度を固定
-        execute if data storage arena:temp {Entrance:{data:{Type:"Endless"}}} run data modify storage arena:temp Entrance.data.StageData.Difficulty set value 2
+        execute if data storage arena:temp {Entrance:{data:{StageData:{Type:"Endless"}}}} run data modify storage arena:temp Entrance.data.StageData.Difficulty set value 2
 
     # ストラクチャーのロード
     execute at @e[tag=Arena.Temp.StageSelected,limit=1] run place template arena_normal:stage/normal ~-34 ~-4 ~-34
 
     # プレイヤー数の取得 >> 上記プレイヤー数判定で取得 を流用
-    execute store result storage arena:temp Entrance.data.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
+    execute store result storage arena:temp Entrance.data.StageData.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
 
 # 帰還用 → 入場ロビーのデータ取得
-data modify storage arena:temp Entrance.data.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] Tags[0]
+data modify storage arena:temp Entrance.data.AnnounceDisplay.EnteredLobby set from entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] Tags[0]
 
 # 開始タイマー関連処理
     # 現在時刻を取得, カウント終了時刻を計算
@@ -109,6 +109,9 @@ data modify storage arena:temp Entrance.data.EnteredLobby set from entity @e[tag
     # カウント開始
     data modify storage arena:temp Entrance.data.Timer.WaveWaiting set value true
     schedule function arena_normal:misc/wave_timer 1s
+
+# クリア記録関係
+execute store result storage arena:temp Entrance.data.Recording.StartTick int 1 run time query gametime
 
 # ストレージからマーカーにデータコピー
 data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena set from storage arena:temp Entrance.data

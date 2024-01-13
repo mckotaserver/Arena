@@ -7,24 +7,24 @@ data modify storage arena_utility:temp Altar.data set from entity @e[tag=Arena.U
 
 #> エラー出力
     # クラフト中 (警告はなし)
-    execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return -1
-    execute if data entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return -1
+    execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return 0
+    execute if data entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return 0
 
     # ほかの人が使用中
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.someone_using"}]
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
-    execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run return -1
+    execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=Arena.Utility.Altar.User] run return 0
 
     # アイテムおいてない
-    execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] run return -1
+    execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] run return 0
 
     # インベントリいっぱい
     execute store result score #Utility.Altar.InventoryCheck Arena.Temp run data get entity @s Inventory[35].Slot
 
     execute if score #Utility.Altar.InventoryCheck Arena.Temp matches 35 run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.full_inventory"}]
     execute if score #Utility.Altar.InventoryCheck Arena.Temp matches 35 run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
-    execute if score #Utility.Altar.InventoryCheck Arena.Temp matches 35 run return -1
+    execute if score #Utility.Altar.InventoryCheck Arena.Temp matches 35 run return 0
 
 #> アイテムの取り出し
 # Shift 非押下時 → 最後の1つだけ
