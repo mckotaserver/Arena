@@ -1,6 +1,7 @@
 {
   "values": [
     "arena_normal:tick",
-    "arena_utility:tick"
+    "arena_utility:tick",
+    "arena_boss:tick"
   ]
 }
