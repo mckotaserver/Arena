@@ -1,7 +1,7 @@
 ## Altar アイテム配置 (複数)
 #> ディスプレイの配置
     # item を召喚    
-    summon item ^ ^ ^1.5 {Tags:["Arena.Utility.Altar.PlacedItemDisplay","Arena.Utility.Altar.PlacedItemDisplay-Unedited","Arena.Utility.Altar.Element"],PickupDelay:-1,Age:-32768s,NoGravity:true,Item:{"id":"minecraft:stone_button",Count:1b,tag:{}}}
+    summon item ^ ^ ^1.5 {Tags:["Arena.Utility.Altar.PlacedItemDisplay","Arena.Utility.Altar.PlacedItemDisplay-Unedited","Arena.Utility.Altar.Element"],PickupDelay:32767s,Age:-32768s,NoGravity:true,Item:{"id":"minecraft:stone_button",Count:1b,tag:{}}}
 
     summon item_display ^ ^ ^1.5 {Tags:["Arena.Utility.Altar.PlacedItemMount","Arena.Utility.Altar.PlacedItemMount-Unedited"]}
     ride @e[tag=Arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] mount @e[tag=Arena.Utility.Altar.PlacedItemMount-Unedited,limit=1]
