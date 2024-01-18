@@ -15,7 +15,7 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
 
     #> AP の不足
     # 必要APを取得
-    execute store result score #Entrance.APRequired Arena.Temp run data get storage arena:temp MatchingStageData.required_ap
+    execute store result score #Entrance.APRequired Arena.Temp run data get storage arena:temp MatchingStageData.RequiredAP
 
     # 比較
     data modify storage arena:temp StageJoinable set value true
@@ -45,13 +45,13 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
     #> 人数判定
     # エリア内の人数, 規定人数を取得
     execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] store result score #Entrance.PlayerCount Arena.Temp if entity @a[distance=..4]
-    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena:temp MatchingStageData.max_player
+    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena:temp MatchingStageData.MaxPlayer
 
     data modify storage arena:temp StageJoinable set value true
     execute if score #Entrance.PlayerCount Arena.Temp > #Entrance.PlayerCount-Max Arena.Temp run data modify storage arena:temp StageJoinable set value false
 
     # 規定人数を超えている場合 → 警告して処理中止
-    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MatchingStageData.max_player","storage":"arena:temp","color": "yellow","bold": true}]}]
+    execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"MatchingStageData.MaxPlayer","storage":"arena:temp","color": "yellow","bold": true}]}]
     execute if data storage arena:temp {StageJoinable:false} at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     execute if data storage arena:temp {StageJoinable:false} run return 0

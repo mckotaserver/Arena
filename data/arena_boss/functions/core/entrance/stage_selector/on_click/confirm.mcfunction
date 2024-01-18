@@ -15,7 +15,7 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp Bo
 
     #> AP の不足
     # 必要APを取得
-    execute store result score #Entrance.APRequired Arena.Temp run data get storage arena_boss:temp BossData.required_ap
+    execute store result score #Entrance.APRequired Arena.Temp run data get storage arena_boss:temp BossData.RequiredAP
 
     # 比較
     data modify storage arena_boss:temp StageJoinable set value true
@@ -40,13 +40,13 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp Bo
     #> 人数判定
     # エリア内の人数, 規定人数を取得
     execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] store result score #Entrance.PlayerCount Arena.Temp if entity @a[distance=..4]
-    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena_boss:temp BossData.max_player
+    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena_boss:temp BossData.MaxPlayer
 
     data modify storage arena_boss:temp StageJoinable set value true
     execute if score #Entrance.PlayerCount Arena.Temp > #Entrance.PlayerCount-Max Arena.Temp run data modify storage arena_boss:temp StageJoinable set value false
 
     # 規定人数を超えている場合 → 警告して処理中止
-    execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"BossData.max_player","storage":"arena_boss:temp","color": "yellow","underlined": true}]}]
+    execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"BossData.MaxPlayer","storage":"arena_boss:temp","color": "yellow","underlined": true}]}]
     execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     execute if data storage arena_boss:temp {StageJoinable:false} run return 0
@@ -64,10 +64,13 @@ execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] 
     data modify storage arena_boss:temp Entrance.data set value {}
     
     # ステージ内容
-    data modify storage arena_boss:temp Entrance.data.Boss.StageId set from storage arena_boss:temp BossData.id
+    data modify storage arena_boss:temp Entrance.data.Boss.StageData set from storage arena_boss:temp BossData
 
     # isEmpty → false
     data modify storage arena_boss:temp Entrance.data.isEmpty set value false
+
+    # OperationData 空データ作成
+    data modify storage arena_boss:temp Entrance.data.Boss.OperationData set value {}
 
     # プレイヤー数の取得 >> 上記プレイヤー数判定で取得 を流用
     execute store result storage arena_boss:temp Entrance.data.StageData.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
@@ -85,7 +88,7 @@ data modify storage arena_boss:temp Entrance.data.AnnounceDisplay.EnteredLobby s
 
     # カウント開始
     data modify storage arena_boss:temp Entrance.data.Timer.WaveWaiting set value true
-    schedule function arena_boss:misc/wave_timer 1s
+    schedule function arena_boss:misc/timer/scheduler 1s
 
 # クリア記録関係
 execute store result storage arena_boss:temp Entrance.data.Recording.StartTick int 1 run time query gametime
@@ -100,9 +103,10 @@ data modify entity @e[tag=Arena.Temp-BossJoiningStage,limit=1] data.Arena set fr
     
     # TP
     execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=Arena.Temp-BossJoiningStage] run tp @s ~ ~-0.25 ~ ~ ~
+    execute at @e[tag=Arena.Temp-BossJoiningStage] as @a[distance=..4] run tp @s @s
 
     # playsound
-    execute at @e[tag=Arena.Temp-BossJoiningStage] as @a[tag=Arena.Boss.Player,distance=..32] run playsound entity.ender_dragon.growl master @s ~ ~ ~ 0.5 0.66
+    execute at @e[tag=Arena.Temp-BossJoiningStage] as @a[tag=Arena.Boss.Player,distance=..32] run playsound entity.ender_dragon.growl master @s ~ ~ ~ 0.5 0.9
 
 #> 後処理
 # 一時タグを処理

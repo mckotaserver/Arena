@@ -27,10 +27,10 @@ data modify storage arena:assets stage_data[-1].speed set value [0.25f, 0.26f, 0
 data modify storage arena:assets stage_data[-1].reward set value [3, 3, 3]
 
 # 入場可能人数
-data modify storage arena:assets stage_data[-1].max_player set value 4
+data modify storage arena:assets stage_data[-1].MaxPlayer set value 4
 
-# 必要AP: required_ap
-data modify storage arena:assets stage_data[-1].required_ap set value 1
+# 必要AP: RequiredAP
+data modify storage arena:assets stage_data[-1].RequiredAP set value 1
 
 # 名称: name
 data modify storage arena:assets stage_data[-1].name set value "ゾンビ"

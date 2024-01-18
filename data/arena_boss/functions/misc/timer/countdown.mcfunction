@@ -1,4 +1,4 @@
-## カウントダウン時
+## カウントダウン 表示等
 # tellraw / title
 title @a[tag=Arena.Boss.Player,distance=..128] title ""
 title @a[tag=Arena.Boss.Player,distance=..128] times 6t 40t 10t

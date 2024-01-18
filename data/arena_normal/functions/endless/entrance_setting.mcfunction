@@ -1,6 +1,6 @@
 ## 入場時データセット
 # AP
-data modify storage arena:temp MatchingStageData.data.required_ap set value 2
+data modify storage arena:temp MatchingStageData.data.RequiredAP set value 2
 
 # 規定人数
-data modify storage arena:temp MatchingStageData.data.max_player set value 4
+data modify storage arena:temp MatchingStageData.data.MaxPlayer set value 4
