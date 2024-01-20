@@ -14,7 +14,6 @@ execute store result score #CurrentTick Arena.Temp at @e[tag=Arena.Boss.Stage-Co
     scoreboard players operation #CurrentTick-Max Arena.Temp = #CurrentTick Arena.Temp
     scoreboard players add #CurrentTick-Max Arena.Temp 19
 
-execute as @e[tag=Arena.Boss.Stage-Core] if score #CurrentTick Arena.Temp <= @s Arena.Temp if score @s Arena.Temp <= #CurrentTick-Max Arena.Temp at @s run function arena_boss:misc/stage_reset
 execute as @e[tag=Arena.Boss.Stage-Core] if score #CurrentTick Arena.Temp <= @s Arena.Temp if score @s Arena.Temp <= #CurrentTick-Max Arena.Temp at @s run function arena_boss:type_specific/general/spawn with entity @s data.Arena.Boss.StageData
 
 # カウントダウン用: 終了予定時刻 -20, -40, -60, -100, 200 tのとき表示

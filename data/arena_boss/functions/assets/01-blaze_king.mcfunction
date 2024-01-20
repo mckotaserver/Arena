@@ -20,6 +20,18 @@ data modify storage arena:assets boss_data[-1].DisplayData set value {}
     # 最大入場可能人数
     data modify storage arena:assets boss_data[-1].MaxPlayer set value 4
 
+# 召喚関係
+data modify storage arena:assets boss_data[-1].EntityData set value {}
+
+    # 体力
+    data modify storage arena:assets boss_data[-1].EntityData.Health set value 2500.0f
+
+    # 攻撃
+    data modify storage arena:assets boss_data[-1].EntityData.BaseStrength set value 10.0f
+
+    # 防御
+    data modify storage arena:assets boss_data[-1].EntityData.Defense set value 100
+
 # その他内部処理等
     # Death Loot
     data modify storage arena:assets boss_data[-1].LootTable set value "arena_boss:death_loot/blaze_king"

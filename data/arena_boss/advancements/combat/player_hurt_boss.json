@@ -1,0 +1,16 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:player_hurt_entity",
+        "conditions": {
+          "entity": {
+            "nbt": "{Tags:[\"Arena.Boss.Main.Hitbox\"]}"
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena_boss:type_specific/general/on_attacked"
+    }
+  }
+  
