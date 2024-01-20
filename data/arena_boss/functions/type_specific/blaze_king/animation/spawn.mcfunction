@@ -33,10 +33,10 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 160 run 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 160..165 run playsound entity.illusioner.mirror_move master @a ~ ~ ~ 3 0.8
 
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~ ~2 ~5 {Tags:["Arena.Boss.Extra.SkillMarker-Spawning"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~ ~2 ~-5 {Tags:["Arena.Boss.Extra.SkillMarker-Spawning"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~5 ~2 ~ {Tags:["Arena.Boss.Extra.SkillMarker-Spawning"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~-5 ~2 ~ {Tags:["Arena.Boss.Extra.SkillMarker-Spawning"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~ ~2 ~5 {Tags:["Arena.Boss.Extra.SkillMarker-Spawning","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~ ~2 ~-5 {Tags:["Arena.Boss.Extra.SkillMarker-Spawning","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~5 ~2 ~ {Tags:["Arena.Boss.Extra.SkillMarker-Spawning","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 run summon marker ~-5 ~2 ~ {Tags:["Arena.Boss.Extra.SkillMarker-Spawning","Arena.Boss.Extras"]}
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120.. as @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8] at @s run tp @s ~ ~ ~ facing entity @e[tag=Arena.Boss.SpawnPos,sort=nearest,limit=1]
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 120 as @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8] at @s run tp @s ~ ~ ~ ~ 0

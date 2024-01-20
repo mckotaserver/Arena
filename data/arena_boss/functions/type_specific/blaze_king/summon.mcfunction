@@ -10,10 +10,10 @@
     summon item_display ~ ~ ~ {Tags:["Arena.Boss.Main.Parts","Arena.Boss.Main.Element","Arena.Boss.Main.Element-05"],item:{id:"minecraft:orange_dye",tag:{CustomModelData:2000020},Count:1b},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],scale:[1.1f,1.1f,1.1f],translation:[0f,1.1f,0f]},teleport_duration:2}
     summon item_display ~ ~ ~ {Tags:["Arena.Boss.Main.Parts","Arena.Boss.Main.Element","Arena.Boss.Main.Element-06"],item:{id:"minecraft:orange_dye",tag:{CustomModelData:2000021},Count:1b},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],scale:[1.1f,1.1f,1.1f],translation:[0f,1.1f,0f]},teleport_duration:2}
 
-    # 頭部分
+    # 胴部分
     summon item_display ~ ~ ~ {Tags:["Arena.Boss.Main.Parts","Arena.Boss.Main.Element","Arena.Boss.Main.Element-07"],item:{id:"minecraft:orange_dye",tag:{CustomModelData:2000030},Count:1b},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],scale:[1.1f,1.1f,1.1f],translation:[0f,1.1f,0f]},teleport_duration:2}
 
-    # 胴部分
+    # 頭部分
     summon item_display ~ ~ ~ {Tags:["Arena.Boss.Main.Parts","Arena.Boss.Main.Element","Arena.Boss.Main.Element-08"],item:{id:"minecraft:orange_dye",tag:{CustomModelData:2000040},Count:1b},transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],scale:[1.1f,1.1f,1.1f],translation:[0f,1.1f,0f]},teleport_duration:2}
 
 # 当たり判定

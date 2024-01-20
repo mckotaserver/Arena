@@ -11,11 +11,11 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 0 run pl
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 5 run effect give @a[tag=Arena.Boss.Player,distance=..6] darkness 15 0
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 run effect give @a[tag=Arena.Boss.Player,distance=..5] slowness 15 1
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 15 run effect give @a[tag=Arena.Boss.Player,distance=..4] levitation 5 1
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 15 run effect give @a[tag=Arena.Boss.Player,distance=..4] hunger 5 1
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 15 run effect give @a[tag=Arena.Boss.Player,distance=..4] wither 10 1
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 5 as @a[tag=Arena.Boss.Player,distance=..4] run damage @s 10.0 arena_boss:bypasses_cooldown by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 as @a[tag=Arena.Boss.Player,distance=..4] run damage @s 10.0 arena_boss:bypasses_cooldown by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 5 as @a[tag=Arena.Boss.Player,distance=..4] run damage @s 20.0 arena_boss:bypasses_cooldown by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 as @a[tag=Arena.Boss.Player,distance=..4] run damage @s 20.0 arena_boss:bypasses_cooldown by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 run particle crimson_spore ~ ~ ~ 2 2 2 1 100
 
