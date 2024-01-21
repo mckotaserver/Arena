@@ -3,7 +3,7 @@
     tp @s ^ ^ ^-0.5
 
     # プレイヤー近い → ダメージ
-    execute as @a[tag=Arena.Boss.Player,dx=0] positioned ~-0.95 ~-0.95 ~-0.95 as @s[dx=0] at @s run damage @s 15 arena_boss:bypasses_cooldown
+    execute as @a[tag=Arena.Boss.Player,dx=0] positioned ~-0.95 ~-0.95 ~-0.95 as @s[dx=0] at @s run damage @s 15 magic
 
 # 消滅処理
     # かべのなかにいる

@@ -19,7 +19,7 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20..79 r
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. as @e[tag=Arena.Boss.Main.Extra-07,distance=..64] at @s run tp @s ^ ^ ^-0.5 facing entity @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1]
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. at @e[tag=Arena.Boss.Main.Extra-07,distance=..64] as @a[tag=Arena.Boss.Player,dx=0] positioned ~ ~ ~0.5 as @s[dx=0] run damage @s 20 arena_boss:bypasses_cooldown
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. at @e[tag=Arena.Boss.Main.Extra-07,distance=..64] as @a[tag=Arena.Boss.Player,dx=0] positioned ~ ~ ~0.5 as @s[dx=0] run damage @s 20 magic
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 21..50 run function arena_boss:type_specific/blaze_king/misc/spin_fastest
 

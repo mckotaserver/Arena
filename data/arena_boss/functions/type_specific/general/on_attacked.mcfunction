@@ -25,11 +25,15 @@ tag @s add Arena.Temp-AttackerPlayer
     scoreboard players operation #BossDamageCalc.DamageTaken Arena.Temp /= #BossDamageCalc.Defense-Division Arena.Temp
 
     # ストレージへ移動
-    execute store result storage arena_boss:temp OnAttacked.DamageAmount float 0.01 run scoreboard players get #BossDamageCalc.DamageTaken Arena.Temp
+    execute store result storage arena_boss:temp OnAttacked.DamageAmount int 0.01 run scoreboard players get #BossDamageCalc.DamageTaken Arena.Temp
+
+#> プレイヤーのダメージ記録
+execute store result score #BossDamageCalc.intValue Arena.Temp run data get storage arena_boss:temp OnAttacked.DamageAmount
+scoreboard players operation @s ArenaBoss.PlayerDealtDamage += #BossDamageCalc.intValue Arena.Temp
 
 #> おのおのの処理へ分岐
     # 分岐先 ディレクトリ/ファイル名 の設定
-    data modify storage arena_boss:temp MacroAssignment.Directory set from entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.StageData.Directory
+    data modify storage arena_boss:temp MacroAssignment.Directory set from entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.Boss.StageData.Directory
 
     data modify storage arena_boss:temp MacroAssignment.Function set value "on_attacked"
 
@@ -45,10 +49,19 @@ tag @s add Arena.Temp-AttackerPlayer
     execute store result score #BossDamageCalc.Health Arena.Temp run data get entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.EntityData.Health 100
 
     scoreboard players operation #BossDamageCalc.Health Arena.Temp -= #BossDamageCalc.Amount Arena.Temp
-    execute store result entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.EntityData.Health float 0.01 run scoreboard players get #BossDamageCalc.Health Arena.Temp
+    execute store result entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.EntityData.Health int 0.01 run scoreboard players get #BossDamageCalc.Health Arena.Temp
 
         # 討伐判定
-        execute if score #BossDamageCalc.Health Arena.Temp matches ..0 run function arena_boss:type_specific/general/killed
+        execute if score #BossDamageCalc.Health Arena.Temp matches ..0 as @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] at @s run function arena_boss:type_specific/general/killed with entity @s data.Arena.Boss.StageData
+
+    # ボスバー処理
+    data modify storage arena_boss:temp BossbarData.Health set from entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.EntityData.Health
+    data modify storage arena_boss:temp BossbarData.HealthMax set from entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.Boss.StageData.EntityData.Health
+
+    data modify storage arena_boss:temp BossbarData.Name set from entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.Boss.StageData.DisplayData.Name
+    data modify storage arena_boss:temp BossbarData.Directory set from entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.Boss.StageData.Directory
+
+    function arena_boss:misc/bossbar_modify with storage arena_boss:temp BossbarData
 
     # 一時タグ除去
     tag @s remove Arena.Temp-AttackerPlayer

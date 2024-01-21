@@ -24,10 +24,10 @@ data modify storage arena:assets boss_data[-1].DisplayData set value {}
 data modify storage arena:assets boss_data[-1].EntityData set value {}
 
     # 体力
-    data modify storage arena:assets boss_data[-1].EntityData.Health set value 4000.0f
+    data modify storage arena:assets boss_data[-1].EntityData.Health set value 4000
 
     # 攻撃
-    data modify storage arena:assets boss_data[-1].EntityData.BaseStrength set value 20.0f
+    data modify storage arena:assets boss_data[-1].EntityData.BaseStrength set value 20
 
 # 
     # Death Loot

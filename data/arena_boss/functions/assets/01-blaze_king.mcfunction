@@ -6,7 +6,7 @@ data modify storage arena:assets boss_data append value {"Id": "01-BlazeKing"}
 data modify storage arena:assets boss_data[-1].DisplayData set value {}
 
     # 表示名
-    data modify storage arena:assets boss_data[-1].DisplayData.Name set value '{"text": "", "extra": [{"text": "ブレイズキング", "color": "red"}]}'
+    data modify storage arena:assets boss_data[-1].DisplayData.Name set value '{"text": "", "extra": [{"text": "ブレイズキング", "color": "red","bold": true}]}'
     data modify storage arena:assets boss_data[-1].DisplayData.Description set value "kota-server.arena.boss.blaze_king.description"
 
     # 表示名 (翻訳キー)
@@ -24,10 +24,10 @@ data modify storage arena:assets boss_data[-1].DisplayData set value {}
 data modify storage arena:assets boss_data[-1].EntityData set value {}
 
     # 体力
-    data modify storage arena:assets boss_data[-1].EntityData.Health set value 2500.0f
+    data modify storage arena:assets boss_data[-1].EntityData.Health set value 2500
 
     # 攻撃
-    data modify storage arena:assets boss_data[-1].EntityData.BaseStrength set value 10.0f
+    data modify storage arena:assets boss_data[-1].EntityData.BaseStrength set value 10
 
     # 防御
     data modify storage arena:assets boss_data[-1].EntityData.Defense set value 100

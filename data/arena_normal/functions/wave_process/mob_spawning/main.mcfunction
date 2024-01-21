@@ -31,7 +31,7 @@ data modify storage arena:temp SpawningData.DataModifier set value {}
     scoreboard players operation #SpawnDataModifier Arena.Temp += #DataModifier-Wave Arena.Temp
 
     # % → 割合 に変換
-    execute store result storage arena:temp SpawningData.DataModifier.Multiplier float 0.01 run scoreboard players get #SpawnDataModifier Arena.Temp
+    execute store result storage arena:temp SpawningData.DataModifier.Multiplier int 0.01 run scoreboard players get #SpawnDataModifier Arena.Temp
 
 # モブデータを乗算
 data modify storage arena:temp SpawningData.Detail-Original set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail

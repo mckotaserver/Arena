@@ -8,7 +8,7 @@
 
     # 配置個数で除算, マクロ利用のためストレージへ
     scoreboard players operation #Utility.Altar.DisplayArgument Arena.Temp /= #Utility.Altar.PlacedItemCount Arena.Temp
-    execute store result storage arena_utility:temp Altar.DisplayArgument float 0.01 run scoreboard players get #Utility.Altar.DisplayArgument Arena.Temp
+    execute store result storage arena_utility:temp Altar.DisplayArgument int 0.01 run scoreboard players get #Utility.Altar.DisplayArgument Arena.Temp
 
 # 配置予定アイテムの一覧をコピー
 data modify storage arena_utility:temp Altar.PlacingItem set from storage arena_utility:temp Altar.data.PlacedItem

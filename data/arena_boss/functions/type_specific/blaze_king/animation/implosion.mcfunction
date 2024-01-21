@@ -14,7 +14,7 @@ playsound entity.generic.explode master @a ~ ~ ~ 1 0.8
 execute unless entity @p[tag=Arena.Temp-BossSkillTarget,distance=..2] rotated ~ 0 run tp @s ^ ^ ^0.5 facing entity @p[tag=Arena.Temp-BossSkillTarget]
 execute unless entity @p[tag=Arena.Temp-BossSkillTarget,distance=..2] positioned as @s run tp @e[tag=Arena.Boss.Main.Element,distance=..4] ~ ~ ~
 
-execute as @a[tag=Arena.Boss.Player,distance=..3] run damage @s 30.0 arena_boss:bypasses_cooldown by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
+execute as @a[tag=Arena.Boss.Player,distance=..3] run damage @s 30.0 magic by @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1]
 
 particle explosion ~ ~ ~ 0 0 0 0 1
 particle explosion ~ ~ ~ 0 0 0 1 1

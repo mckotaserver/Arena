@@ -19,4 +19,4 @@
     scoreboard players operation #BossDamageCalc.Amount Arena.Temp *= #BossDamageCalc.Additional Arena.Temp
     scoreboard players operation #BossDamageCalc.Amount Arena.Temp /= #100 Constant
 
-    execute store result storage arena_boss:temp OnAttacked.DamageAmount float 0.01 run scoreboard players get #BossDamageCalc.Amount Arena.Temp
+    execute store result storage arena_boss:temp OnAttacked.DamageAmount int 0.01 run scoreboard players get #BossDamageCalc.Amount Arena.Temp

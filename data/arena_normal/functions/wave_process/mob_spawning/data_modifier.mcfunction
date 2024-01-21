@@ -9,13 +9,13 @@ $execute store result storage arena:temp SpawningData.Detail-Modified.summon_cou
 
 # health
 data modify storage arena:temp SpawningData.Detail-Modified.health set value 0
-$execute store result storage arena:temp SpawningData.Detail-Modified.health float 1 run data get storage arena:temp SpawningData.Detail-Original.health[$(Wave)] $(Multiplier)
+$execute store result storage arena:temp SpawningData.Detail-Modified.health int 1 run data get storage arena:temp SpawningData.Detail-Original.health[$(Wave)] $(Multiplier)
 
 # strength
 data modify storage arena:temp SpawningData.Detail-Modified.strength set value 0
-$execute store result storage arena:temp SpawningData.Detail-Modified.strength float 1 run data get storage arena:temp SpawningData.Detail-Original.strength[$(Wave)] $(Multiplier)
+$execute store result storage arena:temp SpawningData.Detail-Modified.strength int 1 run data get storage arena:temp SpawningData.Detail-Original.strength[$(Wave)] $(Multiplier)
 
 # speed
 data modify storage arena:temp SpawningData.Detail-Modified.speed set value 0
-$execute store result storage arena:temp SpawningData.Detail-Modified.speed float 0.001 run data get storage arena:temp SpawningData.Detail-Original.speed[$(Wave)] 1000
+$execute store result storage arena:temp SpawningData.Detail-Modified.speed int 0.001 run data get storage arena:temp SpawningData.Detail-Original.speed[$(Wave)] 1000
 

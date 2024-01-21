@@ -67,7 +67,7 @@ execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] 
     data modify storage arena_boss:temp Entrance.data.Boss.StageData set from storage arena_boss:temp BossData
 
     # ステージリセット
-    function arena_boss:misc/stage_reset
+    function arena_boss:misc/stage_reset with storage arena_boss:temp BossData
 
     # isEmpty → false
     data modify storage arena_boss:temp Entrance.data.isEmpty set value false

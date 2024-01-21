@@ -1,0 +1,3 @@
+# ボスバー
+$bossbar set arena_boss:blaze_king name [{"text": "", "extra":[{"text":"|||","bold": false,"color": "gray","obfuscated": true}]},{"text": " ","obfuscated": false,"bold": true},$(Name)," ",{"text":"|||","bold": false,"color": "gray","obfuscated": true},{"text": " (", "color": "gray", "obfuscated": false},{"text": "$(Health)", "color": "gold", "interpret": true,"obfuscated": false},{"text": "/", "color": "gray","obfuscated": false},{"text": "$(HealthMax)", "color": "gray", "interpret": true,"obfuscated": false},{"text": ")", "color": "gray","obfuscated": false}]
+$bossbar set arena_boss:$(Directory) value $(Health)
