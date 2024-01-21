@@ -81,6 +81,10 @@ execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] 
 # 帰還用 → 入場ロビーのデータ取得
 data modify storage arena_boss:temp Entrance.data.AnnounceDisplay.EnteredLobby set from entity @e[tag=Arena.Boss.Lobby,sort=nearest,limit=1] Tags[0]
 
+# CorePlayerSelection → ID設定
+execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players set @s ArenaBoss.PlayerID -1
+execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] store result score @s ArenaBoss.PlayerID if entity @a[distance=..4,scores={ArenaBoss.PlayerID=0..}]
+
 # 開始タイマー関連処理
     # 現在時刻を取得, カウント終了時刻を計算
     execute store result score #EndTick Arena.Temp run time query gametime
