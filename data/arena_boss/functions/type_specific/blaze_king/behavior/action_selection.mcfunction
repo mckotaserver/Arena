@@ -21,8 +21,8 @@ execute unless data storage arena_boss:temp {Animations:{Animation:"regular"}} r
     execute unless entity @p[tag=Arena.Boss.Player,distance=..8] if score #Boss.ActionSelection.HealthLeft Arena.Temp matches ..75 unless data storage arena_boss:temp {Animations:{LastAnimation:"blazing_pillar"}} run function arena_boss:type_specific/blaze_king/animation/start {Animation:"blazing_pillar"}
     execute unless entity @p[tag=Arena.Boss.Player,distance=..8] if score #Boss.ActionSelection.HealthLeft Arena.Temp matches ..75 unless data storage arena_boss:temp {Animations:{LastAnimation:"blazing_pillar"}} run return 0
 
-    # ミニオンの半径6m以内にプレイヤーがいる & 体力80%以下 → "explode_minion"
-    execute at @e[tag=Arena.Boss.Main.Extra-02,distance=..64] if entity @p[tag=Arena.Boss.Player,distance=..6] if score #Boss.ActionSelection.HealthLeft Arena.Temp matches ..80 unless data storage arena_boss:temp {Animations:{LastAnimation:"explode_minion"}} run function arena_boss:type_specific/blaze_king/animation/start {Animation:"shot_hard"}
+    # ミニオンの近くにプレイヤーがいる & 体力80%以下 → "explode_minion"
+    execute at @e[tag=Arena.Boss.Main.Extra-02,distance=..64] if entity @p[tag=Arena.Boss.Player,distance=..6] if score #Boss.ActionSelection.HealthLeft Arena.Temp matches ..80 unless data storage arena_boss:temp {Animations:{LastAnimation:"explode_minion"}} run function arena_boss:type_specific/blaze_king/animation/start {Animation:"explode_minion"}
     execute at @e[tag=Arena.Boss.Main.Extra-02,distance=..64] if entity @p[tag=Arena.Boss.Player,distance=..6] if score #Boss.ActionSelection.HealthLeft Arena.Temp matches ..80 unless data storage arena_boss:temp {Animations:{LastAnimation:"explode_minion"}} run return 0
 
     # 半径4-10mにプレイヤーがいる & 体力50%以下 → "radiative"

@@ -11,17 +11,15 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 run p
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 3 run playsound entity.evoker_fangs.attack master @a ~ ~ ~ 5 0.5
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 run playsound entity.blaze.hurt master @a ~ ~ ~ 5 0.5
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~ 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~45 0 run summon marker ^ ^ ^9 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~90 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~135 0 run summon marker ^ ^ ^9 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~180 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~225 0 run summon marker ^ ^ ^9 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~270 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 rotated ~315 0 run summon marker ^ ^ ^9 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~45 0 run summon marker ^ ^ ^5 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~135 0 run summon marker ^ ^ ^5 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~225 0 run summon marker ^ ^ ^5 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~315 0 run summon marker ^ ^ ^5 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] run summon marker ~ ~ ~ {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Extra-01,distance=..64,limit=5,sort=nearest] run summon marker ~ ~ ~ {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~ 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~90 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~180 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 at @a[tag=Arena.Boss.Player,distance=..64] rotated ~270 0 run summon marker ^ ^ ^7 {Tags:["Arena.Boss.Extra-09","Arena.Boss.Extras"]}
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10..70 at @e[tag=Arena.Boss.Extra-09,distance=..64] run particle lava ~ ~ ~ 0 0 0 1 1
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10..70 at @e[tag=Arena.Boss.Extra-09,distance=..64] run particle dripping_lava ~ ~0.5 ~ 0.5 0.5 0.5 1 1

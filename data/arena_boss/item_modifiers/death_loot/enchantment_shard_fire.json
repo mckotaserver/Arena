@@ -1,0 +1,53 @@
+[
+    {
+      "function": "minecraft:set_lore",
+      "entity": "this",
+      "lore": [
+        [
+          {
+            "text": "- ",
+            "color": "gray",
+            "italic": false
+          },
+          {
+            "text": "属性: ",
+            "color": "white",
+            "italic": false
+          },
+          {
+            "text": "《",
+            "color": "gold",
+            "bold": false,
+            "italic": false
+          },
+          {
+            "text": "炎",
+            "color": "red",
+            "bold": true,
+            "italic": false
+          },
+          {
+            "text": "》",
+            "color": "gold",
+            "bold": false,
+            "italic": false
+          }
+        ]
+      ],
+      "replace": false
+    },
+    {
+      "function": "minecraft:set_name",
+      "entity": "this",
+      "name": {
+        "text": "エンチャントシャード",
+        "color": "light_purple",
+        "italic": false
+      }
+    },
+    {
+      "function": "set_nbt",
+      "tag": "{CustomModelData:2000030,Arena:\"EnchantmentShard-Fire\"}"
+    }
+  ]
+  

@@ -1,0 +1,35 @@
+[
+    {
+      "function": "minecraft:set_lore",
+      "entity": "this",
+      "lore": [
+        [
+          {
+            "text": "-",
+            "color": "gray",
+            "italic": false
+          },
+          {
+            "text": "属性: ",
+            "color": "white",
+            "italic": false
+          }
+        ]
+      ],
+      "replace": false
+    },
+    {
+      "function": "minecraft:set_name",
+      "entity": "this",
+      "name": {
+        "text": "色褪せた藍結晶片",
+        "color": "light_purple",
+        "italic": false
+      }
+    },
+    {
+      "function": "set_nbt",
+      "tag": "{CustomModelData:2010011,Arena:\"GlitterShard-0\"}"
+    }
+  ]
+  

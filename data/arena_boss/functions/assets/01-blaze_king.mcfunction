@@ -41,4 +41,7 @@ data modify storage arena:assets boss_data[-1].EntityData set value {}
 
     # マスターステージ？
     data modify storage arena:assets boss_data[-1].isMaster set value false
+
+    # 体力
+    data modify storage arena:assets boss_data[-1].BaseReward set value 8
     
