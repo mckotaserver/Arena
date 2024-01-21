@@ -13,13 +13,13 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 0..20 ru
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20 run summon marker ~ ~ ~ {Tags:["Arena.Boss.Main.Extra-03","Arena.Boss.Main.Extras"],Rotation:[0.0f,0.0f]}
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20..79 as @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1] at @s run tp @s ~ ~ ~ ~12 0
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20..79 at @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1] run summon item_display ^ ^ ^1 {Tags:["Arena.Boss.Main.Extra-04","Arena.Boss.Main.Extras"],Passengers:[{id: "minecraft:small_fireball",Tags:["Arena.Boss.Main.Extra-05","Arena.Boss.Main.Extras"]}]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20..79 at @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1] run summon item_display ^ ^ ^1 {Tags:["Arena.Boss.Main.Extra-07","Arena.Boss.Main.Extras"],Passengers:[{id: "minecraft:small_fireball",Tags:["Arena.Boss.Main.Extra-08","Arena.Boss.Main.Extras"]}]}
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20..79 run playsound item.firecharge.use master @a ~ ~ ~ 1 0.75
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. as @e[tag=Arena.Boss.Main.Extra-04,distance=..64] at @s run tp @s ^ ^ ^-0.5 facing entity @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1]
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. as @e[tag=Arena.Boss.Main.Extra-07,distance=..64] at @s run tp @s ^ ^ ^-0.5 facing entity @e[tag=Arena.Boss.Main.Extra-03,sort=nearest,limit=1]
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. at @e[tag=Arena.Boss.Main.Extra-04,distance=..64] as @a[tag=Arena.Boss.Player,dx=0] positioned ~ ~ ~0.5 as @s[dx=0] run damage @s 20 arena_boss:bypasses_cooldown
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 20.. at @e[tag=Arena.Boss.Main.Extra-07,distance=..64] as @a[tag=Arena.Boss.Player,dx=0] positioned ~ ~ ~0.5 as @s[dx=0] run damage @s 20 arena_boss:bypasses_cooldown
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 21..50 run function arena_boss:type_specific/blaze_king/misc/spin_fastest
 

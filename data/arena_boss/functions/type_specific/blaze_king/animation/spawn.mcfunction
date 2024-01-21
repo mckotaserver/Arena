@@ -54,8 +54,49 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 150.. at
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 140.. at @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8] rotated ~ 0 run particle witch ^ ^ ^5 0.05 0.05 0.05 0 1
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 140.. at @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8] rotated ~ 0 run particle smoke ^ ^ ^5 0.05 0.05 0.05 0 1
 
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run kill @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8]
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 as @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] at @e[tag=Arena.Boss.SpawnPos,sort=nearest,limit=1] run function arena_boss:type_specific/blaze_king/summon with entity @s data.Arena.Boss.StageData
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run particle explosion ~ ~ ~ 0 0 0 0 15
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run particle explosion ~ ~ ~ 0 0 0 1 15
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run particle explosion ~ ~ ~ 0 0 0 2 15
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run playsound entity.lightning_bolt.thunder master @a ~ ~ ~51 0.75
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run playsound entity.wither.spawn master @a ~ ~ ~ 1 0.66
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run playsound entity.allay.death master @a ~ ~ ~ 2.5 0.5
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run playsound block.ender_chest.close master @a ~ ~ ~ 5 0.66
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run playsound entity.lightning_bolt.impact master @a ~ ~ ~ 5 0.5
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 182 run playsound entity.lightning_bolt.impact master @a ~ ~ ~ 5 0.5
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 185 run playsound entity.lightning_bolt.impact master @a ~ ~ ~ 5 0.5
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.25f, Speed:0.0000000075,MotionRadius:100000000,Particle:"soul_fire_flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180 rotated ~ -30 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 182 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.125f, Speed:0.000000005,MotionRadius:100000000,Particle:"flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 182 rotated ~ -27 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 184 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.25f, Speed:0.0000000075,MotionRadius:100000000,Particle:"soul_fire_flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 184 rotated ~ -24 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 186 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.125f, Speed:0.000000005,MotionRadius:100000000,Particle:"flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 186 rotated ~ -21 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 188 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.25f, Speed:0.0000000075,MotionRadius:100000000,Particle:"soul_fire_flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 188 rotated ~ -18 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 190 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.125f, Speed:0.000000005,MotionRadius:100000000,Particle:"flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 190 rotated ~ -15 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 192 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.25f, Speed:0.0000000075,MotionRadius:100000000,Particle:"soul_fire_flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 192 rotated ~ -12 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 194 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.125f, Speed:0.000000005,MotionRadius:100000000,Particle:"flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 194 rotated ~ -9 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 196 run data modify storage arena_boss:temp SkillParticle set value {Radius:0.25f, Speed:0.0000000075,MotionRadius:100000000,Particle:"soul_fire_flame"}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 196 rotated ~ 0 run function arena_boss:type_specific/blaze_king/animation/spawn/particle_5 with storage arena_boss:temp SkillParticle
+
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 200 run kill @e[tag=Arena.Boss.Extra.SkillMarker-Spawning,distance=..8]
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 200 as @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] at @e[tag=Arena.Boss.SpawnPos,sort=nearest,limit=1] run function arena_boss:type_specific/blaze_king/summon with entity @s data.Arena.Boss.StageData
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 180..200 run function arena_boss:type_specific/blaze_king/misc/spin_fastest
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 200..220 run function arena_boss:type_specific/blaze_king/misc/spin_fast

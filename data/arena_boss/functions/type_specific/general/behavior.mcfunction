@@ -11,3 +11,6 @@
 
     # 分岐処理
     $function arena_boss:type_specific/$(Directory)/behavior/_
+
+    # 選択を保存
+    execute as @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] unless data entity @s {data:{Arena:{Boss:{OperationData:{Animation:"regular"}}}}} run data modify entity @s data.Arena.Boss.OperationData.LastAnimation set from entity @s data.Arena.Boss.OperationData.Animation

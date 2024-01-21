@@ -25,3 +25,4 @@ execute as @e[tag=Arena.Boss.Main.Core,distance=..64] at @s if entity @p[tag=Are
 
 #> 飛翔体
     execute as @e[tag=Arena.Boss.Main.Extra-07,distance=..64] at @s run function arena_boss:type_specific/blaze_king/animation/shot/tick
+    execute as @e[tag=Arena.Boss.Main.Extra-08,distance=..32] at @s unless entity @p[tag=Arena.Boss.Player,distance=..64] run kill @s

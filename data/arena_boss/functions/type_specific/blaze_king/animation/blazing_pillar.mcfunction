@@ -12,7 +12,7 @@ execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 3 run pl
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 run playsound entity.blaze.hurt master @a ~ ~ ~ 5 0.5
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Player,distance=..64] run summon marker ~ ~ ~ {Tags:["Arena.Boss.Extra.SkillMarker-01","Arena.Boss.Extras"]}
-execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.EscapePos,distance=..64] run summon marker ~ ~ ~ {Tags:["Arena.Boss.Extra.SkillMarker-01","Arena.Boss.Extras"]}
+execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10 at @a[tag=Arena.Boss.Extra-01,distance=..64,limit=5,sort=nearest] run summon marker ~ ~ ~ {Tags:["Arena.Boss.Extra.SkillMarker-01","Arena.Boss.Extras"]}
 
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10..70 at @e[tag=Arena.Boss.Extra.SkillMarker-01,distance=..64] run particle lava ~ ~ ~ 0 0 0 1 1
 execute if score @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer matches 10..70 at @e[tag=Arena.Boss.Extra.SkillMarker-01,distance=..64] run particle dripping_lava ~ ~0.5 ~ 0.5 0.5 0.5 1 1
