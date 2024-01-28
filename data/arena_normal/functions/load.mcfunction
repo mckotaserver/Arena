@@ -19,6 +19,7 @@ scoreboard players set #100 Constant 100
 #> ステージ情報の設定
 # assets読み込み
 function arena_normal:assets/stage_data/load
+function arena_normal:assets/difficulty/load
 
 # Marker
 execute as @e[tag=Arena.Normal-Stage.Stage-Core] unless data entity @s data.Arena run data merge entity @s {data:{Arena:{isEmpty:true,StageData:{}}}}

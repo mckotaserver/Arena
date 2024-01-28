@@ -1,6 +1,6 @@
 ## 02-spider のステージ情報設定
 # 項の作成
-data modify storage arena:assets stage_data append value {id:"04-spider"}
+data modify storage arena:assets stage_data append value {id:"03-spider"}
 
 #> 召喚データ
 # Mob ID

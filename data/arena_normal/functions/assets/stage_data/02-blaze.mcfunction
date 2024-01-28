@@ -1,6 +1,6 @@
 ## 02-blaze のステージ情報設定
 # 項の作成
-data modify storage arena:assets stage_data append value {id:"03-blaze"}
+data modify storage arena:assets stage_data append value {id:"02-blaze"}
 
 #> 召喚データ
 # Mob ID

@@ -1,6 +1,6 @@
 ## 02-creeper のステージ情報設定
 # 項の作成
-data modify storage arena:assets stage_data append value {id:"06-creeper"}
+data modify storage arena:assets stage_data append value {id:"05-creeper"}
 
 #> 召喚データ
 # Mob ID

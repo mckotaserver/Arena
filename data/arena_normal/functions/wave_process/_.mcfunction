@@ -8,14 +8,14 @@ data modify entity @s data.Arena.Timer.EndTick set value -1
 data modify entity @s data.Arena.Timer.WaveWaiting set value false
 
 #> ウェーブ進行処理
-# Wave +1
-execute store result score #Wave Arena.Temp run data get entity @s data.Arena.Wave
-scoreboard players add #Wave Arena.Temp 1
+    # Wave +1
+    execute store result score #Wave Arena.Temp run data get entity @s data.Arena.Wave
+    scoreboard players add #Wave Arena.Temp 1
 
-execute store result entity @s data.Arena.Wave int 1 run scoreboard players get #Wave Arena.Temp
+    execute store result entity @s data.Arena.Wave int 1 run scoreboard players get #Wave Arena.Temp
 
-# 開始直後 → 記録関連処理
-execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"}}}} if score #Wave Arena.Temp matches 1 store result entity @s data.Arena.Recording.StartTick int 1 run time query gametime
+    # 開始直後 → 記録関連処理
+    execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"}}}} if score #Wave Arena.Temp matches 1 store result entity @s data.Arena.Recording.StartTick int 1 run time query gametime
 
 #> モブの召喚
 # エンドレス → モブ抽選処理
