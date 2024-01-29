@@ -5,7 +5,7 @@ data modify storage arena:assets utility.altar_recipes append value {id:"000-tem
 #> レシピデータ
 # Recipe
 data modify storage arena:assets utility.altar_recipes[-1].ingredients set value []
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {item:"minecraft:nether_star",Count:1b,tag:{},isCore:true}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:nether_star",Count:1b,tag:{},isCore:true}
 
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:diamond",Count:4b,tag:{}}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:redstone",Count:4b,tag:{}}
