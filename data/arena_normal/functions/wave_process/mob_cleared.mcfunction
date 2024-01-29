@@ -1,8 +1,8 @@
 ## モブクリア時処理
 #> 通常
     # Wave: 5 → 終了処理へ
-    execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"},Wave:5}}} at @s run function arena_normal:end/_
-    execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"},Wave:5}}} at @s run return 0
+    execute if data entity @s {data:{Arena:{StageData:{Type:"Normal",wave:5}}}} at @s run function arena_normal:end/_ with entity @s data.Arena.StageData
+    execute if data entity @s {data:{Arena:{StageData:{Type:"Normal",wave:5}}}} at @s run return 0
 
     # それ以外 → 普通に進行処理
         # 開始タイマー関連処理
@@ -29,11 +29,11 @@
             execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 1
 
             # tellraw
-            tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.normal","with":[{"nbt":"data.Arena.Wave","entity":"@s","color": "gold"},{"score":{"name": "#EndTick.DeltaSecond","objective": "Arena.Temp"},"color": "yellow","underlined": true}]}]
+            tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.normal","with":[{"nbt":"data.Arena.StageData.wave","entity":"@s","color": "gold"},{"score":{"name": "#EndTick.DeltaSecond","objective": "Arena.Temp"},"color": "yellow","underlined": true}]}]
 
 #> エンドレス
     # 報酬配布を判定: ≡ 0 (mod 5)?
-    execute store result score #Endless.Wave Arena.Temp run data get entity @s data.Arena.Wave
+    execute store result score #Endless.Wave Arena.Temp run data get entity @s data.Arena.StageData.wave
     scoreboard players operation #Endless.Wave Arena.Temp %= #10 Constant
 
     # 条件に一致しなければ処理を中断
@@ -48,6 +48,6 @@
         function arena_normal:endless/reward
         
         # tellraw
-        tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.Arena.Wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.TicketCount","objective": "Arena.Temp"},"color": "aqua","bold": true}]}]
+        tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.Arena.StageData.wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.TicketCount","objective": "Arena.Temp"},"color": "aqua","bold": true}]}]
  
         

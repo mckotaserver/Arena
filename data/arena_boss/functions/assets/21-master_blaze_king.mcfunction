@@ -15,10 +15,10 @@ data modify storage arena:assets boss_data[-1].DisplayData set value {}
 
 # 入場情報
     # 必要AP
-    data modify storage arena:assets boss_data[-1].RequiredAP set value 4
+    data modify storage arena:assets boss_data[-1].required_ap set value 4
 
     # 最大入場可能人数
-    data modify storage arena:assets boss_data[-1].MaxPlayer set value 6
+    data modify storage arena:assets boss_data[-1].max_player set value 6
 
 # 召喚関係
 data modify storage arena:assets boss_data[-1].EntityData set value {}

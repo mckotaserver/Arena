@@ -13,4 +13,4 @@ execute as @e[tag=Arena.Normal-Stage.Stage-Core] store result score @s Arena.Tem
     scoreboard players operation #CurrentTick-Max Arena.Temp = #CurrentTick Arena.Temp
     scoreboard players add #CurrentTick-Max Arena.Temp 19
 
-execute as @e[tag=Arena.Normal-Stage.Stage-Core] if score #CurrentTick Arena.Temp <= @s Arena.Temp if score @s Arena.Temp <= #CurrentTick-Max Arena.Temp at @s run function arena_normal:end/main with entity @s data.Arena.AnnounceDisplay
+execute as @e[tag=Arena.Normal-Stage.Stage-Core] if score #CurrentTick Arena.Temp <= @s Arena.Temp if score @s Arena.Temp <= #CurrentTick-Max Arena.Temp at @s run function arena_normal:end/main with entity @s data.Arena.announcement_display

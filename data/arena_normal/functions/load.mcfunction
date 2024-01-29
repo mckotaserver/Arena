@@ -5,6 +5,7 @@ scoreboard objectives add Arena.Temp dummy
 scoreboard objectives add arena dummy
 
 scoreboard objectives add Arena.LeaveGame custom:leave_game
+scoreboard objectives add Arena.PlayerID dummy
 
 scoreboard objectives add Constant dummy
 

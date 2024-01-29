@@ -5,7 +5,7 @@ data modify entity @s data.Arena.isEmpty set value true
 
 # 各種data
 data modify entity @s data.Arena.StageData set value {}
-data modify entity @s data.Arena.Wave set value 0
+data modify entity @s data.Arena.StageData.wave set value 0
 
 #> エンティティ除去
 # Mob

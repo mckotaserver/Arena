@@ -13,6 +13,9 @@ data modify storage arena:assets stage_difficulty append value {id:"02-hard"}
     # 報酬の表示
     data modify storage arena:assets stage_difficulty[-1].display.reward set value '{"text":"アリーナチケット","color": "gold","extra":[{"text":"【上級】","color": "red"}]}'
 
+    # 表示色
+    data modify storage arena:assets stage_difficulty[-1].display.color set value "red"
+
 # 報酬
 data modify storage arena:assets stage_difficulty[-1].reward set value "arena_normal:ticket/hard"
 

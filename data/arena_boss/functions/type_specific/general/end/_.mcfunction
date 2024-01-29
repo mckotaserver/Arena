@@ -10,11 +10,11 @@
     # # クリア記録
     # function arena_normal:recording/_
 
-    # data modify entity @s data.Arena.AnnounceDisplay.Record set from storage arena:temp Recording.Time.DisplayData
-    # execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} if data storage arena:temp {Recording:{Insertion:{ConditionMatched:true,Counter:0}}} run data modify entity @s data.Arena.isNewRecord set value true
+    # data modify entity @s data.Arena.announcement_display.Record set from storage arena:temp Recording.Time.DisplayData
+    # execute if data entity @s {data:{Arena:{StageData:{difficulty:2}}}} if data storage arena:temp {Recording:{Insertion:{conditionMatched:true,Counter:0}}} run data modify entity @s data.Arena.isNewRecord set value true
 
     # # 統計
-    # data modify storage arena:temp Stats.Difficulty set from entity @s data.Arena.StageData.Difficulty
+    # data modify storage arena:temp Stats.difficulty set from entity @s data.Arena.StageData.difficulty
     # data modify storage arena:temp Stats.MobType set from entity @s data.Arena.StageData.MobType
 
     #     # ヘッド召喚前準備

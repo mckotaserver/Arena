@@ -1,7 +1,7 @@
 ## アリーナプレイ中に再読み込み
 # 転送先
-$execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.AnnounceDisplay run tag @e[tag=$(EnteredLobby)] add Arena.Temp-TpLobby
-execute unless data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.AnnounceDisplay run tag @e[tag=Arena.Normal-Stage.Lobby,sort=random,limit=1] add Arena.Temp-TpLobby
+$execute if data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display run tag @e[tag=$(entered_lobby)] add Arena.Temp-TpLobby
+execute unless data entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display run tag @e[tag=Arena.Normal-Stage.Lobby,sort=random,limit=1] add Arena.Temp-TpLobby
 tp @s @e[tag=Arena.Temp-TpLobby,limit=1]
 
 # 演出

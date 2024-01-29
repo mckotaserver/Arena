@@ -34,3 +34,6 @@
     data modify entity @s data.Arena.Altar.isCrafting set value false
     data modify entity @s data.Arena.Altar.isUsing set value false
     
+    # スケジュールまわりリセット
+    scoreboard players reset @s Arena.Temp
+    data modify entity @s data.Arena.Scheduling set value ""

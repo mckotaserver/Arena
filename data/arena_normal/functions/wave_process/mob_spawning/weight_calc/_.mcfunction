@@ -1,23 +1,29 @@
 ## weightから乱数変換
-# weightの和を計算
-scoreboard players set #Spawning.Checking Arena.Temp 0
-scoreboard players set #Spawning.WeightSum Arena.Temp 0
+# ステージ詳細データをコピー
+data modify storage arena:temp spawning_data.mob_select.in set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.stage_detail
 
-execute store result storage arena:temp SpawningData.WeightCalc.Checking int 1 run scoreboard players get #Spawning.Checking Arena.Temp
+#> Weightの和を計算
+    # 反復管理スコア / 集計スコア のリセット
+    scoreboard players set #spawning.checking Arena.Temp 0
+    scoreboard players set #spawning.weight_sum Arena.Temp 0
 
-execute store result score #Spawning.CheckingLimit Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail.mob_data
+    # 確認数チェックの変数
+    execute store result storage arena:temp spawning_data.mob_select.weight_calc.checking int 1 run scoreboard players get #spawning.checking Arena.Temp
 
-execute store result score #Spawning.Wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Wave
-execute store result score #Spawning.Difficulty Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.Difficulty
+    execute store result score #spawning.checking_limit Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.stage_detail.mob_data
 
-data modify storage arena:temp SpawningData.Detail-Original set from entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
+    # 比較のための難易度・ウェーブを取得
+    execute store result score #spawning.wave Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.wave
+    execute store result score #spawning.difficulty Arena.Temp run data get entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.difficulty
 
-function arena_normal:wave_process/mob_spawning/weight_calc/sum with storage arena:temp SpawningData.WeightCalc
+    function arena_normal:wave_process/mob_spawning/weight_calc/sum with storage arena:temp spawning_data.mob_select.weight_calc
+        # tellraw awabi2048 ["SUM:",{"score":{"name": "#spawning.weight_sum","objective": "Arena.Temp"}}]
+    
 
 # 全体の割合から召喚mobを決定
-scoreboard players set #Spawning.Checking Arena.Temp 0
-scoreboard players set #Spawning.WeightChecking Arena.Temp 0
-scoreboard players set #Spawning.WeightPre Arena.Temp 0
+scoreboard players set #spawning.checking Arena.Temp 0
+scoreboard players set #spawning.weight_checking Arena.Temp 0
+scoreboard players set #spawning.weight_pre Arena.Temp 0
 
-data modify storage arena:temp SpawningData.WeightCalc.Checking set value 0
-function arena_normal:wave_process/mob_spawning/weight_calc/convert with storage arena:temp SpawningData.WeightCalc
+data modify storage arena:temp spawning_data.mob_select.weight_calc.checking set value 0
+function arena_normal:wave_process/mob_spawning/weight_calc/convert with storage arena:temp spawning_data.mob_select.weight_calc

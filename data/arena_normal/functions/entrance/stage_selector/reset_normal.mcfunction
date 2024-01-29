@@ -35,6 +35,6 @@ summon interaction ^ ^0.125 ^-0.25 {Tags:["Arena.Normal-Stage.Selector.Interacti
 execute as @e[tag=Arena.Normal-Stage.Selector,distance=..4] run data modify entity @s Rotation set from entity @e[tag=Arena.Normal-Stage.Selector-Core,sort=nearest,limit=1] Rotation
 
 # Coreのページをリセット
-data modify entity @s data.Arena.SelectorPage set value {MobType:0,Difficulty:0}
+data modify entity @s data.Arena.SelectorPage set value {MobType:0,difficulty:0}
 function arena_normal:entrance/stage_selector/reflesh with entity @s data.Arena.SelectorPage
 

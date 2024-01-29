@@ -43,3 +43,6 @@
     particle soul_fire_flame ~ ~ ~ 0 0 0 1 100
     particle reverse_portal ~ ~ ~ 0 0 0 4 100
 
+#> 後処理
+    # タイマーリセット
+    scoreboard players reset @s Arena.Temp

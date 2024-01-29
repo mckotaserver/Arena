@@ -8,17 +8,16 @@ tag @s add Arena.Temp-RecentSpawnedPos
 
 #> 乱数から召喚
 # 乱数生成
-execute store result score #Spawning.Random Arena.Temp run random value 0..99
+execute store result score #spawning.random Arena.Temp run random value 0..99
 
 # Weight から召喚情報を設定
-data modify storage arena:temp SpawningData.SelectedMob set value {}
+data modify storage arena:temp spawning_data.mob_select.out set value {}
 function arena_normal:wave_process/mob_spawning/weight_calc/_
 
-# tellraw awabi2048 ["Spawning: ",{"nbt":"SpawningData.SelectedMob.id","storage":"arena:temp"},", ",{"nbt":"SpawningData.SelectedMob.Multiplier","storage":"arena:temp"}]
+    # tellraw awabi2048 ["Spawning: ",{"nbt":"spawning_data.mob_select.out","storage":"arena:temp"}]
 
 # 召喚
-data modify storage arena:temp SpawningData.SelectedMob.data merge value {Tags:["Arena.Normal-Stage.Mob"],Motion: [0.0d, 0.25d, 0.0d],Team:"Arena.Mobs"}
-function arena_normal:wave_process/mob_spawning/main with storage arena:temp SpawningData.SelectedMob
+function arena_normal:wave_process/mob_spawning/main with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
 
 # 再起可能性
 execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] store result entity @s data.Arena.Spawning.Counter int 0.9999 run data get entity @s data.Arena.Spawning.Counter

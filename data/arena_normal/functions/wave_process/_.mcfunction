@@ -8,11 +8,11 @@ data modify entity @s data.Arena.Timer.EndTick set value -1
 data modify entity @s data.Arena.Timer.WaveWaiting set value false
 
 #> ウェーブ進行処理
-    # Wave +1
-    execute store result score #Wave Arena.Temp run data get entity @s data.Arena.Wave
+    # Wave = Wave +1
+    execute store result score #Wave Arena.Temp run data get entity @s data.Arena.StageData.wave
     scoreboard players add #Wave Arena.Temp 1
 
-    execute store result entity @s data.Arena.Wave int 1 run scoreboard players get #Wave Arena.Temp
+    execute store result entity @s data.Arena.StageData.wave int 1 run scoreboard players get #Wave Arena.Temp
 
     # 開始直後 → 記録関連処理
     execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"}}}} if score #Wave Arena.Temp matches 1 store result entity @s data.Arena.Recording.StartTick int 1 run time query gametime
@@ -21,17 +21,13 @@ data modify entity @s data.Arena.Timer.WaveWaiting set value false
 # エンドレス → モブ抽選処理
 execute if data entity @s {data:{Arena:{StageData:{Type:"Endless"}}}} run function arena_normal:endless/mob_drawing
 
-# データ参照, 保管
-function arena_normal:misc/data_search with entity @s data.Arena.StageData
-data modify entity @s data.Arena.Spawning.Detail set from storage arena:temp MatchingStageData
-
 # 召喚数最大値を記録
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:0}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 80
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:1}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 130
-execute if data entity @s {data:{Arena:{StageData:{Difficulty:2}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 180
+execute if data entity @s {data:{Arena:{StageData:{difficulty:0}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 80
+execute if data entity @s {data:{Arena:{StageData:{difficulty:1}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 130
+execute if data entity @s {data:{Arena:{StageData:{difficulty:2}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 180
 
 data modify storage arena:temp ArrayPicking.in set from entity @s data.Arena.Spawning.Detail.summon_count
-execute store result storage arena:temp ArrayPicking.index int 1 run data get entity @s data.Arena.Wave 0.9999
+execute store result storage arena:temp ArrayPicking.index int 1 run data get entity @s data.Arena.StageData.wave 0.9999
 function arena_normal:misc/array_picker with storage arena:temp ArrayPicking
 
 execute store result score #SpawnCounter-Max Arena.Temp run data get storage arena:temp ArrayPicking.out

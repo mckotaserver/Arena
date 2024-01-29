@@ -5,14 +5,14 @@ data modify storage arena:assets stage_data append value {id:"05-creeper"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:5,Multiplier:1.00,Condition:{Wave:{Min:1},Difficulty:{Min:0,Max:2}},data:{ExplosionRadius:3}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:6,Multiplier:1.10,Condition:{Wave:{Min:2},Difficulty:{Min:0,Max:2}},data:{ExplosionRadius:4}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,Multiplier:1.20,Condition:{Wave:{Min:2},Difficulty:{Min:0,Max:2}},data:{ExplosionRadius:3,powered:true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:5,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:2}},data:{ExplosionRadius:3}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:6,multiplier:1.10,condition:{wave:{min:2},difficulty:{min:0,max:2}},data:{ExplosionRadius:4}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:0,max:2}},data:{ExplosionRadius:3,powered:true}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,Multiplier:1.20,Condition:{Wave:{Min:2},Difficulty:{Min:1,Max:2}},data:{ExplosionRadius:4,powered:true}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:1,Multiplier:1.00,Condition:{Wave:{Min:4},Difficulty:{Min:1,Max:2}},data:{ExplosionRadius:5}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{ExplosionRadius:4,powered:true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:1,multiplier:1.00,condition:{wave:{min:4},difficulty:{min:1,max:2}},data:{ExplosionRadius:5}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,Multiplier:0.75,Condition:{Wave:{Min:3},Difficulty:{Min:2,Max:2}},data:{Passengers:[{"id": "minecraft:ocelot",active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],NoAI:true}],active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:0.75,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{Passengers:[{"id": "minecraft:ocelot",active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],NoAI:true}],active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
     
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]
@@ -31,10 +31,13 @@ data modify storage arena:assets stage_data[-1].speed set value [0.25f, 0.26f, 0
 data modify storage arena:assets stage_data[-1].reward set value [2, 2, 2]
 
 # 入場可能人数
-data modify storage arena:assets stage_data[-1].MaxPlayer set value 4
+data modify storage arena:assets stage_data[-1].max_player set value 4
 
-# 必要AP: RequiredAP
-data modify storage arena:assets stage_data[-1].RequiredAP set value 1
+# 必要AP: required_ap
+data modify storage arena:assets stage_data[-1].required_ap set value 1
 
 # 名称: name
 data modify storage arena:assets stage_data[-1].name set value "クリーパー"
+
+# 翻訳キー: translation key
+data modify storage arena:assets stage_data[-1].display.translation_key set value "entity.minecraft.creeper"

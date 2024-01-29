@@ -21,7 +21,7 @@ execute store result entity @e[tag=Arena.Normal-Stage.Display.Core,sort=nearest,
 # 表示を更新
 function arena_normal:misc/data_search with entity @e[tag=Arena.Normal-Stage.Display.Core,sort=nearest,limit=1] data.Arena.Display
 
-function arena_normal:recording/display/reflesh with storage arena:temp MatchingStageData
+function arena_normal:recording/display/reflesh with storage arena:temp stage_data_searching.out
 
 # playsound 
 playsound ui.button.click master @s ~ ~ ~ 1 2
