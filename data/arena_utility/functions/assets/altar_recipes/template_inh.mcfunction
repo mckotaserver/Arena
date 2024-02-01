@@ -1,6 +1,6 @@
 ## レシピ登録
 # 項の作成
-data modify storage arena:assets utility.altar_recipes append value {id:"001-upgrade"}
+data modify storage arena:assets utility.altar_recipes append value {id:"template.inh"}
 
 #> レシピデータ
 # Recipe

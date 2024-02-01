@@ -1,6 +1,6 @@
 ## レシピ登録
 # 項の作成
-data modify storage arena:assets utility.altar_recipes append value {id:"011-blazing_metal"}
+data modify storage arena:assets utility.altar_recipes append value {id:"blazing_metal"}
 
 #> レシピデータ
 # Recipe

@@ -20,4 +20,4 @@ data modify storage arena:assets stage_difficulty append value {id:"02-hard"}
 data modify storage arena:assets stage_difficulty[-1].reward set value "arena_normal:ticket/hard"
 
 # 倍率
-data modify storage arena:assets stage_difficulty[-1].multiplier set value 1.8f
+data modify storage arena:assets stage_difficulty[-1].multiplier set value 2.2f
