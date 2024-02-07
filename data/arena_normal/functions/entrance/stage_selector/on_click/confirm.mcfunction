@@ -17,6 +17,9 @@ execute if data entity @e[tag=Arena.Normal-Stage.Lobby,sort=nearest,limit=1] {da
     # 必要APを取得
     execute store result score #Entrance.APRequired Arena.Temp run data get storage arena:temp stage_data_searching.out.required_ap
 
+    # プレイヤーが値を持っていなければ0に設定
+    execute as @a[distance=..4] unless score @s arena = @s arena run scoreboard players set @s arena 0
+
     # 比較
     data modify storage arena:temp StageJoinable set value true
     execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] if score #Entrance.APRequired Arena.Temp > @s arena run data modify storage arena:temp StageJoinable set value false
@@ -125,7 +128,9 @@ data modify entity @e[tag=Arena.Temp.StageSelected,limit=1] data.Arena set from 
 # プレイヤー関連
     # プレイヤーIdを設定
     execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players set @s Arena.PlayerID -1
-    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @a[distance=..4] store result score @s Arena.PlayerID if entity @a[distance=..4,scores={Arena.PlayerID=0..}]
+    scoreboard players set #PlayerID Arena.Temp 0
+
+    execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] as @r[distance=..4,limit=1] run function arena_normal:misc/set_player_id
 
     # LeaveGameスコアをリセット
     execute at @e[tag=Arena.Normal-Stage.Entrance,sort=nearest,limit=1] run scoreboard players reset @a[distance=..4] Arena.LeaveGame

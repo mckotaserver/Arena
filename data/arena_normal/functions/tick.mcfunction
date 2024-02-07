@@ -3,7 +3,7 @@
 execute as @a[tag=Arena.Normal-Stage.Player] at @s unless entity @e[tag=Arena.Normal-Stage.Stage-Core,distance=..48] run function arena_normal:misc/player_reset
 
 # 代表プレイヤー選出
-execute as @a[tag=Arena.Normal-Stage.Player,tag=!Arena.Normal-Stage.Core-Player] unless entity @a[tag=Arena.Normal-Stage.Core-Player,distance=..48] at @s run function arena_normal:misc/core_player_selection
+execute as @a[tag=Arena.Normal-Stage.Player,tag=!Arena.Normal-Stage.Core-Player] at @s unless entity @a[tag=Arena.Normal-Stage.Core-Player,distance=..48] at @s run function arena_normal:misc/core_player_selection
 
     # モブクリア判定
     execute at @a[tag=Arena.Normal-Stage.Core-Player] as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{Spawning:{Counter:0},Timer:{WaveWaiting:false}}}} unless entity @e[tag=Arena.Normal-Stage.Mob,distance=..48] run function arena_normal:wave_process/mob_cleared

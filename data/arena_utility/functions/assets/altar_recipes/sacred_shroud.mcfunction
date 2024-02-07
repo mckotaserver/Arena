@@ -7,23 +7,22 @@ data modify storage arena:assets utility.altar_recipes append value {id:"sacred_
 data modify storage arena:assets utility.altar_recipes[-1].ingredients set value []
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:diamond_sword",Count:1b,tag:{Damage:1560},isCore:true}
 
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:4b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:4b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:4b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:12b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:12b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:firework_star",Count:12b,tag:{CustomModelData:2010002,Enchantments:[{}]}}
 
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:wither_skeleton_skull",Count:16b,tag:{}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:wither_skeleton_skull",Count:16b,tag:{}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:dragon_breath",Count:64b,tag:{}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:wither_skeleton_skull",Count:24b,tag:{}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:wither_skeleton_skull",Count:24b,tag:{}}
 
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:ancient_debris",Count:12b,tag:{}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:crying_obsidian",Count:48b,tag:{}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:dragon_egg",Count:3b,tag:{}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:ancient_debris",Count:32b,tag:{}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:deepslate_diamond_ore",Count:64b,tag:{}}
 
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:totem_of_undying",Count:1b,tag:{}}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:totem_of_undying",Count:1b,tag:{}}
 
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:strong_strength"}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:strong_regeneration"}}
-    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:long_slow_falling"}}
+    data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:long_strength"}}
 
 
 # 成果物
