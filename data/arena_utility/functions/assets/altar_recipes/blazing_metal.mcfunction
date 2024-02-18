@@ -16,7 +16,7 @@ data modify storage arena:assets utility.altar_recipes[-1].ingredients set value
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:netherite_scrap",Count:3b,tag:{}}
 
 # 成果物
-data modify storage arena:assets utility.altar_recipes[-1].product set value {id:"minecraft:firework_star",Count:1b,tag:{display:{Name:'{"text":"ブレイズメタル","color":"gold","italic":false}'},CustomModelData:2010001}}
+data modify storage arena:assets utility.altar_recipes[-1].product set value {id:"minecraft:firework_star",Count:1b,tag:{display:{Name:'{"text":"ブレイズメタル","color":"gold","italic":false}'},CustomModelData:2010000}}
 
 # 材料の順番を気にするかどうか
 data modify storage arena:assets utility.altar_recipes[-1].order_restricted set value false

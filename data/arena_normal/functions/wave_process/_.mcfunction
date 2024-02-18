@@ -18,25 +18,38 @@ data modify entity @s data.Arena.Timer.WaveWaiting set value false
     execute if data entity @s {data:{Arena:{StageData:{Type:"Normal"}}}} if score #Wave Arena.Temp matches 1 store result entity @s data.Arena.Recording.StartTick int 1 run time query gametime
 
 #> モブの召喚
-# エンドレス → モブ抽選処理
-execute if data entity @s {data:{Arena:{StageData:{Type:"Endless"}}}} run function arena_normal:endless/mob_drawing
+    # エンドレス → モブ抽選処理
+    execute if data entity @s {data:{Arena:{StageData:{Type:"Endless"}}}} run function arena_normal:endless/mob_drawing
 
-# 召喚数最大値を記録
-execute if data entity @s {data:{Arena:{StageData:{difficulty:0}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 80
-execute if data entity @s {data:{Arena:{StageData:{difficulty:1}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 130
-execute if data entity @s {data:{Arena:{StageData:{difficulty:2}}}} run scoreboard players set #SpawnDataModifier Arena.Temp 180
+    # 指定ウェーブのデータを抽出
+    data modify storage arena:temp ArrayPicking.in set from entity @s data.Arena.stage_detail.summon_count
+    execute store result storage arena:temp ArrayPicking.index int 1 run data get entity @s data.Arena.StageData.wave 0.9999
+    function arena_normal:misc/array_picker with storage arena:temp ArrayPicking
 
-data modify storage arena:temp ArrayPicking.in set from entity @s data.Arena.Spawning.Detail.summon_count
-execute store result storage arena:temp ArrayPicking.index int 1 run data get entity @s data.Arena.StageData.wave 0.9999
-function arena_normal:misc/array_picker with storage arena:temp ArrayPicking
+    # 召喚数最大値を計算
+        # 元召喚数を取得
+        data modify storage arena:temp spawning_data.data_modifying.in.summon_count set value [0, 0, 0, 0, 0]
+        data modify storage arena:temp spawning_data.data_modifying.in.summon_count[] set from storage arena:temp ArrayPicking.out
 
-execute store result score #SpawnCounter-Max Arena.Temp run data get storage arena:temp ArrayPicking.out
-scoreboard players operation #SpawnCounter-Max Arena.Temp *= #SpawnDataModifier Arena.Temp
+        # 倍率を取得 (難易度のみ)
+        data modify storage arena:temp ArrayPicking.index set from entity @s data.Arena.StageData.difficulty
+        data modify storage arena:temp ArrayPicking.in set from storage arena:assets stage_difficulty
+        function arena_normal:misc/array_picker with storage arena:temp ArrayPicking
 
-execute store result entity @s data.Arena.Spawning.Counter int 0.01 run scoreboard players get #SpawnCounter-Max Arena.Temp
+        execute store result storage arena:temp spawning_data.data_modifying.multiplier float 100 run data get storage arena:temp ArrayPicking.out.multiplier
+        
+        # その他必要なデータを取得
+        data modify storage arena:temp spawning_data.data_modifying.speed_multiplier set value 1.0f
+        execute store result storage arena:temp spawning_data.data_modifying.index int 1 run data get storage arena:temp spawning_data.stage_data.wave 0.9999
 
-# 召喚処理
-execute as @e[tag=Arena.Normal-Stage.SpawnMarker,distance=..48,sort=random,limit=1] at @s run function arena_normal:wave_process/mob_spawning/_
+        # データ修飾functionを呼び出し
+        function arena_normal:wave_process/mob_spawning/data_modifier with storage arena:temp spawning_data.data_modifying
+
+        # マーカーにデータ戻す
+        data modify entity @s data.Arena.Spawning.Counter set from storage arena:temp spawning_data.data_modifying.out.summon_count
+
+    # 召喚処理
+    execute as @e[tag=Arena.Normal-Stage.SpawnMarker,distance=..48,sort=random,limit=1] at @s run function arena_normal:wave_process/mob_spawning/_
 
 #> 演出
 # playsound

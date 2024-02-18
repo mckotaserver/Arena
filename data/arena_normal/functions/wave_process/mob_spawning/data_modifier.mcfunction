@@ -19,3 +19,4 @@ data modify storage arena:temp spawning_data.data_modifying.out set value {}
     data modify storage arena:temp spawning_data.data_modifying.out.speed set value 0.0f
     $execute store result storage arena:temp spawning_data.data_modifying.out.speed float 0.005 run data get storage arena:temp spawning_data.data_modifying.in.speed[$(index)] $(speed_multiplier)
 
+    

@@ -13,8 +13,8 @@ execute as @a[tag=Arena.Normal-Stage.Player,tag=!Arena.Normal-Stage.Core-Player]
 
 # 不正検知
     # 入場
-    execute as @a[tag=!Arena.Normal-Stage.Player,tag=!Arena.Flags-Debug] at @s if entity @e[tag=Arena.Normal-Stage.Stage-Core,distance=..48] run function arena_normal:misc/fraud_entry with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display
+    execute as @a[tag=!Arena.Normal-Stage.Player,tag=!Arena.Flags-Debug] at @s if entity @e[tag=Arena.Normal-Stage.Stage-Core,distance=..48] run function arena_normal:misc/anti_cheat
 
     # 再読み込み
-    execute as @a[tag=Arena.Normal-Stage.Player] if score @s Arena.LeaveGame matches 1.. at @s run function arena_normal:misc/relogging with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display
+    execute as @a[tag=Arena.Normal-Stage.Player] if score @s Arena.LeaveGame matches 1.. at @s run function arena_normal:misc/anti_cheat
 
