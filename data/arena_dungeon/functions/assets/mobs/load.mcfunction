@@ -1,0 +1,1 @@
+function arena_dungeon:assets/mobs/test_zombie

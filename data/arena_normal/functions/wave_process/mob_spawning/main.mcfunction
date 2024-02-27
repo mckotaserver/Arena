@@ -106,7 +106,7 @@ data modify storage arena:temp spawning_data.macro.mob_nbt set value {}
 
     # 弓持ちモブ: 弓のエンチャント
         # 弓エンチャントを利用するか確認
-        execute store success storage arena:temp spawning_data.additional.bow_enchantment byte 1 if data storage arena:temp {spawning_data:{mob_select.out:{data:{HandItems:[{id:"minecraft:bow"}]}}}}
+        execute store success storage arena:temp spawning_data.additional.bow_enchantment byte 1 if data storage arena:temp spawning_data.mob_select.out.data.HandItems[{id:"minecraft:bow"}]
 
         # ボーナス値の計算
         execute if data storage arena:temp {spawning_data:{stage_data:{Type:"Normal"}}} store result score #data_modifying.bow_enchantment Arena.Temp run data get storage arena:temp spawning_data.stage_data.wave 33
@@ -117,14 +117,15 @@ data modify storage arena:temp spawning_data.macro.mob_nbt set value {}
         scoreboard players operation #data_modifying.bow_enchantment Arena.Temp *= #data_modifying.percentage Arena.Temp 
         scoreboard players operation #data_modifying.bow_enchantment Arena.Temp /= #100 Constant
         
-        # 適用
-        execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} unless data storage arena:temp {spawning_data:{mob_select.out:{data:{HandItems:{tag:{Enchantments:[{id:"minecraft:power"}]}}}}}} run data modify storage arena:temp spawning_data.mob_select.out.data.HandItems.tag.Enchantments append value {id:"minecraft:power",lvl:0s}
+        
+        execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} unless data storage arena:temp {spawning_data:{mob_select:{out:{data:{HandItems:{tag:{Enchantments:[{id:"minecraft:power"}]}}}}}}} run data modify storage arena:temp spawning_data.mob_select.out.data.HandItems[{id:"minecraft:bow"}].tag.Enchantments set value []
+        execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} unless data storage arena:temp {spawning_data:{mob_select:{out:{data:{HandItems:{tag:{Enchantments:[{id:"minecraft:power"}]}}}}}}} run data modify storage arena:temp spawning_data.mob_select.out.data.HandItems[{id:"minecraft:bow"}].tag.Enchantments append value {id:"minecraft:power",lvl:0s}
 
         # ドロップしないように
         execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} run data modify storage arena:temp spawning_data.mob_select.out.data.HandDropChances[0] set value -1e40f
 
         # レベルの適用
-        execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} store result storage arena:temp spawning_data.mob_select.out.data.HandItems.tag.Enchantments[{id:"minecraft:power"}].lvl short 0.01 run scoreboard players get #data_modifying.bow_enchantment Arena.Temp
+        execute if data storage arena:temp {spawning_data:{additional:{bow_enchantment:true}}} store result storage arena:temp spawning_data.mob_select.out.data.HandItems[{id:"minecraft:bow"}].tag.Enchantments[{id:"minecraft:power"}].lvl short 0.01 run scoreboard players get #data_modifying.bow_enchantment Arena.Temp
 
 #> モブの召喚
     # 乱数: 偏角
