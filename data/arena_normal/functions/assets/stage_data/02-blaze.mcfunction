@@ -5,9 +5,9 @@ data modify storage arena:assets stage_data append value {id:"02-blaze"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:blaze",weight:6,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:2}}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:endermite",weight:2,multiplier:1.30,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.1,Operation:0,UUID:[I;0,0,0,0]}]},{Name:"minecraft:generic.max_health",Modifiers:[{Amount:0.2,Operation:2,UUID:[I;0,0,0,0]}]}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:wither_skeleton",weight:1,multiplier:1.50,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{DeathLootTable:"minecraft:empty",ArmorItems:[{id:"minecraft:iron_boots",Count:1b},{},{},{}],ArmorDropChances:[0.01f,0.01f,0.01f,0.01f],HandItems:[{id:"minecraft:stone_sword",Count:1b,tag:{Enchantments:[{id:"minecraft:knockback",lvl:2s}]}},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.1,Operation:0,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:blaze",weight:8,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:2}}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:endermite",weight:1,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:2,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:wither_skeleton",weight:2,multiplier:1.50,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{DeathLootTable:"minecraft:empty",ArmorItems:[{id:"minecraft:iron_boots",Count:1b},{},{},{}],ArmorDropChances:[0.01f,0.01f,0.01f,0.01f],HandItems:[{id:"minecraft:stone_sword",Count:1b,tag:{Enchantments:[{id:"minecraft:knockback",lvl:2s}]}},{}],Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:-0.1,Operation:0,UUID:[I;0,0,0,0]}]}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]

@@ -11,13 +11,13 @@
     # クリア記録
     function arena_normal:recording/_
 
-    data modify entity @s data.Arena.announcement_display.record set from storage arena:temp Recording.Time.DisplayData
+    data modify entity @s data.Arena.announcement_display.record set from storage arena_normal:temp Recording.Time.DisplayData
 
-    execute if data entity @s {data:{Arena:{StageData:{difficulty:2}}}} if data storage arena:temp {Recording:{Insertion:{conditionMatched:true,Counter:0}}} run data modify entity @s data.Arena.isNewRecord set value true
+    execute if data entity @s {data:{Arena:{stage_data:{difficulty:2}}}} if data storage arena_normal:temp {Recording:{Insertion:{conditionMatched:true,Counter:0}}} run data modify entity @s data.Arena.isNewRecord set value true
 
     # 統計
-    data modify storage arena:temp Stats.difficulty set from entity @s data.Arena.StageData.difficulty
-    data modify storage arena:temp Stats.MobType set from entity @s data.Arena.StageData.MobType
+    data modify storage arena_normal:temp Stats.difficulty set from entity @s data.Arena.stage_data.difficulty
+    data modify storage arena_normal:temp Stats.mob_type set from entity @s data.Arena.stage_data.mob_type
 
         # ヘッド召喚前準備
         setblock ~ -64 ~ bedrock replace
@@ -34,7 +34,7 @@ data modify entity @s data.Arena.Timer.WaveWaiting set value true
 
 # 終了時tellrawへの設定用データ
     # mob_name
-    $data modify entity @s data.Arena.announcement_display.mob_name set from storage arena:assets stage_data[$(MobType)].display.translation_key
+    $data modify entity @s data.Arena.announcement_display.mob_name set from storage arena:assets stage_data[$(mob_type)].display.translation_key
 
     # difficulty
     $data modify entity @s data.Arena.announcement_display.difficulty set from storage arena:assets stage_difficulty[$(difficulty)].display.translation_key
@@ -47,8 +47,10 @@ scoreboard players add #EndTick Arena.Temp 300
 execute store result entity @s data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
 schedule function arena_normal:end/delay 300t
 
+function kota_library:execute_expansion/advanced_schedule/_ {selector:"@e[tag=Arena.Normal-Stage.Stage-Core]",command:"execute at @s run function arena_normal:end/main with entity @s data.Arena.announcement_display",schedule:300}
+
 # チケットの配布
-$execute store result score #Reward.TicketCount Arena.Temp run data get storage arena:assets stage_data[$(MobType)].reward[$(difficulty)]
+$execute store result score #Reward.TicketCount Arena.Temp run data get storage arena:assets stage_data[$(mob_type)].reward[$(difficulty)]
  
 $execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run function arena_normal:end/loot_macro with storage arena:assets stage_difficulty[$(difficulty)]
 

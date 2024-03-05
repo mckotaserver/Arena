@@ -9,11 +9,11 @@
 
     scoreboard players operation #Boss.RewardCount-0 Arena.Temp /= #Boss.DamageRanking.Rank Arena.Temp
 
-    # 入場人数 → (BaseReward)/(PlayerCount)/2
+    # 入場人数 → (BaseReward)/(player_count)/2
     execute store result score #Boss.RewardCount-1 Arena.Temp run data get entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.Boss.StageData.BaseReward
-    execute store result score #Boss.PlayerCount Arena.Temp run data get entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.PlayerCount
+    execute store result score #Boss.player_count Arena.Temp run data get entity @e[tag=Arena.Boss.Stage-Core,sort=nearest,limit=1] data.Arena.StageData.player_count
 
-    scoreboard players operation #Boss.RewardCount-1 Arena.Temp /= #Boss.PlayerCount Arena.Temp
+    scoreboard players operation #Boss.RewardCount-1 Arena.Temp /= #Boss.player_count Arena.Temp
 
     # 加算
     scoreboard players set #Boss.RewardCount Arena.Temp 0
@@ -40,7 +40,7 @@
     execute if score #Boss.DamageRanking.Rank Arena.Temp matches 1..3 run tellraw @a[tag=Arena.Boss.Player,distance=..64] [{"translate":"kota-server.arena.boss.game.message.damage_ranking-1","with":[{"storage": "arena_boss:temp","nbt": "DamageRanking.Merged","color":"gray"},{"selector":"@s","color": "yellow","bold": true},{"score":{"name": "@s","objective": "ArenaBoss.PlayerDealtDamage"},"color": "red"}]}]
     execute if score #Boss.DamageRanking.Rank Arena.Temp matches 4.. run tellraw @a[tag=Arena.Boss.Player,distance=..64] [{"translate":"kota-server.arena.boss.game.message.damage_ranking-1","with":[{"storage": "arena_boss:temp","nbt": "DamageRanking.Merged","color":"gray"},{"selector":"@s","color": "yellow","bold": false},{"score":{"name": "@s","objective": "ArenaBoss.PlayerDealtDamage"},"color": "red"}]}]
 
-    execute if score #Boss.DamageRanking.Rank Arena.Temp = #Boss.PlayerCount Arena.Temp run tellraw @a[tag=Arena.Boss.Player,distance=..64] [{"translate":"kota-server.arena.boss.game.message.damage_ranking-2"}]
+    execute if score #Boss.DamageRanking.Rank Arena.Temp = #Boss.player_count Arena.Temp run tellraw @a[tag=Arena.Boss.Player,distance=..64] [{"translate":"kota-server.arena.boss.game.message.damage_ranking-2"}]
 
 #> 配布
 $loot spawn ~ ~ ~ loot $(LootTable)

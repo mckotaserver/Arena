@@ -1,13 +1,13 @@
 ## 統計情報
 # 設定されていなければ新規作成
-$execute unless data storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{MobType:$(MobType)}].data run data modify storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{MobType:$(MobType)}].data set value [0, 0, 0]
-$execute unless data storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{MobType:$(MobType)}] run data modify storage arena:stats normal[{Name:$(PlayerName)}].Mobs append value {MobType:$(MobType)}
+$execute unless data storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{mob_type:$(mob_type)}].data run data modify storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{mob_type:$(mob_type)}].data set value [0, 0, 0]
+$execute unless data storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{mob_type:$(mob_type)}] run data modify storage arena:stats normal[{Name:$(PlayerName)}].Mobs append value {mob_type:$(mob_type)}
 
 # 値を取得
-$execute store result score #Stats.Value Arena.Temp run data get storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{MobType:$(MobType)}].data[$(difficulty)]
+$execute store result score #Stats.Value Arena.Temp run data get storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{mob_type:$(mob_type)}].data[$(difficulty)]
 
 # 1 加算
 scoreboard players add #Stats.Value Arena.Temp 1
 
 # データ戻す
-$execute store result storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{MobType:$(MobType)}].data[$(difficulty)] int 1 run scoreboard players get #Stats.Value Arena.Temp
+$execute store result storage arena:stats normal[{Name:$(PlayerName)}].Mobs[{mob_type:$(mob_type)}].data[$(difficulty)] int 1 run scoreboard players get #Stats.Value Arena.Temp

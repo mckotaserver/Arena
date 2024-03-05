@@ -11,13 +11,13 @@ tag @s add Arena.Temp-RecentSpawnedPos
 execute store result score #spawning.random Arena.Temp run random value 0..99
 
 # Weight から召喚情報を設定
-data modify storage arena:temp spawning_data.mob_select.out set value {}
+data modify storage arena_normal:temp spawning_data.mob_select.out set value {}
 function arena_normal:wave_process/mob_spawning/weight_calc/_
 
-    # tellraw awabi2048 ["Spawning: ",{"nbt":"spawning_data.mob_select.out","storage":"arena:temp"}]
+    # tellraw awabi2048 ["Spawning: ",{"nbt":"spawning_data.mob_select.out","storage":"arena_normal:temp"}]
 
 # 召喚
-function arena_normal:wave_process/mob_spawning/main with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.StageData
+function arena_normal:wave_process/mob_spawning/main with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.stage_data
 
 # 再起可能性
 execute as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] store result entity @s data.Arena.Spawning.Counter int 0.9999 run data get entity @s data.Arena.Spawning.Counter

@@ -39,11 +39,11 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp Bo
 
     #> 人数判定
     # エリア内の人数, 規定人数を取得
-    execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] store result score #Entrance.PlayerCount Arena.Temp if entity @a[distance=..4]
-    execute store result score #Entrance.PlayerCount-Max Arena.Temp run data get storage arena_boss:temp BossData.max_player
+    execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] store result score #Entrance.player_count Arena.Temp if entity @a[distance=..4]
+    execute store result score #Entrance.player_count-Max Arena.Temp run data get storage arena_boss:temp BossData.max_player
 
     data modify storage arena_boss:temp StageJoinable set value true
-    execute if score #Entrance.PlayerCount Arena.Temp > #Entrance.PlayerCount-Max Arena.Temp run data modify storage arena_boss:temp StageJoinable set value false
+    execute if score #Entrance.player_count Arena.Temp > #Entrance.player_count-Max Arena.Temp run data modify storage arena_boss:temp StageJoinable set value false
 
     # 規定人数を超えている場合 → 警告して処理中止
     execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"BossData.max_player","storage":"arena_boss:temp","color": "yellow","underlined": true}]}]
@@ -76,7 +76,7 @@ execute at @e[tag=Arena.Boss.Entrance,sort=nearest,limit=1] as @a[distance=..4] 
     data modify storage arena_boss:temp Entrance.data.Boss.OperationData set value {}
 
     # プレイヤー数の取得 >> 上記プレイヤー数判定で取得 を流用
-    execute store result storage arena_boss:temp Entrance.data.StageData.PlayerCount int 1 run scoreboard players get #Entrance.PlayerCount Arena.Temp
+    execute store result storage arena_boss:temp Entrance.data.StageData.player_count int 1 run scoreboard players get #Entrance.player_count Arena.Temp
 
 # 帰還用 → 入場ロビーのデータ取得
 data modify storage arena_boss:temp Entrance.data.announcement_display.entered_lobby set from entity @e[tag=Arena.Boss.Lobby,sort=nearest,limit=1] Tags[0]

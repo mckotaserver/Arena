@@ -15,7 +15,7 @@
 
     # # 統計
     # data modify storage arena:temp Stats.difficulty set from entity @s data.Arena.StageData.difficulty
-    # data modify storage arena:temp Stats.MobType set from entity @s data.Arena.StageData.MobType
+    # data modify storage arena:temp Stats.mob_type set from entity @s data.Arena.StageData.mob_type
 
     #     # ヘッド召喚前準備
     #     setblock ~ -64 ~ bedrock replace

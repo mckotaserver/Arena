@@ -6,10 +6,10 @@ execute as @a[tag=Arena.Normal-Stage.Player] at @s unless entity @e[tag=Arena.No
 execute as @a[tag=Arena.Normal-Stage.Player,tag=!Arena.Normal-Stage.Core-Player] at @s unless entity @a[tag=Arena.Normal-Stage.Core-Player,distance=..48] at @s run function arena_normal:misc/core_player_selection
 
     # モブクリア判定
-    execute at @a[tag=Arena.Normal-Stage.Core-Player] as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{Spawning:{Counter:0},Timer:{WaveWaiting:false}}}} unless entity @e[tag=Arena.Normal-Stage.Mob,distance=..48] run function arena_normal:wave_process/mob_cleared
+    execute at @a[tag=Arena.Normal-Stage.Core-Player] as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{Spawning:{Counter:0},Timer:{WaveWaiting:false}}}} unless entity @e[tag=Arena.Normal-Stage.Mob,distance=..48] unless score @p[tag=Arena.Normal-Stage.Core-Player] Arena.Timer matches 1.. run function arena_normal:wave_process/mob_cleared
 
     # スライム: 分裂後を認識
-    execute at @a[tag=Arena.Normal-Stage.Core-Player] as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{StageData:{MobType:4},Timer:{WaveWaiting:false}}}} run tag @e[type=slime,distance=..48,tag=!Arena.Normal-Stage.Mob] add Arena.Normal-Stage.Mob
+    execute at @a[tag=Arena.Normal-Stage.Core-Player] as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{stage_data:{mob_type:4},Timer:{WaveWaiting:false}}}} run tag @e[type=slime,distance=..48,tag=!Arena.Normal-Stage.Mob] add Arena.Normal-Stage.Mob
 
 # 不正検知
     # 入場
@@ -18,3 +18,6 @@ execute as @a[tag=Arena.Normal-Stage.Player,tag=!Arena.Normal-Stage.Core-Player]
     # 再読み込み
     execute as @a[tag=Arena.Normal-Stage.Player] if score @s Arena.LeaveGame matches 1.. at @s run function arena_normal:misc/anti_cheat
 
+# タイマー処理
+execute as @a[tag=Arena.Normal-Stage.Core-Player] if score @s Arena.Timer matches 1.. run scoreboard players remove @s Arena.Timer 1
+execute as @a[tag=Arena.Normal-Stage.Core-Player] if score @s Arena.Timer matches 0 at @s as @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] at @s run function arena_normal:timer/_

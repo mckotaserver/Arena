@@ -5,9 +5,7 @@
     playsound ui.button.click master @s ~ ~ ~ 1 2
 
 #> 今日のクエストの確認
-    # 表示用データの取得
-    
 
-    # tellraw
-    tellraw @s {"translate":"kota-server.arena.quests.message.check_daily"}
+$function arena_utility:quests/display/_ {index:0,type:"daily",player_name:"$(player_name)"}
+
 
