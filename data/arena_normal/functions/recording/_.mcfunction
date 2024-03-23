@@ -22,8 +22,8 @@
     setblock ~ -64 ~ barrel replace
 
     # 処理
-    execute if data entity @s {data:{Arena:{stage_data:{difficulty:2,player_count:1}}}} as @r[tag=Arena.Normal-Stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
-    tag @a[tag=Arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
+    execute if data entity @s {data:{Arena:{stage_data:{difficulty:2,player_count:1}}}} as @r[tag=arena.normal-stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=arena.normal-stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
+    tag @a[tag=arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
 
     # 後始末
     setblock ~ -64 ~ bedrock replace

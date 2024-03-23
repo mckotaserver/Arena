@@ -4,7 +4,7 @@
         "trigger": "minecraft:player_hurt_entity",
         "conditions": {
           "entity": {
-            "nbt": "{Tags:[\"Arena.Boss.Main.Hitbox\"]}"
+            "nbt": "{Tags:[\"arena.boss.Main.Hitbox\"]}"
           }
         }
       }

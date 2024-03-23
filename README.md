@@ -6,7 +6,7 @@
  
 ### 使い方
   - セットアップ方法
-    - ステージの中央にマーカー(tag=Arena.Normal-Stage.Core)を召喚
+    - ステージの中央にマーカー(tag=arena.normal-stage.Core)を召喚
     - 入場待機場所と帰還場所でfunction(#arena_normal:marker_placement/entrance, #arena_normal:marker_placement/lobby)を実行
     - 任意の入場場所からfunction(#arena_normal:lobby_entrance)をプレイヤーから実行できるようにする
 

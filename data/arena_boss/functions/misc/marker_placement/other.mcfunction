@@ -1,2 +1,2 @@
 ## Marker
-$execute align xyz run summon marker ~0.5 ~0.5 ~0.5 {Tags:["Arena.Boss.$(Tag)"]}
+$execute align xyz run summon marker ~0.5 ~0.5 ~0.5 {Tags:["arena.boss.$(Tag)"]}

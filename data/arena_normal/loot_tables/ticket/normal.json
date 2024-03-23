@@ -46,7 +46,7 @@
                     "type": "minecraft:fixed",
                     "name": "#Reward.TicketCount"
                   },
-                  "score": "Arena.Temp",
+                  "score": "arena.Temp",
                   "scale": 1
                 },
                 "add": false

@@ -17,9 +17,9 @@
                 "type": "minecraft:score",
                 "target": {
                   "type": "minecraft:fixed",
-                  "name": "#Boss.RewardCount"
+                  "name": "#boss.RewardCount"
                 },
-                "score": "Arena.Temp",
+                "score": "arena.Temp",
                 "scale": 0.4
               },
               "add": false
@@ -45,9 +45,9 @@
                 "type": "minecraft:score",
                 "target": {
                   "type": "minecraft:fixed",
-                  "name": "#Boss.RewardCount"
+                  "name": "#boss.RewardCount"
                 },
-                "score": "Arena.Temp",
+                "score": "arena.Temp",
                 "scale": 0.125
               },
               "add": false

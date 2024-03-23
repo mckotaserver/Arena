@@ -14,5 +14,5 @@ function arena_normal:recording/stats/macro with storage arena_normal:temp Stats
 
 #> 再起
 tag @s add Arena.Temp-StatsRegistered
-execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-StatsRegistered,distance=..48] at @s run function arena_normal:recording/stats/_
+execute as @r[tag=arena.normal-stage.Player,tag=!Arena.Temp-StatsRegistered,distance=..48] at @s run function arena_normal:recording/stats/_
 

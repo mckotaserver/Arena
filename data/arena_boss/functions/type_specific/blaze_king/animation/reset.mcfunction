@@ -1,6 +1,6 @@
 ## アニメーション終了時処理
 # リセット
-scoreboard players set @p[tag=Arena.Boss.Core-Player] ArenaBoss.Timer 0
+scoreboard players set @p[tag=arena.boss.Core-Player] Arenaboss.Timer 0
 
 # 
-data modify entity @e[tag=Arena.Boss.Main.Core,sort=nearest,limit=1] data.Arena.Boss.OperationData.Animation set value "regular"
+data modify entity @e[tag=arena.boss.Main.Core,sort=nearest,limit=1] data.Arena.boss.OperationData.Animation set value "regular"

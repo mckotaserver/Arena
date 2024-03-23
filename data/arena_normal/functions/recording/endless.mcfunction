@@ -21,8 +21,8 @@ execute store result storage arena_normal:temp Recording.Compound.TimeStamp int 
 
 # データベースに挿入
     # 実行回数カウント = 0
-    data modify storage arena_normal:temp Recording.Insertion.Counter set value 0
-    execute store result score #Recording.Counter Arena.Temp run data get storage arena_normal:temp Recording.Insertion.Counter
+    data modify storage arena_normal:temp Recording.Insertion.counter set value 0
+    execute store result score #Recording.counter Arena.Temp run data get storage arena_normal:temp Recording.Insertion.counter
 
     # データセット
     data modify storage arena_normal:temp Recording.Insertion.Categoried set from storage arena:records normal[{name:"エンドレス"}].data
@@ -39,5 +39,5 @@ execute store result storage arena_normal:temp Recording.Compound.TimeStamp int 
 #> 再起
 # 
 # tag @s add Arena.Temp-RecordRegistered
-# execute as @r[tag=Arena.Normal-Stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.stage_data
+# execute as @r[tag=arena.normal-stage.Player,tag=!Arena.Temp-RecordRegistered,distance=..48] run function arena_normal:recording/register with entity @e[tag=arena.normal-stage.Stage-Core,sort=nearest,limit=1] data.Arena.stage_data
 

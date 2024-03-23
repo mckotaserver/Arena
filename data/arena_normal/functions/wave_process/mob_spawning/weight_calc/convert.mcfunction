@@ -19,22 +19,22 @@ data modify storage arena_normal:temp spawning_data.mob_select.weight_calc.ignor
     $execute unless data storage arena_normal:temp spawning_data.mob_select.in.mob_data[$(checking)].condition.difficulty.min run scoreboard players set #spawning.checking.difficulty_min Arena.Temp 0
     $execute unless data storage arena_normal:temp spawning_data.mob_select.in.mob_data[$(checking)].condition.difficulty.max run scoreboard players set #spawning.checking.difficulty_max Arena.Temp 2048
 
-    # tellraw awabi2048 ["DF: ",{"score":{"name": "#spawning.checking.difficulty_min","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.difficulty","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.checking.difficulty_max","objective": "Arena.Temp"}}]
-    # tellraw awabi2048 ["WV: ",{"score":{"name": "#spawning.checking.wave_min","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.wave","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.checking.wave_max","objective": "Arena.Temp"}}]
+    # tellraw awabi2048 ["DF: ",{"score":{"name": "#spawning.checking.difficulty_min","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.difficulty","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.checking.difficulty_max","objective": "arena.Temp"}}]
+    # tellraw awabi2048 ["WV: ",{"score":{"name": "#spawning.checking.wave_min","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.wave","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.checking.wave_max","objective": "arena.Temp"}}]
 
     execute if score #spawning.checking.difficulty_min Arena.Temp <= #spawning.difficulty Arena.Temp if score #spawning.difficulty Arena.Temp <= #spawning.checking.difficulty_max Arena.Temp if score #spawning.checking.wave_min Arena.Temp <= #spawning.wave Arena.Temp if score #spawning.wave Arena.Temp <= #spawning.checking.wave_max Arena.Temp run data modify storage arena_normal:temp spawning_data.mob_select.weight_calc.ignore set value false
         # tellraw awabi2048 ["IF IGNORE: ",{"nbt":"spawning_data.mob_select.weight_calc.ignore","storage": "arena_normal:temp"}]
 
 # 割合計算, 累加
 execute if data storage arena_normal:temp {spawning_data:{mob_select:{weight_calc:{ignore:false}}}} run scoreboard players operation #spawning.weight_checking Arena.Temp /= #spawning.weight_sum Arena.Temp
-    # tellraw awabi2048 [{"score":{"name": "#spawning.weight_checking","objective": "Arena.Temp"}},"+",{"score":{"name": "#spawning.weight_pre","objective": "Arena.Temp"}},"="]
+    # tellraw awabi2048 [{"score":{"name": "#spawning.weight_checking","objective": "arena.Temp"}},"+",{"score":{"name": "#spawning.weight_pre","objective": "arena.Temp"}},"="]
 
 execute if data storage arena_normal:temp {spawning_data:{mob_select:{weight_calc:{ignore:false}}}} run scoreboard players operation #spawning.weight_checking Arena.Temp += #spawning.weight_pre Arena.Temp
-    # tellraw awabi2048 [{"score":{"name": "#spawning.weight_checking","objective": "Arena.Temp"}}]
+    # tellraw awabi2048 [{"score":{"name": "#spawning.weight_checking","objective": "arena.Temp"}}]
 
 # 1つ前までデータのWeightの和 ≦ 生成乱数 ≦ 処理中データのWeight ⇒ 召喚
 $execute if data storage arena_normal:temp {spawning_data:{mob_select:{weight_calc:{ignore:false}}}} if score #spawning.weight_pre Arena.Temp <= #spawning.random Arena.Temp if score #spawning.random Arena.Temp <= #spawning.weight_checking Arena.Temp run data modify storage arena_normal:temp spawning_data.mob_select.out set from storage arena_normal:temp spawning_data.mob_select.in.mob_data[$(checking)]
-    # $tellraw awabi2048 [{"score":{"name": "#spawning.weight_pre","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.random","objective": "Arena.Temp"}},"≦",{"score":{"name": "#spawning.weight_checking","objective": "Arena.Temp"}}," Checking: [$(checking)]"]
+    # $tellraw awabi2048 [{"score":{"name": "#spawning.weight_pre","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.random","objective": "arena.Temp"}},"≦",{"score":{"name": "#spawning.weight_checking","objective": "arena.Temp"}}," Checking: [$(checking)]"]
 
 execute if data storage arena_normal:temp {spawning_data:{mob_select:{weight_calc:{ignore:false}}}} if score #spawning.weight_pre Arena.Temp <= #spawning.random Arena.Temp if score #spawning.random Arena.Temp <= #spawning.weight_checking Arena.Temp run return 0
 

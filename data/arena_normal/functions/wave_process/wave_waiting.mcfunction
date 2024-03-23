@@ -6,18 +6,18 @@
 
     # それ以外 → 普通に進行処理   
         # playsound
-        execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 1
+        execute as @a[tag=arena.normal-stage.Player,distance=..48] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 1
 
         # tellraw
-        tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.normal","with":[{"nbt":"data.Arena.stage_data.wave","entity":"@s","color": "gold"},{"text":"5","color": "yellow","underlined": true}]}]
-
+        tellraw @a[tag=arena.normal-stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.normal","with":[{"nbt":"data.Arena.stage_data.wave","entity":"@s","color": "gold"},{"text":"5","color": "yellow","underlined": true}]}]
+say wave waiting
         # タイマー設定
-        execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] if entity @s[tag=!Arena.Flags-CountSkip] run scoreboard players set @p[tag=Arena.Normal-Stage.Core-Player] Arena.Timer 300
-        execute as @a[tag=Arena.Normal-Stage.Player,distance=..48] unless entity @s[tag=!Arena.Flags-CountSkip] run scoreboard players set @p[tag=Arena.Normal-Stage.Core-Player] Arena.Timer 100
+        execute as @a[tag=arena.normal-stage.Player,distance=..48] if entity @s[tag=!Arena.Flags-CountSkip] run scoreboard players set @p[tag=arena.normal-stage.Core-Player] Arena.Timer 300
+        execute as @a[tag=arena.normal-stage.Player,distance=..48] unless entity @s[tag=!Arena.Flags-CountSkip] run scoreboard players set @p[tag=arena.normal-stage.Core-Player] Arena.Timer 100
 
 # タイマー関連処理
 data modify entity @s data.Arena.status set value "wave_waiting"
-execute store result entity @s data.Arena.misc.countdown int 0.05 run scoreboard players get @p[tag=Arena.Normal-Stage.Core-Player] Arena.Timer
+execute store result entity @s data.Arena.misc.countdown int 0.05 run scoreboard players get @p[tag=arena.normal-stage.Core-Player] Arena.Timer
 
 #> エンドレス
     # エンドレスでないなら処理中断
@@ -32,12 +32,12 @@ execute store result entity @s data.Arena.misc.countdown int 0.05 run scoreboard
 
     # 条件通過
         # 休憩を倍に
-        scoreboard players operation @p[tag=Arena.Normal-Stage.Core-Player] Arena.Timer *= #2 Constant
+        scoreboard players operation @p[tag=arena.normal-stage.Core-Player] Arena.Timer *= #2 Constant
 
         # チケット配布
         function arena_normal:endless/reward
         
         # tellraw
-        tellraw @a[tag=Arena.Normal-Stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.Arena.stage_data.wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.TicketCount","objective": "Arena.Temp"},"color": "aqua","bold": true}]}]
+        tellraw @a[tag=arena.normal-stage.Player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.Arena.stage_data.wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.TicketCount","objective": "arena.Temp"},"color": "aqua","bold": true}]}]
 
 

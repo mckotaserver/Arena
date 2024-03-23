@@ -22,7 +22,7 @@ data modify storage arena_normal:temp spawning_data.mob_select.weight_calc.ignor
     execute if score #spawning.checking.difficulty_min Arena.Temp <= #spawning.difficulty Arena.Temp if score #spawning.difficulty Arena.Temp <= #spawning.checking.difficulty_max Arena.Temp if score #spawning.checking.wave_min Arena.Temp <= #spawning.wave Arena.Temp if score #spawning.wave Arena.Temp <= #spawning.checking.wave_max Arena.Temp run data modify storage arena_normal:temp spawning_data.mob_select.weight_calc.ignore set value false
 
 # 加算
-    # tellraw awabi2048 ["sum calc:",{"score":{"name": "#spawning.weight_sum","objective": "Arena.Temp"}},"+=",{"score":{"name": "#spawning.weight_checking","objective": "Arena.Temp"}}]
+    # tellraw awabi2048 ["sum calc:",{"score":{"name": "#spawning.weight_sum","objective": "arena.Temp"}},"+=",{"score":{"name": "#spawning.weight_checking","objective": "arena.Temp"}}]
 execute if data storage arena_normal:temp {spawning_data:{mob_select:{weight_calc:{ignore:false}}}} run scoreboard players operation #spawning.weight_sum Arena.Temp += #spawning.weight_checking Arena.Temp
 
 # checkingを+1

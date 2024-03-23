@@ -16,5 +16,5 @@ execute as @p run tp @s @s
 
 #> Display関連
 # リセット
-execute as @e[tag=Arena.Boss.Selector.Core] at @s run function arena_boss:core/entrance/stage_selector/reset
+execute as @e[tag=arena.boss.Selector.Core] at @s run function arena_boss:core/entrance/stage_selector/reset
 

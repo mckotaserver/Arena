@@ -5,7 +5,7 @@
 
     # シュルカーボックスにデータ代入
         # 一時的にストレージで処理
-        data modify storage arena_utility:temp Altar.ItemExtraction.Item set from entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar.PlacedItem[-1]
+        data modify storage arena_utility:temp Altar.ItemExtraction.Item set from entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar.PlacedItem[-1]
 
         # シュルカーボックスに入れるアイテムのデータ作成
         data modify storage arena_utility:temp Altar.ItemExtraction.Out set value {}
@@ -33,7 +33,7 @@
 
 #> 取り出し後の辻褄合わせ
 # データから削除
-data remove entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar.PlacedItem[-1]
+data remove entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar.PlacedItem[-1]
 data remove storage arena_utility:temp Altar.data.PlacedItem[-1]
 
 # 表示の更新

@@ -18,8 +18,8 @@ data remove storage arena_utility:temp quests.daily.selection.type_list[0]
 
         # 上で取得した合計数で剰余演算
         scoreboard players operation #quests_selection.index Arena.Temp %= #quests_selection.in_list_count Arena.Temp
-# tellraw awabi2048 ["Picking Index: ",{"score":{"name": "#quests_selection.index","objective": "Arena.Temp"},"color": "red"}]
-# tellraw awabi2048 ["In List Count: ",{"score":{"name": "#quests_selection.in_list_count","objective": "Arena.Temp"},"color": "red"}]
+# tellraw awabi2048 ["Picking Index: ",{"score":{"name": "#quests_selection.index","objective": "arena.Temp"},"color": "red"}]
+# tellraw awabi2048 ["In List Count: ",{"score":{"name": "#quests_selection.in_list_count","objective": "arena.Temp"},"color": "red"}]
 
         # ストレージにコピー
         execute store result storage kota_library: array_picker.index int 1 run scoreboard players get #quests_selection.index Arena.Temp

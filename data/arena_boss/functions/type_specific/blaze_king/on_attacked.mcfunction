@@ -10,13 +10,13 @@
 
 #> ダメージ計算
     # ボスエンチャント
-    execute store result score #BossDamageCalc.Additional Arena.Temp run data get entity @a[tag=Arena.Temp-AttackerPlayer,limit=1] SelectedItem.tag.Arena.BossEnchantment.Lvl 20
-    scoreboard players add #BossDamageCalc.Additional Arena.Temp 100
+    execute store result score #bossDamageCalc.Additional Arena.Temp run data get entity @a[tag=arena.Temp-AttackerPlayer,limit=1] SelectedItem.tag.Arena.bossEnchantment.Lvl 20
+    scoreboard players add #bossDamageCalc.Additional Arena.Temp 100
 
     # 総計
-    execute store result score #BossDamageCalc.Amount Arena.Temp run data get storage arena_boss:temp OnAttacked.DamageAmount 100
+    execute store result score #bossDamageCalc.Amount Arena.Temp run data get storage arena_boss:temp OnAttacked.DamageAmount 100
 
-    scoreboard players operation #BossDamageCalc.Amount Arena.Temp *= #BossDamageCalc.Additional Arena.Temp
-    scoreboard players operation #BossDamageCalc.Amount Arena.Temp /= #100 Constant
+    scoreboard players operation #bossDamageCalc.Amount Arena.Temp *= #bossDamageCalc.Additional Arena.Temp
+    scoreboard players operation #bossDamageCalc.Amount Arena.Temp /= #100 Constant
 
-    execute store result storage arena_boss:temp OnAttacked.DamageAmount int 0.01 run scoreboard players get #BossDamageCalc.Amount Arena.Temp
+    execute store result storage arena_boss:temp OnAttacked.DamageAmount int 0.01 run scoreboard players get #bossDamageCalc.Amount Arena.Temp

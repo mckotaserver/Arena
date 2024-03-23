@@ -1,6 +1,6 @@
 ## アニメーション 開始
 # アイテムの向きを中央に
-execute as @e[tag=Arena.Utility.Altar.PlacedItemDisplay,distance=..3] at @s run tp @s ~ ~ ~ facing entity @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1]
+execute as @e[tag=arena.Utility.Altar.PlacedItemDisplay,distance=..3] at @s run tp @s ~ ~ ~ facing entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1]
 
 # フラグ設定
 data modify entity @s data.Arena.Altar.isCrafting set value true

@@ -1,1 +1,1 @@
-execute as @a[tag=Arena.Normal-Stage.Player] if score @s Arena.LeaveGame matches 1.. at @s run function arena_normal:anti_cheat/reloading with entity @e[tag=Arena.Normal-Stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display
+execute as @a[tag=arena.normal-stage.Player] if score @s Arena.LeaveGame matches 1.. at @s run function arena_normal:anti_cheat/reloading with entity @e[tag=arena.normal-stage.Stage-Core,sort=nearest,limit=1] data.Arena.announcement_display

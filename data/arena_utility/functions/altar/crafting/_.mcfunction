@@ -42,5 +42,5 @@ function arena_utility:altar/crafting/recipe_check with storage arena_utility:te
 
 #> クラフト処理
 # アニメーション
-execute as @e[tag=Arena.Utility.Altar.Core,sort=nearest,limit=1] at @s run function arena_utility:altar/crafting/animation/start
+execute as @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] at @s run function arena_utility:altar/crafting/animation/start
 

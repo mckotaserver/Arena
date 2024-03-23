@@ -2,21 +2,21 @@
 #> アイテムまわり
 # 素材アイテムは消す
     # ディスプレイのkill
-    kill @e[tag=Arena.Utility.Altar.PlacedItemDisplay,distance=..2]
-    kill @e[tag=Arena.Utility.Altar.PlacedItemMount,distance=..2]
+    kill @e[tag=arena.Utility.Altar.PlacedItemDisplay,distance=..2]
+    kill @e[tag=arena.Utility.Altar.PlacedItemMount,distance=..2]
 
 # 完成品アイテムの配置
     # 仮item 召喚
-    summon item ~ ~ ~ {Tags:["Arena.Utility.Altar.ProductDisplay","Arena.Utility.Altar.ProductDisplay-Unedited"],Item:{id:"minecraft:stone",Count:1b,tag:{}},Age:5925,PickupDelay:200,NoGravity:true}
+    summon item ~ ~ ~ {Tags:["arena.Utility.Altar.ProductDisplay","arena.Utility.Altar.ProductDisplay-Unedited"],Item:{id:"minecraft:stone",Count:1b,tag:{}},Age:5925,PickupDelay:200,NoGravity:true}
 
     # 予め設定した成果物のデータを移動
-    data modify entity @e[tag=Arena.Utility.Altar.ProductDisplay-Unedited,limit=1] Item set from entity @s data.Arena.Altar.Product
+    data modify entity @e[tag=arena.Utility.Altar.ProductDisplay-Unedited,limit=1] Item set from entity @s data.Arena.Altar.Product
 
     data modify entity @s data.Arena.Altar.PlacedItem set value []
     data modify entity @s data.Arena.Altar.PlacedItem append from entity @s data.Arena.Altar.Product
 
     # タグ除去
-    tag @e[tag=Arena.Utility.Altar.ProductDisplay-Unedited] remove Arena.Utility.Altar.ProductDisplay-Unedited
+    tag @e[tag=arena.Utility.Altar.ProductDisplay-Unedited] remove Arena.Utility.Altar.ProductDisplay-Unedited
 
     # アイテムのGive
     execute store result score #EndTick Arena.Temp run time query gametime

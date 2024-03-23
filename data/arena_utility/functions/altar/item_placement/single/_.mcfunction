@@ -2,15 +2,15 @@
 #> ディスプレイの配置
     # item を召喚, macroでデータ代入
     
-    $summon item ~ ~ ~ {Tags:["Arena.Utility.Altar.PlacedItemDisplay","Arena.Utility.Altar.PlacedItemDisplay-Unedited","Arena.Utility.Altar.Element"],PickupDelay:32767s,Age:-32768s,NoGravity:true,Item:{"id":"$(id)",Count:$(Count)b,tag:$(tag)}}
+    $summon item ~ ~ ~ {Tags:["arena.Utility.Altar.PlacedItemDisplay","arena.Utility.Altar.PlacedItemDisplay-Unedited","arena.Utility.Altar.Element"],PickupDelay:32767s,Age:-32768s,NoGravity:true,Item:{"id":"$(id)",Count:$(Count)b,tag:$(tag)}}
 
-    summon item_display ~ ~ ~ {Tags:["Arena.Utility.Altar.PlacedItemMount","Arena.Utility.Altar.PlacedItemMount-Unedited"]}
-    ride @e[tag=Arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] mount @e[tag=Arena.Utility.Altar.PlacedItemMount-Unedited,limit=1]
+    summon item_display ~ ~ ~ {Tags:["arena.Utility.Altar.PlacedItemMount","arena.Utility.Altar.PlacedItemMount-Unedited"]}
+    ride @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] mount @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited,limit=1]
 
-    execute if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run kill @e[tag=Arena.Utility.Altar.PlacedItemMount-Unedited]
+    execute if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run kill @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited]
     
-    tag @e[tag=Arena.Utility.Altar.PlacedItemDisplay-Unedited] remove Arena.Utility.Altar.PlacedItemDisplay-Unedited
-    tag @e[tag=Arena.Utility.Altar.PlacedItemMount-Unedited] remove Arena.Utility.Altar.PlacedItemMount-Unedited
+    tag @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited] remove Arena.Utility.Altar.PlacedItemDisplay-Unedited
+    tag @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited] remove Arena.Utility.Altar.PlacedItemMount-Unedited
    
     
     # ついでにパーティクル
