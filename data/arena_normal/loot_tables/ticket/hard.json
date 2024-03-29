@@ -9,7 +9,7 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{Arena:Ticket-Normal,CustomModelData:2000033}"
+                "tag": "{arena:Ticket-Normal,CustomModelData:2000033}"
               },
               {
                 "function": "minecraft:set_lore",
@@ -46,7 +46,7 @@
                     "type": "minecraft:fixed",
                     "name": "#Reward.TicketCount"
                   },
-                  "score": "arena.Temp",
+                  "score": "arena.temp",
                   "scale": 1
                 },
                 "add": false

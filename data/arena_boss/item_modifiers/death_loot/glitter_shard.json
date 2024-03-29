@@ -29,7 +29,7 @@
     },
     {
       "function": "set_nbt",
-      "tag": "{CustomModelData:2010011,Arena:\"GlitterShard-0\"}"
+      "tag": "{CustomModelData:2010011,arena:\"GlitterShard-0\"}"
     }
   ]
   

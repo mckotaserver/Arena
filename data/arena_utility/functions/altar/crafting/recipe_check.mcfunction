@@ -17,10 +17,10 @@ data modify storage arena_utility:temp Altar.Crafting.RecipeMatched set value tr
 # tellraw @a {"nbt":"Altar.Crafting.RecipeMatched","storage":"arena_utility:temp"}
 
 # 要素数を取得
-execute store result score #Utility.Altar.RecipeElements-1 Arena.Temp run data get storage arena_utility:temp Altar.Crafting.RecipeChecking
-execute store result score #Utility.Altar.RecipeElements-2 Arena.Temp run data get storage arena_utility:temp Altar.Crafting.PlacedItem
+execute store result score #Utility.Altar.RecipeElements-1 arena.temp run data get storage arena_utility:temp Altar.Crafting.RecipeChecking
+execute store result score #Utility.Altar.RecipeElements-2 arena.temp run data get storage arena_utility:temp Altar.Crafting.PlacedItem
 
-execute unless score #Utility.Altar.RecipeElements-1 Arena.Temp = #Utility.Altar.RecipeElements-2 Arena.Temp run data modify storage arena_utility:temp Altar.Crafting.RecipeMatched set value false
+execute unless score #Utility.Altar.RecipeElements-1 arena.temp = #Utility.Altar.RecipeElements-2 arena.temp run data modify storage arena_utility:temp Altar.Crafting.RecipeMatched set value false
 
 # tellraw @a {"nbt":"Altar.Crafting.RecipeMatched","storage":"arena_utility:temp"}
 

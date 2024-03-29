@@ -9,8 +9,8 @@
 
     execute if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run kill @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited]
     
-    tag @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited] remove Arena.Utility.Altar.PlacedItemDisplay-Unedited
-    tag @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited] remove Arena.Utility.Altar.PlacedItemMount-Unedited
+    tag @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited] remove arena.Utility.Altar.PlacedItemDisplay-Unedited
+    tag @e[tag=arena.Utility.Altar.PlacedItemMount-Unedited] remove arena.Utility.Altar.PlacedItemMount-Unedited
    
     
     # ついでにパーティクル

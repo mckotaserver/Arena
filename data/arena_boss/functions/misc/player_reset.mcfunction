@@ -1,7 +1,7 @@
 ## ステージから離れたプレイヤー
 # タグ除去
-tag @s remove Arena.boss.Player
-tag @s remove Arena.boss.Core-Player
+tag @s remove arena.boss.player
+tag @s remove arena.boss.core_player
 
 # スコアリセット
-scoreboard players reset @s Arena.PlayerID
+scoreboard players reset @s arena.player_id

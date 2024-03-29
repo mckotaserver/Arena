@@ -3,12 +3,12 @@
 advancement revoke @s only arena_utility:altar/on_click/right
 
 # データのコピー
-data modify storage arena_utility:temp Altar.data set from entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar
+data modify storage arena_utility:temp Altar.data set from entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.arena.Altar
 
 #> エラー出力
     # クラフト中 (警告はなし)
     execute if data storage arena_utility:temp {Altar:{data:{isCrafting:true}}} run return 0
-    execute if data entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{Arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return 0
+    execute if data entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] {data:{arena:{Scheduling:"arena_utility:altar/crafting/animation/product_give"}}} run return 0
 
     # ほかの人が使用中
     execute if data storage arena_utility:temp {Altar:{data:{isUsing:true}}} unless entity @s[tag=arena.Utility.Altar.User] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.altar.message.error.someone_using"}]
@@ -41,7 +41,7 @@ data modify storage arena_utility:temp Altar.data set from entity @e[tag=arena.U
     execute if predicate arena_utility:flags/is_sneaking run data modify storage arena_utility:temp Altar.data.PlacedItem[-1].isCore set value true
 
     # Markerへデータ戻す
-    data modify entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar set from storage arena_utility:temp Altar.data
+    data modify entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.arena.Altar set from storage arena_utility:temp Altar.data
 
     # ディスプレイ風で配置
     function arena_utility:altar/item_placement/_
@@ -60,8 +60,8 @@ item replace entity @s weapon.mainhand with air
 
 #> フラグ設定
     # 使用中だよ！
-    data modify entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.Arena.Altar.isUsing set value true
+    data modify entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.arena.Altar.isUsing set value true
 
     # ユーザー
-    tag @s add Arena.Utility.Altar.User
+    tag @s add arena.Utility.Altar.User
 

@@ -3,4 +3,4 @@
 function arena_boss:type_specific/blaze_king/behavior/action_selection
 
 # 再起タイマー
-scoreboard players set @s Arenaboss.Timer 40
+scoreboard players set @s arenaboss.Timer 40

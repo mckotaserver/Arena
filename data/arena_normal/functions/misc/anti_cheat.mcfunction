@@ -1,10 +1,10 @@
 ## 強制送還
 # 転送
-tp @s @e[tag=arena.normal-stage.Base_Lobby,limit=1]
+tp @s @e[tag=arena.normal_stage.Base_lobby,limit=1]
 
 # 演出
     # playsound
-    execute at @e[tag=arena.normal-stage.Base_Lobby,limit=1] run playsound entity.enderman.teleport master @s ~ ~ ~ 1 1
+    execute at @e[tag=arena.normal_stage.Base_lobby,limit=1] run playsound entity.enderman.teleport master @s ~ ~ ~ 1 1
 
 # リセット
 function arena_normal:misc/player_reset

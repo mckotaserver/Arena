@@ -3,5 +3,5 @@
 function arena_boss:assets/load
 
 #> スコアボード定義 
-scoreboard objectives add Arenaboss.Timer dummy
-scoreboard objectives add Arenaboss.PlayerDealtDamage dummy
+scoreboard objectives add arenaboss.Timer dummy
+scoreboard objectives add arenaboss.playerDealtDamage dummy

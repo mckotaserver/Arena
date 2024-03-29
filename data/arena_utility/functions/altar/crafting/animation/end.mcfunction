@@ -10,20 +10,20 @@
     summon item ~ ~ ~ {Tags:["arena.Utility.Altar.ProductDisplay","arena.Utility.Altar.ProductDisplay-Unedited"],Item:{id:"minecraft:stone",Count:1b,tag:{}},Age:5925,PickupDelay:200,NoGravity:true}
 
     # 予め設定した成果物のデータを移動
-    data modify entity @e[tag=arena.Utility.Altar.ProductDisplay-Unedited,limit=1] Item set from entity @s data.Arena.Altar.Product
+    data modify entity @e[tag=arena.Utility.Altar.ProductDisplay-Unedited,limit=1] Item set from entity @s data.arena.Altar.Product
 
-    data modify entity @s data.Arena.Altar.PlacedItem set value []
-    data modify entity @s data.Arena.Altar.PlacedItem append from entity @s data.Arena.Altar.Product
+    data modify entity @s data.arena.Altar.PlacedItem set value []
+    data modify entity @s data.arena.Altar.PlacedItem append from entity @s data.arena.Altar.Product
 
     # タグ除去
-    tag @e[tag=arena.Utility.Altar.ProductDisplay-Unedited] remove Arena.Utility.Altar.ProductDisplay-Unedited
+    tag @e[tag=arena.Utility.Altar.ProductDisplay-Unedited] remove arena.Utility.Altar.ProductDisplay-Unedited
 
     # アイテムのGive
-    execute store result score #EndTick Arena.Temp run time query gametime
-    scoreboard players add #EndTick Arena.Temp 75
-    execute store result entity @s data.Arena.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp 
+    execute store result score #EndTick arena.temp run time query gametime
+    scoreboard players add #EndTick arena.temp 75
+    execute store result entity @s data.arena.Timer.EndTick int 1 run scoreboard players get #EndTick arena.temp 
 
-    data modify entity @s data.Arena.Scheduling set value "arena_utility:altar/crafting/animation/product_give"
+    data modify entity @s data.arena.Scheduling set value "arena_utility:altar/crafting/animation/product_give"
     schedule function arena_utility:altar/crafting/animation/timer 75t
 
 #> 演出
@@ -45,4 +45,4 @@
 
 #> 後処理
     # タイマーリセット
-    scoreboard players reset @s Arena.Temp
+    scoreboard players reset @s arena.temp

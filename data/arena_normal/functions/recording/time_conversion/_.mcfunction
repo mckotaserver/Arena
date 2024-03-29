@@ -1,36 +1,36 @@
 ## tick → 単位変換
 # データのコピー
-execute store result score #Recording.Time-Hour Arena.Temp run data get storage arena_normal:temp Recording.Time.Tick
-execute store result score #Recording.Time-Minute Arena.Temp run data get storage arena_normal:temp Recording.Time.Tick
-execute store result score #Recording.Time-Second Arena.Temp run data get storage arena_normal:temp Recording.Time.Tick
-execute store result score #Recording.Time-Decimal Arena.Temp run data get storage arena_normal:temp Recording.Time.Tick
+execute store result score #recording.Time-Hour arena.temp run data get storage arena_normal:temp recording.Time.Tick
+execute store result score #recording.Time-Minute arena.temp run data get storage arena_normal:temp recording.Time.Tick
+execute store result score #recording.Time-Second arena.temp run data get storage arena_normal:temp recording.Time.Tick
+execute store result score #recording.Time-Decimal arena.temp run data get storage arena_normal:temp recording.Time.Tick
 
 #> 割り算でスコアを整形
 # 時間
-scoreboard players operation #Recording.Time-Hour Arena.Temp /= #20 Constant
-scoreboard players operation #Recording.Time-Hour Arena.Temp /= #60 Constant
-scoreboard players operation #Recording.Time-Hour Arena.Temp /= #60 Constant
+scoreboard players operation #recording.Time-Hour arena.temp /= #20 Constant
+scoreboard players operation #recording.Time-Hour arena.temp /= #60 Constant
+scoreboard players operation #recording.Time-Hour arena.temp /= #60 Constant
 
-execute store result storage arena_normal:temp Recording.Time.Raw.Hour int 1 run scoreboard players get #Recording.Time-Hour Arena.Temp
+execute store result storage arena_normal:temp recording.Time.Raw.Hour int 1 run scoreboard players get #recording.Time-Hour arena.temp
 
 # 分 
-scoreboard players operation #Recording.Time-Minute Arena.Temp /= #20 Constant
-scoreboard players operation #Recording.Time-Minute Arena.Temp /= #60 Constant
-scoreboard players operation #Recording.Time-Minute Arena.Temp %= #60 Constant
+scoreboard players operation #recording.Time-Minute arena.temp /= #20 Constant
+scoreboard players operation #recording.Time-Minute arena.temp /= #60 Constant
+scoreboard players operation #recording.Time-Minute arena.temp %= #60 Constant
 
-execute store result storage arena_normal:temp Recording.Time.Raw.Minute int 1 run scoreboard players get #Recording.Time-Minute Arena.Temp
+execute store result storage arena_normal:temp recording.Time.Raw.Minute int 1 run scoreboard players get #recording.Time-Minute arena.temp
 
 # 秒
-scoreboard players operation #Recording.Time-Second Arena.Temp /= #20 Constant
-scoreboard players operation #Recording.Time-Second Arena.Temp %= #60 Constant
+scoreboard players operation #recording.Time-Second arena.temp /= #20 Constant
+scoreboard players operation #recording.Time-Second arena.temp %= #60 Constant
 
-execute store result storage arena_normal:temp Recording.Time.Raw.Second int 1 run scoreboard players get #Recording.Time-Second Arena.Temp
+execute store result storage arena_normal:temp recording.Time.Raw.Second int 1 run scoreboard players get #recording.Time-Second arena.temp
 
 # 小数点以下
-scoreboard players operation #Recording.Time-Decimal Arena.Temp %= #20 Constant
-scoreboard players operation #Recording.Time-Decimal Arena.Temp *= #5 Constant
+scoreboard players operation #recording.Time-Decimal arena.temp %= #20 Constant
+scoreboard players operation #recording.Time-Decimal arena.temp *= #5 Constant
 
-execute store result storage arena_normal:temp Recording.Time.Raw.Decimal int 1 run scoreboard players get #Recording.Time-Decimal Arena.Temp
+execute store result storage arena_normal:temp recording.Time.Raw.Decimal int 1 run scoreboard players get #recording.Time-Decimal arena.temp
 
 #> 表示データの作成 (0パディングもするよ)
-function arena_normal:recording/time_conversion/zero_padding with storage arena_normal:temp Recording.Time.Raw
+function arena_normal:recording/time_conversion/zero_padding with storage arena_normal:temp recording.Time.Raw

@@ -3,4 +3,4 @@
 $function arena_boss:type_specific/$(Directory)/spawn
 
 # フラグ解除
-data modify entity @s data.Arena.Timer.WaveWaiting set value false
+data modify entity @s data.arena.Timer.WaveWaiting set value false

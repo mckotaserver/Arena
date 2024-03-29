@@ -1,12 +1,12 @@
 ## LOAD.
 # スコアボード定義 
-scoreboard objectives add Arena.StageId dummy
-scoreboard objectives add Arena.Temp dummy
+scoreboard objectives add arena.StageId dummy
+scoreboard objectives add arena.temp dummy
 scoreboard objectives add arena dummy
 
-scoreboard objectives add Arena.LeaveGame custom:leave_game
-scoreboard objectives add Arena.PlayerID dummy
-scoreboard objectives add Arena.Timer dummy
+scoreboard objectives add arena.leave_game custom:leave_game
+scoreboard objectives add arena.player_id dummy
+scoreboard objectives add arena.timer dummy
 
 scoreboard objectives add Constant dummy
 
@@ -24,10 +24,10 @@ function arena_normal:assets/stage_data/load
 function arena_normal:assets/difficulty/load
 
 # Marker
-execute as @e[tag=arena.normal-stage.Stage-Core] unless data entity @s data.Arena run data merge entity @s {data:{Arena:{isEmpty:true,stage_data:{}}}}
+execute as @e[tag=arena.normal_stage.stage_core] unless data entity @s data.arena run data merge entity @s {data:{arena:{isEmpty:true,stage_data:{}}}}
 
 execute unless data storage arena:records normal run data modify storage arena:records normal set value [{name:"エンドレス",data:[]},{name:"ゾンビ",data:[]},{name:"スケルトン",data:[]},{name:"ブレイズ",data:[]},{name:"スパイダー",data:[]},{name:"スライム",data:[]},{name:"クリーパー",data:[]}]
 
 # team
-team add Arena.Mobs
-team modify Arena.Mobs friendlyFire false
+team add arena.Mobs
+team modify arena.Mobs friendlyFire false

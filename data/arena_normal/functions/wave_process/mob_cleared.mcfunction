@@ -1,6 +1,6 @@
 ## モブクリア時処理
 # タイマー設定
-scoreboard players set @p[tag=arena.normal-stage.Core-Player] Arena.Timer 20
+scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 40
 
 # statusを変更
-data modify entity @e[tag=arena.normal-stage.Stage-Core,sort=nearest,limit=1] data.Arena.status set value "mob_cleared"
+data modify entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.scheduler.command set value "function arena_normal:wave_process/wave_waiting"

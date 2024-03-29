@@ -11,18 +11,18 @@ data remove storage arena_utility:temp quests.daily.selection.type_list[0]
 
     # index設定
         # 乱数生成
-        execute store result score #quests_selection.index Arena.Temp run random value 0..999
+        execute store result score #quests_selection.index arena.temp run random value 0..999
 
         # inの要素数を取得
-        execute store result score #quests_selection.in_list_count Arena.Temp run data get storage kota_library: array_picker.in
+        execute store result score #quests_selection.in_list_count arena.temp run data get storage kota_library: array_picker.in
 
         # 上で取得した合計数で剰余演算
-        scoreboard players operation #quests_selection.index Arena.Temp %= #quests_selection.in_list_count Arena.Temp
-# tellraw awabi2048 ["Picking Index: ",{"score":{"name": "#quests_selection.index","objective": "arena.Temp"},"color": "red"}]
-# tellraw awabi2048 ["In List Count: ",{"score":{"name": "#quests_selection.in_list_count","objective": "arena.Temp"},"color": "red"}]
+        scoreboard players operation #quests_selection.index arena.temp %= #quests_selection.in_list_count arena.temp
+# tellraw awabi2048 ["Picking Index: ",{"score":{"name": "#quests_selection.index","objective": "arena.temp"},"color": "red"}]
+# tellraw awabi2048 ["In List Count: ",{"score":{"name": "#quests_selection.in_list_count","objective": "arena.temp"},"color": "red"}]
 
         # ストレージにコピー
-        execute store result storage kota_library: array_picker.index int 1 run scoreboard players get #quests_selection.index Arena.Temp
+        execute store result storage kota_library: array_picker.index int 1 run scoreboard players get #quests_selection.index arena.temp
 
     # 実行
     data modify storage kota_library: array_picker.option.remove_index set value false

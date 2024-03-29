@@ -19,7 +19,7 @@
                   "type": "minecraft:fixed",
                   "name": "#boss.RewardCount"
                 },
-                "score": "arena.Temp",
+                "score": "arena.temp",
                 "scale": 0.4
               },
               "add": false
@@ -47,7 +47,7 @@
                   "type": "minecraft:fixed",
                   "name": "#boss.RewardCount"
                 },
-                "score": "arena.Temp",
+                "score": "arena.temp",
                 "scale": 0.125
               },
               "add": false

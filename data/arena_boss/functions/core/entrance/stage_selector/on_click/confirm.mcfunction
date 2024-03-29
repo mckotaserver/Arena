@@ -8,18 +8,18 @@ playsound ui.button.click master @s ~ ~ ~ 1 2
 
 #> 入場可否
 # 必要データの取得
-function arena_boss:misc/data_set with entity @e[tag=arena.boss.Selector.Core,sort=nearest,limit=1] data.Arena.SelectorPage
+function arena_boss:misc/data_set with entity @e[tag=arena.boss.Selector.Core,sort=nearest,limit=1] data.arena.SelectorPage
 
 # 入場先マーカーにタグ付け
 function arena_boss:core/entrance/core_selection with storage arena_boss:temp bossData
 
     #> AP の不足
     # 必要APを取得
-    execute store result score #entrance.APRequired Arena.Temp run data get storage arena_boss:temp bossData.required_ap
+    execute store result score #entrance.APRequired arena.temp run data get storage arena_boss:temp bossData.required_ap
 
     # 比較
     data modify storage arena_boss:temp StageJoinable set value true
-    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] if score #entrance.APRequired Arena.Temp > @s arena run data modify storage arena_boss:temp StageJoinable set value false
+    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] if score #entrance.APRequired arena.temp > @s arena run data modify storage arena_boss:temp StageJoinable set value false
 
     # 入場判定 → 不可なら警告して処理中止
     execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.not_enough_arena_point"}]
@@ -29,7 +29,7 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp bo
 
     #> 入場中プレイヤーがいる！ 
     data modify storage arena_boss:temp StageJoinable set value true
-    execute at @e[tag=arena.Temp-bossJoiningStage] if entity @a[tag=arena.boss.Player,distance=..128] run data modify storage arena_boss:temp StageJoinable set value false
+    execute at @e[tag=arena.temp-bossJoiningStage] if entity @a[tag=arena.boss.player,distance=..128] run data modify storage arena_boss:temp StageJoinable set value false
 
     # 入場判定 → 不可なら警告して処理中止
     execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.someone_already_playing"}]
@@ -39,11 +39,11 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp bo
 
     #> 人数判定
     # エリア内の人数, 規定人数を取得
-    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] store result score #entrance.player_count Arena.Temp if entity @a[distance=..4]
-    execute store result score #entrance.player_count-Max Arena.Temp run data get storage arena_boss:temp bossData.max_player
+    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] store result score #entrance.player_count arena.temp if entity @a[distance=..4]
+    execute store result score #entrance.player_count-Max arena.temp run data get storage arena_boss:temp bossData.max_player
 
     data modify storage arena_boss:temp StageJoinable set value true
-    execute if score #entrance.player_count Arena.Temp > #entrance.player_count-Max Arena.Temp run data modify storage arena_boss:temp StageJoinable set value false
+    execute if score #entrance.player_count arena.temp > #entrance.player_count-Max arena.temp run data modify storage arena_boss:temp StageJoinable set value false
 
     # 規定人数を超えている場合 → 警告して処理中止
     execute if data storage arena_boss:temp {StageJoinable:false} at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.too_many_players","with":[{"nbt":"bossData.max_player","storage":"arena_boss:temp","color": "yellow","underlined": true}]}]
@@ -52,12 +52,12 @@ function arena_boss:core/entrance/core_selection with storage arena_boss:temp bo
     execute if data storage arena_boss:temp {StageJoinable:false} run return 0
 
 # 入場判定 → 可なら減算
-execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #entrance.APRequired Arena.Temp
+execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players operation @s arena -= #entrance.APRequired arena.temp
 
 #> 入場処理など
 # 前準備
     # 範囲内のプレイヤーをタグ付け
-    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tag @a[distance=..4] add Arena.boss.Player
+    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tag @a[distance=..4] add arena.boss.player
 
 # 入場先ステージの準備
     # データ設定用ストレージ
@@ -76,22 +76,22 @@ execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] 
     data modify storage arena_boss:temp entrance.data.boss.OperationData set value {}
 
     # プレイヤー数の取得 >> 上記プレイヤー数判定で取得 を流用
-    execute store result storage arena_boss:temp entrance.data.StageData.player_count int 1 run scoreboard players get #entrance.player_count Arena.Temp
+    execute store result storage arena_boss:temp entrance.data.StageData.player_count int 1 run scoreboard players get #entrance.player_count arena.temp
 
 # 帰還用 → 入場ロビーのデータ取得
-data modify storage arena_boss:temp entrance.data.announcement_display.entered_lobby set from entity @e[tag=arena.boss.Lobby,sort=nearest,limit=1] Tags[0]
+data modify storage arena_boss:temp entrance.data.announcement_display.entered_lobby set from entity @e[tag=arena.boss.lobby,sort=nearest,limit=1] Tags[0]
 
-# CorePlayerSelection → ID設定
-execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players set @s Arena.PlayerID -1
-execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] store result score @s Arena.PlayerID if entity @a[distance=..4,scores={Arena.PlayerID=0..}]
+# CoreplayerSelection → ID設定
+execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] run scoreboard players set @s arena.player_id -1
+execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] store result score @s arena.player_id if entity @a[distance=..4,scores={arena.player_id=0..}]
 
 # 開始タイマー関連処理
     # 現在時刻を取得, カウント終了時刻を計算
-    execute store result score #EndTick Arena.Temp run time query gametime
-    scoreboard players add #EndTick Arena.Temp 600
+    execute store result score #EndTick arena.temp run time query gametime
+    scoreboard players add #EndTick arena.temp 600
 
     # 入場先マーカーのデータにコピー
-    execute store result storage arena_boss:temp entrance.data.Timer.EndTick int 1 run scoreboard players get #EndTick Arena.Temp
+    execute store result storage arena_boss:temp entrance.data.Timer.EndTick int 1 run scoreboard players get #EndTick arena.temp
 
     # カウント開始
     data modify storage arena_boss:temp entrance.data.Timer.WaveWaiting set value true
@@ -101,7 +101,7 @@ execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] 
 execute store result storage arena_boss:temp entrance.data.Recording.StartTick int 1 run time query gametime
 
 # ストレージからマーカーにデータコピー
-data modify entity @e[tag=arena.Temp-bossJoiningStage,limit=1] data.Arena set from storage arena_boss:temp entrance.data
+data modify entity @e[tag=arena.temp-bossJoiningStage,limit=1] data.arena set from storage arena_boss:temp entrance.data
 
 # プレイヤー関連
     # tellraw
@@ -109,13 +109,13 @@ data modify entity @e[tag=arena.Temp-bossJoiningStage,limit=1] data.Arena set fr
     execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.game.message.start_announcement"}]
     
     # TP
-    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=arena.Temp-bossJoiningStage] run tp @s ~ ~-0.25 ~ ~ ~
-    execute at @e[tag=arena.Temp-bossJoiningStage] as @a[distance=..4] run tp @s @s
+    execute at @e[tag=arena.boss.entrance,sort=nearest,limit=1] as @a[distance=..4] at @e[tag=arena.temp-bossJoiningStage] run tp @s ~ ~-0.25 ~ ~ ~
+    execute at @e[tag=arena.temp-bossJoiningStage] as @a[distance=..4] run tp @s @s
 
     # playsound
-    execute at @e[tag=arena.Temp-bossJoiningStage] as @a[tag=arena.boss.Player,distance=..32] run playsound entity.ender_dragon.growl master @s ~ ~ ~ 0.5 0.9
+    execute at @e[tag=arena.temp-bossJoiningStage] as @a[tag=arena.boss.player,distance=..32] run playsound entity.ender_dragon.growl master @s ~ ~ ~ 0.5 0.9
 
 #> 後処理
 # 一時タグを処理
-tag @e[tag=arena.Temp-bossJoiningStage] remove Arena.Temp-bossJoiningStage
+tag @e[tag=arena.temp-bossJoiningStage] remove arena.temp-bossJoiningStage
 

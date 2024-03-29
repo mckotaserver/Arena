@@ -4,7 +4,7 @@
         "trigger": "minecraft:entity_killed_player",
         "conditions": {
           "player": {
-            "nbt": "{Tags:[\"arena.normal-stage.Player\"]}"
+            "nbt": "{Tags:[\"arena.normal_stage.player\"]}"
           }
         }
       }

@@ -24,5 +24,5 @@ summon wither_skeleton ~ ~ ~ {Tags:["arena.boss.Main.Hitbox","arena.boss.Main.El
     summon marker ~ ~ ~ {Tags:["arena.boss.Main.Extra-01","arena.boss.Main.Element"]}
 
 #> 共有処理
-function arena_boss:type_specific/general/summon with entity @s data.Arena.boss.StageData
+function arena_boss:type_specific/general/summon with entity @s data.arena.boss.StageData
 function arena_boss:type_specific/blaze_king/animation/start {Animation:"regular"}

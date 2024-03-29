@@ -1,13 +1,13 @@
 ## Config
 data modify storage arena:assets config set value {}
 
-#> PvE Arena 
+#> PvE arena 
 data modify storage arena:assets config.arena_normal set value {}
 
     # エンドレス; ウェーブごとの倍率上昇(%)
     data modify storage arena:assets config.arena_normal.endless_wave_bonus set value 3
 
-#> Arena Quests
+#> arena Quests
 data modify storage arena:assets config.arena_quests set value {}
 
     # デイリークエストの選択個数

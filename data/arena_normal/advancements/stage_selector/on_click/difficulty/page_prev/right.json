@@ -4,7 +4,7 @@
       "trigger": "minecraft:player_interacted_with_entity",
       "conditions": {
         "entity": {
-          "nbt": "{Tags:[\"arena.normal-stage.Selector.Interaction-04\"]}"
+          "nbt": "{Tags:[\"arena.normal_stage.Selector.Interaction-04\"]}"
         }
       }
     }

@@ -23,4 +23,4 @@ data modify storage arena:assets stage_difficulty[-1].reward set value "arena_no
 data modify storage arena:assets stage_difficulty[-1].multiplier set value 1.2f
 
 # 倍率
-data modify storage arena:assets stage_difficulty[-1].speed_multiplier set value 1.2f
+data modify storage arena:assets stage_difficulty[-1].speed_multiplier set value 0.8f

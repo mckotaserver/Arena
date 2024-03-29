@@ -29,5 +29,5 @@ summon interaction ^ ^0.375 ^-0.25 {Tags:["arena.boss.Selector.Interaction-05","
 execute as @e[tag=arena.boss.Selector,distance=..4] run data modify entity @s Rotation set from entity @e[tag=arena.boss.Selector.Core,sort=nearest,limit=1] Rotation
 
 # Coreのページをリセット
-data modify entity @s data.Arena.SelectorPage set value {bossStage:0}
-function arena_boss:core/entrance/stage_selector/reflesh with entity @s data.Arena.SelectorPage
+data modify entity @s data.arena.SelectorPage set value {bossStage:0}
+function arena_boss:core/entrance/stage_selector/reflesh with entity @s data.arena.SelectorPage

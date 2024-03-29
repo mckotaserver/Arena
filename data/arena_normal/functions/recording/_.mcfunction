@@ -1,17 +1,17 @@
 ## 記録関連処理: 終了時
 #> 時間データの整形
     # リセット
-    data modify storage arena_normal:temp Recording set value {}
+    data modify storage arena_normal:temp recording set value {}
 
     # 現在時刻と開始時刻を取得
-    execute store result score #CurrentTick Arena.Temp run time query gametime
-    execute store result score #Recording.StartTick Arena.Temp run data get entity @s data.Arena.Recording.StartTick
+    execute store result score #CurrentTick arena.temp run time query gametime
+    execute store result score #recording.StartTick arena.temp run data get entity @s data.arena.recording.StartTick
 
     # 差分の計算, 最大値 (719999t = 9:59:59.95) を超える場合は上限設定
-    scoreboard players operation #CurrentTick Arena.Temp -= #Recording.StartTick Arena.Temp
-    execute if score #CurrentTick Arena.Temp matches 720000.. run scoreboard players set #CurrentTick Arena.Temp 719999
+    scoreboard players operation #CurrentTick arena.temp -= #recording.StartTick arena.temp
+    execute if score #CurrentTick arena.temp matches 720000.. run scoreboard players set #CurrentTick arena.temp 719999
 
-    execute store result storage arena_normal:temp Recording.Time.Tick int 1 run scoreboard players get #CurrentTick Arena.Temp
+    execute store result storage arena_normal:temp recording.Time.Tick int 1 run scoreboard players get #CurrentTick arena.temp
 
     # 時 / 分 / 秒 / 小数点以下 に変換, 表示データの作成
     function arena_normal:recording/time_conversion/_
@@ -22,8 +22,8 @@
     setblock ~ -64 ~ barrel replace
 
     # 処理
-    execute if data entity @s {data:{Arena:{stage_data:{difficulty:2,player_count:1}}}} as @r[tag=arena.normal-stage.Player,distance=..48] run function arena_normal:recording/register with entity @e[tag=arena.normal-stage.Stage-Core,sort=nearest,limit=1] data.Arena.Spawning.Detail
-    tag @a[tag=arena.Temp-RecordRegistered] remove Arena.Temp-RecordRegistered
+    execute if data entity @s {data:{arena:{stage_data:{difficulty:2,player_count:1}}}} as @r[tag=arena.normal_stage.player,distance=..48] run function arena_normal:recording/register with entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.Spawning.Detail
+    tag @a[tag=arena.temp-recordRegistered] remove arena.temp-recordRegistered
 
     # 後始末
     setblock ~ -64 ~ bedrock replace
