@@ -44,7 +44,7 @@
                   "type": "minecraft:score",
                   "target": {
                     "type": "minecraft:fixed",
-                    "name": "#Reward.ticketCount"
+                    "name": "#reward.ticket_count"
                   },
                   "score": "arena.temp",
                   "scale": 1

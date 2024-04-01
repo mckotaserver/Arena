@@ -20,7 +20,7 @@ data modify storage arena:assets stage_data[-1].health set value [20.0f, 24.0f, 
 data modify storage arena:assets stage_data[-1].strength set value [3.0f, 3.5f, 4.0f, 4.5f, 5.0f]
 
 # 移動速度: speed
-data modify storage arena:assets stage_data[-1].speed set value [0.22f, 0.23f, 0.24f, 0.25f, 0.26f]
+data modify storage arena:assets stage_data[-1].speed set value [0.25f, 0.26f, 0.27f, 0.28f, 0.28f]
 
 #> その他ステージ情報
 # 報酬: reward

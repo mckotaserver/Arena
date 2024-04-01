@@ -3,7 +3,9 @@
 data modify entity @s data.arena.timer.Endtick set value -1
 data modify entity @s data.arena.timer.WaveWaiting set value false
 
-# タイマーまわり
+# エンドレス → モブ抽選
+execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run function arena_normal:endless/mob_drawing
+
 # stage_data → ストレージにコピー
 data modify storage arena_normal:temp stage_data set from entity @s data.arena.stage_data
 
@@ -19,14 +21,6 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
     execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 1 store result entity @s data.arena.recording.start_tick int 1 run time query gametime
 
 #> モブの召喚
-    # エンドレス特有処理
-    execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run function arena_normal:endless/mob_drawing
-
-    # 指定ウェーブのデータを抽出
-    data modify storage kota_library: array_picker.in set from entity @s data.arena.stage_detail.summon_count
-    execute store result storage kota_library: array_picker.index int 1 run data get storage arena_normal:temp stage_data.wave 0.9999
-    function kota_library:storage_modifier/array_picker with storage kota_library: array_picker
-
     # 召喚数の設定
         # プレイ中のステージのモブ種類データを取得
         data modify storage kota_library: array_picker.in set from storage arena:assets stage_data
@@ -36,7 +30,9 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
 
         # 上記検索結果から, 現在のウェーブの召喚数データを取得
         data modify storage kota_library: array_picker.in set from storage kota_library: array_picker.out.summon_count
-        execute store result storage kota_library: array_picker.index int 0.999 run data get storage arena_normal:temp stage_data.wave
+
+        execute if data storage arena_normal:temp {stage_data:{type:"normal"}} store result storage kota_library: array_picker.index int 1 run data get storage arena_normal:temp stage_data.wave 0.9999
+        execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run data modify storage kota_library: array_picker.index set value 4
 
         function kota_library:storage_modifier/array_picker with storage kota_library: array_picker
 

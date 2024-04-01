@@ -49,7 +49,7 @@ data modify entity @s data.arena.scheduler.command set value "function arena_nor
     $data modify entity @s data.arena.announcement_display.difficulty_color set from storage arena:assets stage_difficulty[$(difficulty)].display.color
 
 # チケットの配布
-$execute store result score #Reward.ticketCount arena.temp run data get storage arena:assets stage_data[$(mob_type)].reward[$(difficulty)]
+$execute store result score #reward.ticket_count arena.temp run data get storage arena:assets stage_data[$(mob_type)].reward[$(difficulty)]
  
 $execute as @a[tag=arena.normal_stage.player,distance=..48] at @s run function arena_normal:end/loot_macro with storage arena:assets stage_difficulty[$(difficulty)]
 

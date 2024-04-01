@@ -18,7 +18,7 @@ data modify storage arena_normal:temp spawning_data.macro.mob_nbt set value {}
 
     # NBT
         # Attributes
-        data modify storage arena_normal:temp spawning_data.macro.mob_nbt.Attributes set value [{Base:0d,Name:"minecraft:generic.max_health"},{Base:0d,Name:"minecraft:generic.attack_damage"},{Base:0d,Name:"minecraft:generic.movement_speed"}]
+        data modify storage arena_normal:temp spawning_data.macro.mob_nbt.Attributes set value [{Base:0d,Name:"minecraft:generic.max_health"},{Base:0d,Name:"minecraft:generic.attack_damage"},{Base:0d,Name:"minecraft:generic.movement_speed"},{Base:128d,Name:"minecraft:generic.follow_range"}]
 
         # Tags
         data modify storage arena_normal:temp spawning_data.macro.mob_nbt.Tags set value ["arena.normal_stage.mob"]
