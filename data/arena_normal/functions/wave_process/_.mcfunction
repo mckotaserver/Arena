@@ -1,6 +1,6 @@
 #> 前処理
-# Timerリセット
-data modify entity @s data.arena.timer.EndTick set value -1
+# timerリセット
+data modify entity @s data.arena.timer.Endtick set value -1
 data modify entity @s data.arena.timer.WaveWaiting set value false
 
 # タイマーまわり
@@ -16,7 +16,7 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
     execute store result storage arena_normal:temp stage_data.wave int 1 run scoreboard players get #Wave arena.temp
 
     # 開始直後 → 記録関連処理
-    execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 1 store result entity @s data.arena.recording.StartTick int 1 run time query gametime
+    execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 1 store result entity @s data.arena.recording.start_tick int 1 run time query gametime
 
 #> モブの召喚
     # エンドレス特有処理
@@ -49,12 +49,12 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
         scoreboard players operation #summon_count arena.temp *= #difficulty_multiplier arena.temp
 
         # マーカーにデータ戻す
-        execute store result entity @s data.arena.Spawning.counter int 0.01 run scoreboard players get #summon_count arena.temp
+        execute store result entity @s data.arena.spawning.counter int 0.01 run scoreboard players get #summon_count arena.temp
 
     # ステータス倍率の再計算; エンドレスならウェーブを乗算
         # ウェーブ → エンドレスなら +3 %/wave
         execute store result score #data_modifying.result arena.temp run data get storage arena_normal:temp spawning_data.stage_data.multipliers.base 100
-        execute store result score #data_modifying.wave_bonus arena.temp run data get storage arena:assets config.arena_normal.endless_wave_bonus
+        execute store result score #data_modifying.wave_bonus arena.temp run data get storage arena:assets config.arena_normal.endless.wave_bonus
 
         scoreboard players operation #data_modifying.result arena.temp += #data_modifying.wave_bonus arena.temp
 

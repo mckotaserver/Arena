@@ -9,7 +9,7 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{arena:Ticket-Easy,CustomModelData:2000031}"
+                "tag": "{arena:ticket-Easy,CustomModelData:2000031}"
               },
               {
                 "function": "minecraft:set_lore",
@@ -44,7 +44,7 @@
                   "type": "minecraft:score",
                   "target": {
                     "type": "minecraft:fixed",
-                    "name": "#Reward.TicketCount"
+                    "name": "#Reward.ticketCount"
                   },
                   "score": "arena.temp",
                   "scale": 1

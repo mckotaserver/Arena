@@ -1,1 +1,0 @@
-execute as @a[tag=arena.normal_stage.player] if score @s arena.leave_game matches 1.. at @s run function arena_normal:anti_cheat/reloading with entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.announcement_display

@@ -9,7 +9,7 @@ playsound ui.button.click master @s ~ ~ ~ 1 2
 #> 入場可否
 # 必要データの取得
 data modify storage kota_library: array_picker.in set from storage arena:assets stage_data
-data modify storage kota_library: array_picker.index set from entity @e[tag=arena.normal_stage.Selector-Core,sort=nearest,limit=1] data.arena.SelectorPage.mob_type
+data modify storage kota_library: array_picker.index set from entity @e[tag=arena.normal_stage.selector_core,sort=nearest,limit=1] data.arena.selector_page.mob_type
 
 function kota_library:storage_modifier/array_picker with storage kota_library: array_picker 
 
@@ -35,12 +35,12 @@ execute if data entity @e[tag=arena.normal_stage.lobby,sort=nearest,limit=1] {da
 
     #> 空きステージの有無
         # 空きステージにタグ付与
-        execute as @e[tag=arena.normal_stage.stage_core] at @s unless entity @a[tag=arena.normal_stage.player,distance=..48] run tag @s add arena.temp-EmptyStage
+        execute as @e[tag=arena.normal_stage.stage_core] at @s unless entity @a[tag=arena.normal_stage.player,distance=..48] run tag @s add arena.temp.EmptyStage
 
         data modify storage arena_normal:temp entrance.available set value true
-        execute unless entity @e[tag=arena.temp-EmptyStage] run data modify storage arena_normal:temp entrance.available set value false
+        execute unless entity @e[tag=arena.temp.EmptyStage] run data modify storage arena_normal:temp entrance.available set value false
 
-        tag @e[tag=arena.temp-EmptyStage] remove arena.temp-EmptyStage
+        tag @e[tag=arena.temp.EmptyStage] remove arena.temp.EmptyStage
 
         # 入場判定 → 不可なら警告して処理中止
         execute if data storage arena_normal:temp {entrance:{available:false}} at @e[tag=arena.normal_stage.entrance,sort=nearest,limit=1] run tellraw @a[distance=..4] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.error.no_available_stage"}]
@@ -88,7 +88,7 @@ execute at @e[tag=arena.normal_stage.entrance,sort=nearest,limit=1] as @a[distan
         data modify storage arena_normal:temp entrance.data.isEmpty set value false
 
         # 選択したステージの種類・難易度データをコピー
-        data modify storage arena_normal:temp entrance.data.stage_data set from entity @e[tag=arena.normal_stage.Selector-Core,sort=nearest,limit=1] data.arena.SelectorPage
+        data modify storage arena_normal:temp entrance.data.stage_data set from entity @e[tag=arena.normal_stage.selector_core,sort=nearest,limit=1] data.arena.selector_page
 
         # ステージ種類データ
         data modify storage arena_normal:temp entrance.data.stage_data.type set from entity @e[tag=arena.normal_stage.lobby,sort=nearest,limit=1] data.arena.lobby_type
@@ -135,14 +135,14 @@ data modify storage arena_normal:temp entrance.data.announcement_display.entered
     data modify storage arena_normal:temp entrance.data.scheduler.command set value "function arena_normal:wave_process/count_down"
 
     # フラグの有無でカウントを設定
-    execute if entity @s[tag=arena.normal_stage.player,tag=!arena.flags-count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 15
-    execute unless entity @s[tag=arena.normal_stage.player,tag=!arena.flags-count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 5
+    execute if entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 15
+    execute unless entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 5
 
     # tellraw のための秒数取得
     data modify storage arena_normal:temp misc.tellraw.wave_break set from storage arena_normal:temp entrance.data.misc.countdown
 
 # クリア記録関係
-execute store result storage arena_normal:temp entrance.data.recording.StartTick int 1 run time query gametime
+execute store result storage arena_normal:temp entrance.data.recording.start_tick int 1 run time query gametime
 
 # ストレージからマーカーにデータコピー
 data modify entity @e[tag=arena.temp.stage_selected,limit=1] data.arena set from storage arena_normal:temp entrance.data

@@ -4,7 +4,7 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "entity": {
-          "nbt": "{Tags:[\"arena.normal_stage.Selector.Interaction-02\"]}"
+          "nbt": "{Tags:[\"arena.normal_stage.selector.interaction_02\"]}"
         }
       }
     }

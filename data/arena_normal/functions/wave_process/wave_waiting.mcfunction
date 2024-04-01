@@ -9,8 +9,8 @@
         execute as @a[tag=arena.normal_stage.player,distance=..48] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 1
 
         # タイマー設定
-        execute if entity @s[tag=arena.normal_stage.player,tag=!arena.flags-count_skip,distance=..48] run scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 300
-        execute unless entity @s[tag=arena.normal_stage.player,tag=!arena.flags-count_skip,distance=..48] run scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 100
+        execute if entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 300
+        execute unless entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 100
 
         # tellraw
         execute store result storage arena_normal:temp misc.tellraw.wave_break int 0.05 run scoreboard players get @p[tag=arena.normal_stage.core_player] arena.timer
@@ -39,6 +39,6 @@ function arena_normal:wave_process/count_down
         function arena_normal:endless/reward
         
         # tellraw
-        tellraw @a[tag=arena.normal_stage.player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.arena.stage_data.wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.TicketCount","objective": "arena.temp"},"color": "aqua","bold": true}]}]
+        tellraw @a[tag=arena.normal_stage.player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_announce.endless","with":[{"nbt":"data.arena.stage_data.wave","entity":"@s","color": "gold"},{"score":{"name": "#Reward.ticketCount","objective": "arena.temp"},"color": "aqua","bold": true}]}]
 
 

@@ -5,7 +5,13 @@ data modify storage arena:assets config set value {}
 data modify storage arena:assets config.arena_normal set value {}
 
     # エンドレス; ウェーブごとの倍率上昇(%)
-    data modify storage arena:assets config.arena_normal.endless_wave_bonus set value 3
+    data modify storage arena:assets config.arena_normal.endless.wave_bonus set value 3
+
+    # エンドレス; 入場可能プレイヤー数
+    data modify storage arena:assets config.arena_normal.endless.max_player set value 6
+
+    # エンドレス; 入場可能プレイヤー数
+    data modify storage arena:assets config.arena_normal.endless.required_ap set value 6
 
 #> arena Quests
 data modify storage arena:assets config.arena_quests set value {}

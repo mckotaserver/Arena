@@ -13,6 +13,6 @@ setblock ~ -64 ~ bedrock replace
 function arena_normal:recording/stats/macro with storage arena_normal:temp stats
 
 #> 再起
-tag @s add arena.temp-stats_registered
-execute as @r[tag=arena.normal_stage.player,tag=!arena.temp-stats_registered,distance=..48] at @s run function arena_normal:recording/stats/_
+tag @s add arena.temp.stats_registered
+execute as @r[tag=arena.normal_stage.player,tag=!arena.temp.stats_registered,distance=..48] at @s run function arena_normal:recording/stats/_
 
