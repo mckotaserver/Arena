@@ -19,10 +19,17 @@
 
     # クエスト進捗判定
         # 必要なデータを取得
-        data modify storage arena_normal:temp quest_testify.quests set from storage arena:quests daily
-        data modify storage arena_normal:temp quest_testify.quests append from storage arena:quests weekly
+        data remove storage arena_quests:temp quest_testify.quests
 
-        function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
+        data modify storage arena_quests:temp quest_testify.quests set from storage arena:quests daily
+        data modify storage arena_quests:temp quest_testify.quests append from storage arena:quests weekly
+
+        tag @a[distance=..48,tag=arena.normal_stage.player] add arena.temp.quest_testify
+
+        execute as @r[distance=..48,tag=arena.normal_stage.player] at @s run function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
+
+        # バックアップ
+        data modify storage arena:quests backup set from storage arena:quests player_data
 
 # ステージリセット
 function arena_normal:misc/stage_reset

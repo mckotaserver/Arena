@@ -4,6 +4,8 @@ execute store result storage kota_library:temp progress_bar_generation.count_fil
 
 execute if data storage kota_library:temp {progress_bar_generation:{count_unfilled:0,count_filled:0}} run return 0
 
-execute unless data storage kota_library:temp {progress_bar_generation:{count_filled:0}} unless data storage kota_library:temp {progress_bar_generation:{count_unfilled:0,count_filled:0}} run function kota_library:misc/progress_bar_generation/filled_construction with storage kota_library:temp progress_bar_generation.out
-execute if data storage kota_library:temp {progress_bar_generation:{count_filled:0}} unless data storage kota_library:temp {progress_bar_generation:{count_unfilled:0,count_filled:0}} run function kota_library:misc/progress_bar_generation/unfilled_construction with storage kota_library:temp progress_bar_generation.out
+# tellraw @a {"storage":"kota_library:temp","nbt":"progress_bar_generation.count_unfilled"}
+
+execute unless data storage kota_library:temp {progress_bar_generation:{count_filled:0}} run function kota_library:misc/progress_bar_generation/filled_construction with storage kota_library:temp progress_bar_generation.out
+execute if data storage kota_library:temp {progress_bar_generation:{count_filled:0}} run function kota_library:misc/progress_bar_generation/unfilled_construction with storage kota_library:temp progress_bar_generation.out
 

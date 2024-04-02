@@ -76,3 +76,4 @@ execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score 
 execute if data storage arena_normal:temp {stage_data:{type:"endless"}} if score #Wave arena.temp matches 1 run title @a[tag=arena.normal_stage.player,distance=..48] title {"translate":"kota-server.arena.game.message.wave_proceeded-endless"}
 execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run title @a[tag=arena.normal_stage.player,distance=..48] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded","with":[{"score":{"name": "#Wave","objective": "arena.temp"},"color": "gold"}]}
 
+

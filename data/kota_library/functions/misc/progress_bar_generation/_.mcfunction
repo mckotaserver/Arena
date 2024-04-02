@@ -21,7 +21,7 @@ data remove storage kota_library: progress_bar_generation.out
 
 # 再帰処理開始
 execute if data storage kota_library: {progress_bar_generation:{alignment:"left"}} run function kota_library:misc/progress_bar_generation/filled_construction with storage kota_library:temp progress_bar_generation.out 
-execute if data storage kota_library: {progress_bar_generation:{alignment:"right"}} run function kota_library:misc/progress_bar_generation/unfilled_construction with storage kota_library:temp progress_bar_generation.out
+# execute if data storage kota_library: {progress_bar_generation:{alignment:"right"}} run function kota_library:misc/progress_bar_generation/unfilled_construction with storage kota_library:temp progress_bar_generation.out
 
 # 出力
 data modify storage kota_library:temp progress_bar_generation.out.color_filled set from storage kota_library: progress_bar_generation.color_filled 

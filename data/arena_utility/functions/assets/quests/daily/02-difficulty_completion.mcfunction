@@ -8,6 +8,7 @@ data modify storage arena:assets utility.quests[-1].requirement set value {}
     data modify storage arena:assets utility.quests[-1].requirement.type set value "difficulty_completion"
     data modify storage arena:assets utility.quests[-1].requirement.count set value 15
     data modify storage arena:assets utility.quests[-1].requirement.difficulty set value 2
+    data modify storage arena:assets utility.quests[-1].requirement.stage_type set value "normal"
 
 # 種類: daily/weekly
 data modify storage arena:assets utility.quests[-1].type set value "daily"

@@ -39,4 +39,4 @@
 # tellraw awabi2048 {"text": "============== END OF SELECTION ============","color": "gray"}
 
 #> プレイヤーごとの記録をリセット
-data modify storage arena:quests player_data set value []
+data remove storage arena:quests player_data[].daily
