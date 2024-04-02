@@ -16,10 +16,12 @@
             }
           ],
           "items": [
-            {
-              "tag": "minecraft:paper"
-            }
-          ]
+          {
+            "items": [
+              "minecraft:paper"
+            ]
+          }
+        ]
         }
       }
     },

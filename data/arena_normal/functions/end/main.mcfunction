@@ -19,9 +19,10 @@
 
     # クエスト進捗判定
         # 必要なデータを取得
-        data modify storage arena_normal:temp quest_testify.main 
+        data modify storage arena_normal:temp quest_testify.quests set from storage arena:quests daily
+        data modify storage arena_normal:temp quest_testify.quests append from storage arena:quests weekly
 
-        function arena_normal:end/quest/testify with storage arena_normal:temp stage_data
+        function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
 
 # ステージリセット
 function arena_normal:misc/stage_reset
