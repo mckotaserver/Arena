@@ -4,7 +4,7 @@ data modify entity @s data.arena.timer.Endtick set value -1
 data modify entity @s data.arena.timer.WaveWaiting set value false
 
 # エンドレス → モブ抽選
-execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run function arena_normal:endless/mob_drawing
+execute if data entity @s {data:{arena:{stage_data:{type:"endless"}}}} run function arena_normal:endless/mob_drawing
 
 # stage_data → ストレージにコピー
 data modify storage arena_normal:temp stage_data set from entity @s data.arena.stage_data

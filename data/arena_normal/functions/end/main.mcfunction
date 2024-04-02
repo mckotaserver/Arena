@@ -17,6 +17,12 @@
         execute if data storage arena_normal:temp {stage_data:{difficulty:2,player_count:1,mob_type:4}} run function arena_normal:misc/advancements_grant {path:"lonesome_challenge/slime"}
         execute if data storage arena_normal:temp {stage_data:{difficulty:2,player_count:1,mob_type:5}} run function arena_normal:misc/advancements_grant {path:"lonesome_challenge/creeper"}
 
+    # クエスト進捗判定
+        # 必要なデータを取得
+        data modify storage arena_normal:temp quest_testify.main 
+
+        function arena_normal:end/quest/testify with storage arena_normal:temp stage_data
+
 # ステージリセット
 function arena_normal:misc/stage_reset
 
@@ -25,10 +31,9 @@ scoreboard players reset @p[tag=arena.normal_stage.core_player] arena.timer
 data modify entity @s data.arena.scheduler set value {}
 
 #> 記録まわり
-
     # 記録更新 → 特殊表示 & 鯖内通知
     $execute if data entity @s {data:{arena:{is_new_record:true}}} run tellraw @a[tag=arena.normal_stage.player,distance=..48] [{"translate":"kota-server.arena.game.message.new_record_player","with":[{"text":"$(record)","color": "yellow"}]}]
-    $execute if data entity @s {data:{arena:{is_new_record:true}}} run tellraw @a [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.new_record_server","with":[{"text":"$(player_name)","color": "gold"},{"translate":"$(difficulty)","color": "$(difficulty_color)"},{"translate":"$(mob_name)","color": "$(difficulty_color)"},{"translate":"kota-server.arena.game.arena","color": "$(difficulty_color)"},{"text":"$(record)","color": "yellow"}]}]
+    $execute if data entity @s {data:{arena:{is_new_record:true}}} run tellraw @a [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.new_record_server","with":[{"selector":"@p[tag=arena.normal_stage.core_player]","color": "gold"},{"translate":"$(difficulty)","color": "$(difficulty_color)"},{"translate":"$(mob_name)","color": "$(difficulty_color)"},{"translate":"kota-server.arena.game.arena","color": "$(difficulty_color)"},{"text":"$(record)","color": "yellow"}]}]
 
     execute if data entity @s {data:{arena:{is_new_record:true}}} as @a at @s run playsound minecraft:block.anvil.use master @s ~ ~ ~ 1 1.5
 

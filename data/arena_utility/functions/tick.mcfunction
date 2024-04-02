@@ -4,3 +4,7 @@ execute at @a[tag=arena.Utility.Altar.User] as @e[tag=arena.Utility.Altar.Core,s
 
 # 離れたプレイヤー
 execute as @a[tag=arena.Utility.Altar.User] at @s unless entity @e[tag=arena.Utility.Altar.Core,distance=..8] run function arena_utility:altar/user_left
+
+# trigger
+execute as @a if score @s arena.trigger = @s arena.trigger unless score @s arena.trigger matches 0 at @s run function arena_utility:score_triggered
+

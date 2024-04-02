@@ -9,7 +9,7 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{arena:ticket-Easy,CustomModelData:2000031}"
+                "tag": "{arena:ticket_easy,CustomModelData:2000031}"
               },
               {
                 "function": "minecraft:set_lore",

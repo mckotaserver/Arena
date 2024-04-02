@@ -16,7 +16,7 @@ data modify storage arena_utility:temp quests.display.progress_rate set value 0
     scoreboard players operation #progress_rate_calc.current arena.temp *= #100 Constant
     scoreboard players operation #progress_rate_calc.current arena.temp /= #progress_rate_calc.goal arena.temp
 
-
 #> tellraw
     # 
     function arena_utility:quests/display/tellraw with storage arena_utility:temp quests.display
+

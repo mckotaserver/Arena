@@ -8,6 +8,8 @@ scoreboard objectives add arena.leave_game custom:leave_game
 scoreboard objectives add arena.player_id dummy
 scoreboard objectives add arena.timer dummy
 
+scoreboard objectives add arena.trigger trigger ""
+
 scoreboard objectives add Constant dummy
 
 scoreboard players set #-1 Constant -1

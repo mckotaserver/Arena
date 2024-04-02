@@ -9,7 +9,7 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{arena:ticket-Normal,CustomModelData:2000032}"
+                "tag": "{arena:ticketnormal,CustomModelData:2000032}"
               },
               {
                 "function": "minecraft:set_lore",

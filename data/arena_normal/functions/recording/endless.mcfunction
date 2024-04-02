@@ -4,10 +4,10 @@ data modify storage arena_normal:temp recording.compound set value {}
 
 #> 各データをまとめ
 # 実記録 (Wave)
-data modify storage arena_normal:temp recording.compound.record set from storage arena_normal:temp recording.Actualrecord
+data modify storage arena_normal:temp recording.compound.record set from storage arena_normal:temp recording.actual_record
 
 # 表示データ作成
-$data modify storage arena_normal:temp recording.compound.display_data set value "Wave $(Actualrecord)" 
+$data modify storage arena_normal:temp recording.compound.display_data set value "Wave $(actual_record)" 
 
 # UUID
 data modify storage arena_normal:temp recording.compound.UUID set from entity @s UUID
