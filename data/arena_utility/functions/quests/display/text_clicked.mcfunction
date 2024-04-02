@@ -19,7 +19,7 @@
     data modify storage arena_quests:temp display.detailed.objective set from storage kota_library: array_picker.out.requirement.count
 
     # 達成率の設定をコピー
-    data modify storage arena_quests:temp display.detailed.show_progress_bar set from storage kota_library: array_picker.out.show_progress_bar
+    data modify storage arena_quests:temp display.detailed.enable_progress set from storage kota_library: array_picker.out.enable_progress
 
     # 現在の値の取得
         # @sの名前を取得
@@ -44,8 +44,8 @@
         data modify storage arena_quests:temp display.detailed.current_value set from storage kota_library: array_picker.out.current_value
 
     # 割合なければ達成/未達成で判断
-    execute if data storage arena_quests:temp {display:{detailed:{show_progress_bar:false}}} run data modify storage arena_quests:temp display.detailed.objective set value 1
-    execute if data storage arena_quests:temp {display:{detailed:{show_progress_bar:false}}} store result storage arena_quests:temp display.detailed.current_value int 1 if data storage kota_library: {array_picker:{out:{is_completed:true}}}
+    execute if data storage arena_quests:temp {display:{detailed:{enable_progress:false}}} run data modify storage arena_quests:temp display.detailed.objective set value 1
+    # execute if data storage arena_quests:temp {display:{detailed:{enable_progress:false}}} store result storage arena_quests:temp display.detailed.current_value int 1 if data storage kota_library: {array_picker:{out:{is_completed:true}}}
 
     # 目標値に対する割合を計算 (%)
     execute store result score #quests.progress_rate.result arena.temp run data get storage arena_quests:temp display.detailed.current_value 100

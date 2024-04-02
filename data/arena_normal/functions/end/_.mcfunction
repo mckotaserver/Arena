@@ -22,6 +22,8 @@ data modify entity @s data.arena.scheduler.command set value "function arena_nor
     function arena_normal:recording/_
 
     data modify entity @s data.arena.announcement_display.record set from storage arena_normal:temp recording.time.display_data
+    data modify entity @s data.arena.announcement_display.record_tick set from storage arena_normal:temp recording.time.tick
+
     data modify entity @s data.arena.announcement_display.player_name set from storage arena_normal:temp recording.compound.Name
 
     execute if data entity @s {data:{arena:{stage_data:{difficulty:2}}}} if data storage arena_normal:temp {recording:{insertion:{conditionMatched:true,counter:0}}} run data modify entity @s data.arena.is_new_record set value true

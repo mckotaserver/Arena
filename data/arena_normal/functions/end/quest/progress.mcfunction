@@ -10,7 +10,7 @@
 
     # 要件・クリア時の記録(tick)を取得
     execute store result score #quest_testify.time_limit arena.temp run data get storage arena_quests:temp quest_testify.quests[0].requirement.time_limit
-    execute store result score #quest_testify.record arena.temp run data get entity @e[type=marker,sort=nearest,limit=1] data.arena.announcement_display.record
+    execute store result score #quest_testify.record arena.temp run data get entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.announcement_display.record_tick
 
     # ひとつでも違う条件があれば判定失敗
     data modify storage arena_quests:temp quest_testify.test_passed set value true
@@ -31,7 +31,7 @@
     data modify storage arena_quests:temp quest_progress.id set from storage arena_quests:temp quest_testify.quests[0].id
     data modify storage arena_quests:temp quest_progress.player_name set from storage kota_library: get_player_name.out
     
-# tellraw awabi2048 ["quest_testify: ",{"nbt":"quest_testify.quests[0].id","storage":"arena_quests:temp","color":"red"},", \n",{"nbt":"quest_testify.test_passed","storage":"arena_quests:temp","color":"yellow"},", \n",{"nbt":"quest_testify.value_check","storage":"arena_quests:temp","color":"gold"},"\n"]
+# tellraw @a ["quest_testify: ",{"nbt":"quest_testify.quests[0].id","storage":"arena_quests:temp","color":"red"},", \n",{"nbt":"quest_testify.test_passed","storage":"arena_quests:temp","color":"yellow"},", \n",{"nbt":"quest_testify.value_check","storage":"arena_quests:temp","color":"gold"},"\n"]
 
     execute if data storage arena_quests:temp {quest_testify:{test_passed:true}} run function arena_normal:end/quest/progress_macro with storage arena_quests:temp quest_progress
 

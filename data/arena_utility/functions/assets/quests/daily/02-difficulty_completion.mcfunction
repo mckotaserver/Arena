@@ -14,7 +14,7 @@ data modify storage arena:assets utility.quests[-1].requirement set value {}
 data modify storage arena:assets utility.quests[-1].type set value "daily"
 
 # 進捗計算の方法
-data modify storage arena:assets utility.quests[-1].show_progress_bar set value true
+data modify storage arena:assets utility.quests[-1].enable_progress set value true
 
 # 難易度: easy/normal/hard
 data modify storage arena:assets utility.quests[-1].difficulty set value "hard"
