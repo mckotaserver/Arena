@@ -23,11 +23,11 @@ data modify entity @s data.arena.scheduler.command set value "function arena_nor
     execute if score #misc.countdown arena.temp matches 6.. unless score #misc.countdown arena.temp matches 10 unless score #misc.countdown arena.temp matches 20 run return 0
 
     # tellraw / title
-    title @a[tag=arena.normal_stage.player,distance=..48] title ""
-    title @a[tag=arena.normal_stage.player,distance=..48] times 6t 40t 10t
+    title @a[tag=arena.normal_stage.player,distance=..32] title ""
+    title @a[tag=arena.normal_stage.player,distance=..32] times 6t 40t 10t
 
-    tellraw @a[tag=arena.normal_stage.player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_countdown-tellraw","with":[{"nbt":"misc.countdown","storage":"arena_normal:temp","color": "yellow","underlined": true}]}]
-    title @a[tag=arena.normal_stage.player,distance=..48] subtitle {"translate":"kota-server.arena.game.message.wave_countdown-title","with":[{"nbt":"misc.countdown","storage":"arena_normal:temp","color": "yellow"}]}
+    tellraw @a[tag=arena.normal_stage.player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.wave_countdown-tellraw","with":[{"nbt":"misc.countdown","storage":"arena_normal:temp","color": "yellow","underlined": true}]}]
+    title @a[tag=arena.normal_stage.player,distance=..32] subtitle {"translate":"kota-server.arena.game.message.wave_countdown-title","with":[{"nbt":"misc.countdown","storage":"arena_normal:temp","color": "yellow"}]}
 
     # playsound
-    execute as @a[tag=arena.normal_stage.player,distance=..48] at @s run playsound ui.button.click master @s ~ ~ ~ 1 2
+    execute as @a[tag=arena.normal_stage.player,distance=..32] at @s run playsound ui.button.click master @s ~ ~ ~ 1 2

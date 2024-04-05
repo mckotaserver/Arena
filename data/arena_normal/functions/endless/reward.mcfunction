@@ -5,5 +5,5 @@ $execute store result score #reward.ticket_count arena.temp run data get entity 
 $scoreboard players add #reward.ticket_count arena.temp $(addition)
 
 # チケット配布
-loot give @a[tag=arena.normal_stage.player,distance=..48] loot arena_normal:ticket/hard
+loot give @a[tag=arena.normal_stage.player,distance=..32] loot arena_normal:ticket/hard
 

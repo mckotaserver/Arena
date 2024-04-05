@@ -5,8 +5,8 @@
     data modify storage arena_utility:temp data.arena.Altar.ProductGive.Slot set value 0b
 
     # 一時コンテナ設置, 中身いじる
-    setblock ~ -64 ~ shulker_box replace
-    data modify block ~ -64 ~ Items append from storage arena_utility:temp data.arena.Altar.ProductGive
+    execute in overworld run setblock 0 -64 0 shulker_box replace
+    execute in overworld run data modify block ~ -64 ~ Items append from storage arena_utility:temp data.arena.Altar.ProductGive
 
     # インベントリいっぱいか判定
     data modify storage arena_utility:temp data.arena.Altar.UserInvSlot set from entity @p[tag=arena.Utility.Altar.User] Inventory[35].Slot
@@ -25,7 +25,7 @@
     tag @p[tag=arena.Utility.Altar.User] remove arena.Utility.Altar.User
 
     # 
-    setblock ~ -64 ~ bedrock
+    execute in overworld run setblock 0 -64 0 bedrock
 
     # 配置済みアイテムの削除
     data modify entity @s data.arena.Altar.PlacedItem set value []
@@ -37,3 +37,4 @@
     # スケジュールまわりリセット
     scoreboard players reset @s arena.temp
     data modify entity @s data.arena.Scheduling set value ""
+    

@@ -5,11 +5,12 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "minecraft:player_head",
+            "name": "minecraft:book",
             "functions": [
               {
-                "function": "minecraft:fill_player_head",
-                "entity": "this"
+                "function": "minecraft:enchant_with_levels",
+                "levels": 25,
+                "treasure": false
               }
             ]
           }

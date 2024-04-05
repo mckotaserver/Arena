@@ -1,4 +1,7 @@
 ## クエスト報酬付与
+#  playsound
+playsound minecraft:ui.button.click master @s ~ ~ ~ 1 2
+
 # 目標と一致したなら処理
     data modify storage arena_quests:temp check_reward.main set from storage arena:quests daily
     data modify storage arena_quests:temp check_reward.main append from storage arena:quests weekly

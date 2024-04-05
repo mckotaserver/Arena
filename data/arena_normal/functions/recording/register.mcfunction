@@ -13,8 +13,8 @@ data modify storage arena_normal:temp recording.compound.record set from storage
 data modify storage arena_normal:temp recording.compound.UUID set from entity @s UUID
 
 # プレイヤー名の取得
-loot replace block ~ -64 ~ container.0 loot arena_normal:misc/player_head
-data modify storage arena_normal:temp recording.compound.Name set from block ~ -64 ~ Items[{Slot:0b}].tag.SkullOwner.Name
+function kota_library:misc/get_player_name
+data modify storage arena_normal:temp recording.compound.Name set from storage kota_library: get_player_name.out
 
 # タイムスタンプ
 execute store result storage arena_normal:temp recording.compound.time_stamp int 1 run time query gametime
@@ -39,5 +39,5 @@ execute store result storage arena_normal:temp recording.compound.time_stamp int
 
 #> 再起
 # tag @s add arena.temp.record_registered
-# execute as @r[tag=arena.normal_stage.player,tag=!arena.temp.record_registered,distance=..48] run function arena_normal:recording/register with entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.stage_data
+# execute as @r[tag=arena.normal_stage.player,tag=!arena.temp.record_registered,distance=..32] run function arena_normal:recording/register with entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.stage_data
 

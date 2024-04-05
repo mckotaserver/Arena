@@ -1,0 +1,54 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:carrot_on_a_stick",
+            "functions": [
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": [
+                  {
+                    "text": "エンチャントの本のバンドル",
+                    "color": "aqua",
+                    "italic": false
+                  },
+                  {
+                    "text": "【松】",
+                    "color": "red",
+                    "bold": false,
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "text": "右クリックして使用します。",
+                    "color": "gray",
+                    "italic": false
+                  },
+                  {
+                    "text": "中身は開けてからのお楽しみ！",
+                    "color": "yellow",
+                    "italic": false
+                  }
+                ],
+                "replace": false
+              },
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{CustomModelData:2000062}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

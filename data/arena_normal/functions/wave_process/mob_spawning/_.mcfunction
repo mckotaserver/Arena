@@ -1,6 +1,6 @@
 ## モブ召喚処理
 # 重複防止
-execute at @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] run tag @e[tag=arena.normal_stage.spawn_marker,distance=..48] remove arena.temp.recent_spawned
+execute at @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] run tag @e[tag=arena.normal_stage.spawn_marker,distance=..32] remove arena.temp.recent_spawned
 tag @s add arena.temp.recent_spawned
 
 #> 乱数から召喚
@@ -24,7 +24,7 @@ execute if data entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1
 
 # 20tick後に再起
 scoreboard players set @p[tag=arena.normal_stage.core_player] arena.timer 20
-data modify entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.scheduler.command set value "execute as @e[tag=arena.normal_stage.spawn_marker,sort=random,limit=1,distance=..48,tag=!arena.temp.arena.temp.recent_spawned] at @s run function arena_normal:wave_process/mob_spawning/_"
+data modify entity @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] data.arena.scheduler.command set value "execute as @e[tag=arena.normal_stage.spawn_marker,sort=random,limit=1,distance=..32,tag=!arena.temp.arena.temp.recent_spawned] at @s run function arena_normal:wave_process/mob_spawning/_"
 
     # tellraw awabi2048 {"text": "","color": "aqua","extra":[{"text":"[DEBUG]","color": "dark_purple"},{"text": "SCHEDULING:"},{"nbt":"data.arena.scheduler.command","entity": "@e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1]"}]}
     # tellraw awabi2048 {"text": "- ","color": "red","extra":[{"text":"[DEBUG]","color": "dark_purple"},{"text": "timer:"},{"score":{"name": "@p[tag=arena.normal_stage.core_stage]","objective": "arena.timer"}}]}

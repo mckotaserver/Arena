@@ -1,10 +1,10 @@
 ## 終了処理
 # プレイヤー通知
     # tellraw
-    tellraw @a[tag=arena.boss.player,distance=..48] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.game.message.end_announcenemnt"}]
+    tellraw @a[tag=arena.boss.player,distance=..32] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.boss.game.message.end_announcenemnt"}]
 
     # playsound
-    execute as @a[tag=arena.boss.player,distance=..48] at @s run playsound entity.wither.ambient master @s ~ ~ ~ 1 0.75
+    execute as @a[tag=arena.boss.player,distance=..32] at @s run playsound entity.wither.ambient master @s ~ ~ ~ 1 0.75
 
 # 記録関連処理
     # # クリア記録
@@ -21,7 +21,7 @@
     #     setblock ~ -64 ~ bedrock replace
     #     setblock ~ -64 ~ barrel replace
 
-    # execute as @r[tag=arena.boss.player,distance=..48] at @s run function arena_normal:recording/stats/_
+    # execute as @r[tag=arena.boss.player,distance=..32] at @s run function arena_normal:recording/stats/_
     # tag @a[tag=arena.temp-statsRegistered] remove arena.temp-statsRegistered
 
     #     # ヘッド召喚後処理

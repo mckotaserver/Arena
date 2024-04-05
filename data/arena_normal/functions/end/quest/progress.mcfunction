@@ -41,5 +41,5 @@ execute if data storage arena_quests:temp quest_testify.quests[0] run function a
 
 # プレイヤーの処理終了 → ほかのプレイヤーへ
 execute unless data storage arena_quests:temp quest_testify.quests[0] run tag @s remove arena.temp.quest_testify
-execute unless data storage arena_quests:temp quest_testify.quests[0] as @r[tag=arena.temp.quest_testify,distance=..48] at @s run function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
+execute unless data storage arena_quests:temp quest_testify.quests[0] as @r[tag=arena.temp.quest_testify,distance=..32] at @s run function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
 

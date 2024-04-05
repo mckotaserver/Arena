@@ -1,0 +1,1 @@
+$clear @s paper{arena:"ticket_$(ticket_from)"} $(count_from)

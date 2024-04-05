@@ -14,7 +14,7 @@ execute store result score #current_tick arena.temp at @e[tag=arena.normal_stage
     scoreboard players add #current_tick-Max arena.temp 19
 
 # 終了予定時刻と現在時刻が等しければ処理実行
-execute as @e[tag=arena.normal_stage.stage_core] if score #current_tick arena.temp <= @s arena.temp if score @s arena.temp <= #current_tick-Max arena.temp at @s as @e[tag=arena.normal_stage.spawn_marker,sort=random,limit=1,distance=..48,tag=!arena.temp.recent_spawned] at @s run function arena_normal:wave_process/mob_spawning/_
-execute as @e[tag=arena.normal_stage.stage_core] if score #current_tick arena.temp <= @s arena.temp if score @s arena.temp <= #current_tick-Max arena.temp at @s as @e[tag=arena.temp.recent_spawned,distance=..48] run tag @s remove arena.temp.recent_spawned
+execute as @e[tag=arena.normal_stage.stage_core] if score #current_tick arena.temp <= @s arena.temp if score @s arena.temp <= #current_tick-Max arena.temp at @s as @e[tag=arena.normal_stage.spawn_marker,sort=random,limit=1,distance=..32,tag=!arena.temp.recent_spawned] at @s run function arena_normal:wave_process/mob_spawning/_
+execute as @e[tag=arena.normal_stage.stage_core] if score #current_tick arena.temp <= @s arena.temp if score @s arena.temp <= #current_tick-Max arena.temp at @s as @e[tag=arena.temp.recent_spawned,distance=..32] run tag @s remove arena.temp.recent_spawned
 
 

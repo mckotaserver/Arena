@@ -35,7 +35,7 @@ execute if data entity @e[tag=arena.normal_stage.lobby,sort=nearest,limit=1] {da
 
     #> 空きステージの有無
         # 空きステージにタグ付与
-        execute as @e[tag=arena.normal_stage.stage_core] at @s unless entity @a[tag=arena.normal_stage.player,distance=..48] run tag @s add arena.temp.EmptyStage
+        execute as @e[tag=arena.normal_stage.stage_core] at @s unless entity @a[tag=arena.normal_stage.player,distance=..32] run tag @s add arena.temp.EmptyStage
 
         data modify storage arena_normal:temp entrance.available set value true
         execute unless entity @e[tag=arena.temp.EmptyStage] run data modify storage arena_normal:temp entrance.available set value false
@@ -72,7 +72,7 @@ execute at @e[tag=arena.normal_stage.entrance,sort=nearest,limit=1] as @a[distan
 
 # 入場先ステージの準備
     # 入場可能ステージを選定・・ の前に使われてないステージがあったらリセット
-    execute as @e[tag=arena.normal_stage.stage_core] if data entity @s {data:{arena:{isEmpty:false}}} at @s unless entity @a[tag=arena.normal_stage.player,distance=..48] run function arena_normal:misc/stage_reset
+    execute as @e[tag=arena.normal_stage.stage_core] if data entity @s {data:{arena:{isEmpty:false}}} at @s unless entity @a[tag=arena.normal_stage.player,distance=..32] run function arena_normal:misc/stage_reset
 
     # 入場可能ステージを選定
     execute as @e[tag=arena.normal_stage.stage_core] if data entity @s {data:{arena:{isEmpty:true}}} run tag @s add arena.temp.EmptyStage
@@ -135,8 +135,8 @@ data modify storage arena_normal:temp entrance.data.announcement_display.entered
     data modify storage arena_normal:temp entrance.data.scheduler.command set value "function arena_normal:wave_process/count_down"
 
     # フラグの有無でカウントを設定
-    execute if entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 15
-    execute unless entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..48] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 5
+    execute if entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..32] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 15
+    execute unless entity @a[tag=arena.normal_stage.player,tag=!arena.flags.count_skip,distance=..32] run data modify storage arena_normal:temp entrance.data.misc.countdown set value 5
 
     # tellraw のための秒数取得
     data modify storage arena_normal:temp misc.tellraw.wave_break set from storage arena_normal:temp entrance.data.misc.countdown

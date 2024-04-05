@@ -1,0 +1,149 @@
+menu-settings:
+  name: '&4&lArena Menu &7- &8Shop'
+  rows: 4
+  open-actions:
+  - 'console: execute as {player} at @s run playsound minecraft:ui.button.click master @s ~ ~ ~ 1 2'
+
+return:
+  ACTIONS:
+  - 'open:arena-shop.yml'
+  NAME: '&c戻る'
+  MATERIAL: red_stained_glass_pane
+  PERMISSION-MESSAGE: 権限が足りないか、使う事のできないワールドです。
+  KEEP-OPEN: true
+  POSITION-X: 1
+  POSITION-Y: 1
+
+test:
+  ACTIONS:
+  - 'console: execute as {player} at @s run function #arena_utility:menu/shop/item {id:"minecraft:stone",tag:{Enchantments:[{}]},count:1,price:300}'
+  NAME: '&cテスト'
+  LORE:
+  - 'テスト'
+  - '§e［300MP］'
+  MATERIAL: STONE
+  PERMISSION-MESSAGE: 権限が足りないか、使う事のできないワールドです。
+  PRICE: 300
+  KEEP-OPEN: false
+  POSITION-X: 2
+  POSITION-Y: 2
+
+
+pane_12:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 2
+  POSITION-Y: 1
+
+pane_13:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 3
+  POSITION-Y: 1
+
+pane_14:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 4
+  POSITION-Y: 1
+
+pane_15:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 5
+  POSITION-Y: 1
+
+pane_16:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 6
+  POSITION-Y: 1
+
+pane_17:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 7
+  POSITION-Y: 1
+
+pane_18:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 8
+  POSITION-Y: 1
+
+pane_19:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 9
+  POSITION-Y: 1
+
+pane_41:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 1
+  POSITION-Y: 4
+
+pane_42:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 2
+  POSITION-Y: 4
+
+pane_43:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 3
+  POSITION-Y: 4
+
+pane_44:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 4
+  POSITION-Y: 4
+
+pane_45:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 5
+  POSITION-Y: 4
+
+pane_46:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 6
+  POSITION-Y: 4
+
+pane_47:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 7
+  POSITION-Y: 4
+
+pane_48:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 8
+  POSITION-Y: 4
+
+pane_49:
+  NAME: ''
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  KEEP-OPEN: true
+  POSITION-X: 9
+  POSITION-Y: 4

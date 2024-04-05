@@ -1,7 +1,7 @@
 ## Altar アイテム取り出し
 #> プレイヤーにアイテム返す
     # 一時コンテナ シュルカーボックス設置
-    setblock ~ -64 ~ shulker_box replace
+    execute in overworld run setblock 0 -64 0 shulker_box replace
 
     # シュルカーボックスにデータ代入
         # 一時的にストレージで処理
@@ -29,7 +29,7 @@
     loot give @s mine ~ -64 ~ debug_stick
 
     # 一時コンテナ 削除
-    setblock ~ -64 ~ air replace
+    execute in overworld run setblock 0 -64 0 air replace
 
 #> 取り出し後の辻褄合わせ
 # データから削除

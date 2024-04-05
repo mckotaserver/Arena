@@ -33,7 +33,7 @@ data modify storage arena:assets stage_data[-1].max_player set value 4
 data modify storage arena:assets stage_data[-1].required_ap set value 1
 
 # 名称: name
-data modify storage arena:assets stage_data[-1].name set value "スパイダー"
+data modify storage arena:assets stage_data[-1].name set value "クモ"
 
 # 翻訳キー: translation key
 data modify storage arena:assets stage_data[-1].display.translation_key set value "entity.minecraft.spider"

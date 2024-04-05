@@ -58,22 +58,22 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
         execute if data storage arena_normal:temp {spawning_data:{stage_data:{type:"endless"}}} store result entity @s data.arena.stage_data.multipliers.base float 0.01 run scoreboard players get #data_modifying.result arena.temp
 
     # 召喚処理
-    execute as @e[tag=arena.normal_stage.spawn_marker,distance=..48,sort=random,limit=1] at @s run function arena_normal:wave_process/mob_spawning/_
+    execute as @e[tag=arena.normal_stage.spawn_marker,distance=..32,sort=random,limit=1] at @s run function arena_normal:wave_process/mob_spawning/_
 
 #> 演出
 # playsound
-execute as @a[tag=arena.normal_stage.player,distance=..48] at @s run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 0.33 0.5
-execute as @a[tag=arena.normal_stage.player,distance=..48] at @s run playsound minecraft:entity.elder_guardian.ambient master @s ~ ~ ~ 0.33 1.1
+execute as @a[tag=arena.normal_stage.player,distance=..32] at @s run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 0.33 0.5
+execute as @a[tag=arena.normal_stage.player,distance=..32] at @s run playsound minecraft:entity.elder_guardian.ambient master @s ~ ~ ~ 0.33 1.1
 
 # Title
-title @a[tag=arena.normal_stage.player,distance=..48] title ""
+title @a[tag=arena.normal_stage.player,distance=..32] title ""
 
 # 通常 → 1-4: Wave %s, 5: Last Wave
-execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 1..4 run title @a[tag=arena.normal_stage.player,distance=..48] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded","with":[{"score":{"name": "#Wave","objective": "arena.temp"},"color": "gold"}]}
-execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 5 run title @a[tag=arena.normal_stage.player,distance=..48] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded-last"}
+execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 1..4 run title @a[tag=arena.normal_stage.player,distance=..32] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded","with":[{"score":{"name": "#Wave","objective": "arena.temp"},"color": "gold"}]}
+execute if data storage arena_normal:temp {stage_data:{type:"normal"}} if score #Wave arena.temp matches 5 run title @a[tag=arena.normal_stage.player,distance=..32] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded-last"}
 
 # エンドレス → 1: [Endless arena], 2-: Wave %s
-execute if data storage arena_normal:temp {stage_data:{type:"endless"}} if score #Wave arena.temp matches 1 run title @a[tag=arena.normal_stage.player,distance=..48] title {"translate":"kota-server.arena.game.message.wave_proceeded-endless"}
-execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run title @a[tag=arena.normal_stage.player,distance=..48] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded","with":[{"score":{"name": "#Wave","objective": "arena.temp"},"color": "gold"}]}
+execute if data storage arena_normal:temp {stage_data:{type:"endless"}} if score #Wave arena.temp matches 1 run title @a[tag=arena.normal_stage.player,distance=..32] title {"translate":"kota-server.arena.game.message.wave_proceeded-endless"}
+execute if data storage arena_normal:temp {stage_data:{type:"endless"}} run title @a[tag=arena.normal_stage.player,distance=..32] subtitle {"translate":"kota-server.arena.game.message.wave_proceeded","with":[{"score":{"name": "#Wave","objective": "arena.temp"},"color": "gold"}]}
 
 

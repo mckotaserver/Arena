@@ -12,7 +12,7 @@ data modify storage arena:assets stage_data[-1].mob_data set value []
     data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{ExplosionRadius:4,powered:true}}
     data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:1,multiplier:1.00,condition:{wave:{min:4},difficulty:{min:1,max:2}},data:{ExplosionRadius:5}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:0.75,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{Passengers:[{"id": "minecraft:ocelot",active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],NoAI:true}],active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:0.75,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
     
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]
