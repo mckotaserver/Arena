@@ -1,24 +1,9 @@
 ## クラフトアニメーション 終了
 #> Give
     # コンテナデータを作成
-    data modify storage arena_utility:temp data.arena.Altar.ProductGive set from entity @s data.arena.Altar.Product
-    data modify storage arena_utility:temp data.arena.Altar.ProductGive.Slot set value 0b
-
-    # 一時コンテナ設置, 中身いじる
-    execute in overworld run setblock 0 -64 0 shulker_box replace
-    execute in overworld run data modify block ~ -64 ~ Items append from storage arena_utility:temp data.arena.Altar.ProductGive
-
-    # インベントリいっぱいか判定
-    data modify storage arena_utility:temp data.arena.Altar.UserInvSlot set from entity @p[tag=arena.Utility.Altar.User] Inventory[35].Slot
-
-    execute if data storage arena_utility:temp {data:{arena:{Altar:{UserInvSlot:35b}}}} run data modify storage arena_utility:temp data.arena.Altar.UserInvAvailable set value false
-    execute unless data storage arena_utility:temp {data:{arena:{Altar:{UserInvSlot:35b}}}} run data modify storage arena_utility:temp data.arena.Altar.UserInvAvailable set value true
-
-    # 適切な方法でGive
-    execute if data storage arena_utility:temp {data:{arena:{Altar:{UserInvAvailable:true}}}} run loot give @p[tag=arena.Utility.Altar.User] mine ~ -64 ~ debug_stick
-    execute if data storage arena_utility:temp {data:{arena:{Altar:{UserInvAvailable:false}}}} at @p[tag=arena.Utility.Altar.User] run summon item ~ ~ ~ {Tags:["arena.Utility.Altar.ProductItem"],Item:{id:"minecraft:stone",Count:1b,tag:{}},PickupDelay:0}
-
-    data modify entity @e[tag=arena.Utility.Altar.ProductItem,limit=1] Item set from entity @s data.arena.Altar.Product
+    data modify storage kota_library: direct_item_give.in set value []
+    data modify storage kota_library: direct_item_give.in append from entity @s data.arena.Altar.Product
+    execute as @p[tag=arena.Utility.Altar.User] at @s run function kota_library:misc/direct_item_give
 
 #> 後処理
     # プレイヤーのタグ

@@ -1,6 +1,6 @@
 ## クエスト登録
 # 項の作成
-data modify storage arena:assets utility.quests append value {id:"02-solo_completion"}
+data modify storage arena:assets utility.quests append value {id:"solo_completion.20"}
 
 #> クエストデータ
 # 要件: requirement 
@@ -23,7 +23,7 @@ data modify storage arena:assets utility.quests[-1].difficulty set value "hard"
 
 # 報酬
 data modify storage arena:assets utility.quests[-1].reward set value {}
-    data modify storage arena:assets utility.quests[-1].reward.point set value 6
-    data modify storage arena:assets utility.quests[-1].reward.loot_table set value "_"
-    data modify storage arena:assets utility.quests[-1].reward.item set value [{id:"minecraft:diamond",Count:2b},{id:"minecraft:stone",Count:5b}]
+    data modify storage arena:assets utility.quests[-1].reward.point set value 8
+    data modify storage arena:assets utility.quests[-1].reward.loot_table set value "arena_utility:quest_reward/tier_2"
+    data modify storage arena:assets utility.quests[-1].reward.money set value {value:500,count:10}
 

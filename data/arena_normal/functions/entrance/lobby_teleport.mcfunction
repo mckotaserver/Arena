@@ -1,7 +1,16 @@
 ## ロビーへのテレポート
+# 進捗の必要条件
+$execute unless entity @s[advancements={kota_server:arena/$(advancements_requirement)=true}] at @e[tag=arena.normal_stage.gate_front,sort=nearest,limit=1] run tp @s ~ ~-0.25 ~
+
+$execute unless entity @s[advancements={kota_server:arena/$(advancements_requirement)=true}] run tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.game.message.entrance_no_requirement"}]
+
+$execute unless entity @s[advancements={kota_server:arena/$(advancements_requirement)=true}] at @s run playsound minecraft:entity.illusioner.cast_spell master @s ~ ~ ~ 1 1.2 
+$execute unless entity @s[advancements={kota_server:arena/$(advancements_requirement)=true}] at @s run playsound minecraft:entity.enderman.teleport master @s ~ ~ ~ 1 1.2
+
+$execute unless entity @s[advancements={kota_server:arena/$(advancements_requirement)=true}] run return 0
+
 # タグ付与
 tag @s add arena.temp.player_transfer
-
 
 # TP
 $execute at @e[tag=arena.normal_stage.lobby_$(lobby_name)] run tp @a[tag=arena.temp.player_transfer] ~ ~-0.5 ~ ~ ~

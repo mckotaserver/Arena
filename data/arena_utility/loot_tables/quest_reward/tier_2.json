@@ -1,0 +1,82 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:paper",
+            "functions": [
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "translate": "kota-items.tickets.item_exchange.name"
+                }
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "translate": "kota-items.tickets.item_exchange.lore.0"
+                  },
+                  {
+                    "translate": "kota-items.tickets.item_exchange.lore.1"
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "min": 2,
+                  "max": 5
+                }
+              },
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{CustomModelData:2010030,KotaServer:{Id:\"item_exchange_ticket\"}}"
+              }
+            ]
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:paper",
+            "functions": [
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "translate": "kota-items.tickets.arena_join.name"
+                }
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "translate": "kota-items.tickets.arena_join.lore.0"
+                  },
+                  {
+                    "translate": "kota-items.tickets.arena_join.lore.1"
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "min": 2,
+                  "max": 4
+                }
+              },
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{CMILimitedUseCurrent:1,CMILimitedUseMax:1,CustomModelData:2000030,NBTCommands:[\"zpna1Q6Ljn8m0DBBsosqgg==\",\"6xqWnJUUkPpube98oTdLd6gbWmLIGdGOCZxOhgWg1EQ9zEgYK6aKm/LwpTOCdbGE\",\"DfcwfSWn6gQTrKjPjqtiGL8TCZUNFJCiP6CB9ptvb9FquuKQTmZMFkZpk//Aa/XS\",\"3vy5mzXHQXcnRMGDIL3ZcCwh5NEs/fk0m6MOmHWfVOFfSalScS8ExHMRoxibbh1YBB/Iowz2GgQICAo4l6bhFqUJTg1/D/VopH7gK74MUww=\"]}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

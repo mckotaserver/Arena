@@ -7,6 +7,7 @@
     data modify storage arena_quests:temp quest_testify.value_check.mob_type set from storage arena_quests:temp quest_testify.quests[0].requirement.mob_type
     data modify storage arena_quests:temp quest_testify.value_check.stage_type set from storage arena_quests:temp quest_testify.quests[0].requirement.stage_type
     data modify storage arena_quests:temp quest_testify.value_check.player_count set from storage arena_quests:temp quest_testify.quests[0].requirement.player_count
+    data modify storage arena_quests:temp quest_testify.value_check.wave set from storage arena_quests:temp quest_testify.quests[0].requirement.wave
 
     # 要件・クリア時の記録(tick)を取得
     execute store result score #quest_testify.time_limit arena.temp run data get storage arena_quests:temp quest_testify.quests[0].requirement.time_limit
@@ -20,6 +21,7 @@
     $execute if data storage arena_quests:temp quest_testify.value_check.difficulty unless data storage arena_quests:temp {quest_testify:{value_check:{difficulty:$(difficulty)}}} run data modify storage arena_quests:temp quest_testify.test_passed set value false
     $execute if data storage arena_quests:temp quest_testify.value_check.mob_type unless data storage arena_quests:temp {quest_testify:{value_check:{mob_type:$(mob_type)}}} run data modify storage arena_quests:temp quest_testify.test_passed set value false
     $execute if data storage arena_quests:temp quest_testify.value_check.stage_type unless data storage arena_quests:temp {quest_testify:{value_check:{stage_type:$(type)}}} run data modify storage arena_quests:temp quest_testify.test_passed set value false
+    $execute if data storage arena_quests:temp quest_testify.value_check.wave unless data storage arena_quests:temp {quest_testify:{value_check:{wave:$(wave)}}} run data modify storage arena_quests:temp quest_testify.test_passed set value false
     $execute if data storage arena_quests:temp quest_testify.value_check.player_count unless data storage arena_quests:temp {quest_testify:{value_check:{player_count:$(player_count)}}} run data modify storage arena_quests:temp quest_testify.test_passed set value false
 
 # 上記判定に成功したらカウント + 1

@@ -15,13 +15,13 @@
     execute if score #check_reward.current_value arena.temp = #check_reward.objective arena.temp if data storage arena_quests:temp {check_reward:{quest_completed:false}} run function arena_utility:quests/check_reward/rewarding with storage arena_quests:temp check_reward
 
     # マクロ引数の設定
+    data remove storage arena_quests:temp check_reward.main[0]
+
     data modify storage arena_quests:temp check_reward.id set from storage arena_quests:temp check_reward.main[0].id
     data modify storage arena_quests:temp check_reward.type set from storage arena_quests:temp check_reward.main[0].type
 
-    $data modify storage arena_quests:temp check_reward.id set value $(id)
     $data modify storage arena_quests:temp check_reward.player_name set value $(player_name)
 
     data modify storage arena_quests:temp check_reward.loot_table set from storage arena_quests:temp check_reward.main[0].reward.loot_table
 
-data remove storage arena_quests:temp check_reward.main[0]
 execute if data storage arena_quests:temp check_reward.main[0] run function arena_utility:quests/check_reward/loop with storage arena_quests:temp check_reward

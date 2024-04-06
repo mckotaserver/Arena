@@ -1,20 +1,9 @@
 ## Altar アイテム取り出し 全部
-# 仮item召喚
-summon item ~ ~ ~ {Tags:["arena.temp"],Item:{id:"minecraft:stone","Count":1b,tag:{}},PickupDelay:0}
-
 # データを目的アイテムに置換
-data modify entity @e[tag=arena.temp,limit=1] Item set from storage arena_utility:temp Altar.data.PlacedItem[0]
-tag @e[tag=arena.temp] remove arena.temp
+data modify storage kota_library: direct_item_give.in set from storage arena_utility:temp Altar.data.PlacedItem
+function kota_library:misc/direct_item_give
 
-# 処理済みのデータを削除
-data remove storage arena_utility:temp Altar.data.PlacedItem[0]
+data remove entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.arena.Altar.PlacedItem[]
+data remove storage arena_utility:temp Altar.data.PlacedItem[]
 
-# 再起
-execute if data storage arena_utility:temp Altar.data.PlacedItem[0] run function arena_utility:altar/item_extraction/all
-
-# 一度だけ実行
-execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] run kill @e[tag=arena.Utility.Altar.PlacedItemDisplay,distance=..2]
-execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] run kill @e[tag=arena.Utility.Altar.PlacedItemMount,distance=..2]
-
-execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] run data modify entity @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] data.arena.Altar.PlacedItem set value []
-execute unless data storage arena_utility:temp Altar.data.PlacedItem[0] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] run data modify storage arena_utility:temp Altar.data.PlacedItem set value []
+function arena_utility:altar/item_placement/_
