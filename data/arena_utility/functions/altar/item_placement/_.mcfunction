@@ -10,7 +10,7 @@
         execute store result score #Utility.Altar.PlacedItemCount arena.temp run data get storage arena_utility:temp Altar.data.PlacedItem
 
         # Core Item
-        execute if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] positioned ~ ~0.5 ~ run function arena_utility:altar/item_placement/single/_ with storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}]
+        execute if data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] positioned ~ ~0.25 ~ run function arena_utility:altar/item_placement/single/_ with storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}]
 
         # 1個 → その場
         execute if score #Utility.Altar.PlacedItemCount arena.temp matches 1 at @e[tag=arena.Utility.Altar.Core,sort=nearest,limit=1] positioned ~ ~-0.25 ~ unless data storage arena_utility:temp Altar.data.PlacedItem[{isCore:true}] run function arena_utility:altar/item_placement/single/_ with storage arena_utility:temp Altar.data.PlacedItem[0]

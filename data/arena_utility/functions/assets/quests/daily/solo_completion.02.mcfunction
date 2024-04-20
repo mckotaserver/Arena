@@ -1,6 +1,6 @@
 ## クエスト登録
 # 項の作成
-data modify storage arena:assets utility.quests append value {id:"solo_completion.20"}
+data modify storage arena:assets utility.quests append value {id:"solo_completion.02"}
 
 #> クエストデータ
 # 要件: requirement 

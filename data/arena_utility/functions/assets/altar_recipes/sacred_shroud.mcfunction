@@ -24,7 +24,6 @@ data modify storage arena:assets utility.altar_recipes[-1].ingredients set value
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:strong_strength"}}
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:potion",Count:1b,tag:{Potion:"minecraft:long_strength"}}
 
-
 # 成果物
 data modify storage arena:assets utility.altar_recipes[-1].product set value {"id":"minecraft:diamond_sword","Count":1b,tag:{display:{Name:'{"text":"セイクリッドシュラウド","color":"light_purple","bold":true,"italic":false}',Lore:['{"text":"古代より受け継がれし聖剣","color":"dark_gray","italic":false}']},Enchantments:[{id:"minecraft:sharpness",lvl:7s},{id:"minecraft:smite",lvl:6s},{id:"minecraft:unbreaking",lvl:4s}],Damage:1560}}
 

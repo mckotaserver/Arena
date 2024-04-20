@@ -13,7 +13,7 @@ execute as @a[tag=arena.normal_stage.player,tag=!arena.normal_stage.core_player]
 
 # 不正検知
     # 入場
-    execute as @a[tag=!arena.normal_stage.player,tag=!arena.flags.debug] at @s if entity @e[tag=arena.normal_stage.stage_core,distance=..32] run function arena_normal:misc/anti_cheat
+    execute as @a[tag=!arena.normal_stage.player,tag=!arena.flags.debug_mode] at @s if entity @e[tag=arena.normal_stage.stage_core,distance=..32] run function arena_normal:misc/anti_cheat
 
     # 再読み込み
     execute as @a[tag=arena.normal_stage.player] if score @s arena.leave_game matches 1.. at @s run function arena_normal:misc/anti_cheat
@@ -23,7 +23,7 @@ execute as @a[tag=arena.normal_stage.core_player] if score @s arena.timer matche
 execute as @a[tag=arena.normal_stage.core_player] if score @s arena.timer matches 0 at @s as @e[tag=arena.normal_stage.stage_core,sort=nearest,limit=1] at @s run function arena_normal:timer/_ with entity @s data.arena.scheduler
 
 # 入るな！場所
-execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run damage @s 5 generic_kill by @e[tag=arena.normal_stage.illegal_place,sort=nearest,limit=1]
+execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug_mode] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run damage @s 5 generic_kill by @e[tag=arena.normal_stage.illegal_place,sort=nearest,limit=1]
 
-execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run effect give @s slowness 10 3 false
-execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run effect give @s hunger 20 5 false
+execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug_mode] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run effect give @s slowness 10 3 false
+execute as @a[tag=arena.normal_stage.player,tag=!arena.flags.debug_mode] at @s at @e[tag=arena.normal_stage.illegal_place,distance=..1] if data entity @s {OnGround:true} run effect give @s hunger 20 5 false

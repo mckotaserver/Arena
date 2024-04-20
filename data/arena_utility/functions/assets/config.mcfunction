@@ -33,3 +33,9 @@ data modify storage arena:assets config.arena_quests set value {}
 
     # デイリークエストの選択個数
     data modify storage arena:assets config.arena_quests.complete_bonus_point_weekly set value 30
+
+#> Arena leveling
+data modify storage arena:assets config.arena_leveling set value {}
+
+    # デイリークエストの選択個数
+    data modify storage arena:assets config.arena_leveling.requirement_multiplier set value 1.4f

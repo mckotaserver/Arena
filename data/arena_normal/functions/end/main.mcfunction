@@ -15,10 +15,28 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
 
         tag @a[distance=..32,tag=arena.normal_stage.player] add arena.temp.quest_testify
 
-        execute as @r[distance=..32,tag=arena.normal_stage.player] at @s run function arena_normal:end/quest/progress with storage arena_normal:temp stage_data
+        execute as @r[distance=..32,tag=arena.normal_stage.player] at @s run function arena_normal:end/quest/progress_check with storage arena_normal:temp stage_data
 
         # バックアップ
-        data modify storage arena:quests backup set from storage arena:quests player_data
+        data modify storage arena:quests player_data_backup set from storage arena:quests player_data
+
+    # アリーナレベル
+        # 経験値量を計算
+        execute store result score #misc.arena_level.exp_gain arena.temp run data get entity @s data.arena.stage_detail.level_experience
+
+        data modify storage kota_library: array_picker.index set from storage arena_normal:temp stage_data.difficulty
+        data modify storage kota_library: array_picker.in set from storage arena:assets stage_difficulty
+
+        function kota_library:storage_modifier/array_picker with storage kota_library: array_picker
+
+        execute store result score #misc.arena_level.exp_multiplier arena.temp run data get storage kota_library: array_picker.out.experience_multiplier 100
+
+        scoreboard players operation #misc.arena_level.exp_gain arena.temp *= #misc.arena_level.exp_multiplier arena.temp
+        scoreboard players operation #misc.arena_level.exp_gain arena.temp /= #100 Constant
+
+        # プレイヤー毎に逐次処理
+        tag @a[tag=arena.normal_stage.player,distance=..32] add arena.temp.level_process
+        execute as @r[tag=arena.temp.level_process] run function arena_utility:leveling/on_clear
 
 # ステージリセット
 function arena_normal:misc/stage_reset

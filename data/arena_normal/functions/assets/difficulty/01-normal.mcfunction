@@ -19,8 +19,11 @@ data modify storage arena:assets stage_difficulty append value {id:"01-normal"}
 # 報酬
 data modify storage arena:assets stage_difficulty[-1].reward set value "arena_normal:ticket/normal"
 
-# 倍率
-data modify storage arena:assets stage_difficulty[-1].multiplier set value 1.85f
+# 経験値倍率
+data modify storage arena:assets stage_difficulty[-1].experience_multiplier set value 1f
 
 # 倍率
-data modify storage arena:assets stage_difficulty[-1].speed_multiplier set value 1f
+data modify storage arena:assets stage_difficulty[-1].multiplier set value 1.7f
+
+# 倍率
+data modify storage arena:assets stage_difficulty[-1].speed_multiplier set value 0.9f

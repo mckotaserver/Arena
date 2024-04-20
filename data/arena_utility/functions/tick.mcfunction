@@ -8,3 +8,5 @@ execute as @a[tag=arena.Utility.Altar.User] at @s unless entity @e[tag=arena.Uti
 # trigger
 execute as @a if score @s arena.trigger = @s arena.trigger unless score @s arena.trigger matches 0 at @s run function arena_utility:score_triggered
 
+# 直接エンチャント
+function arena_utility:direct_enchanting/tick

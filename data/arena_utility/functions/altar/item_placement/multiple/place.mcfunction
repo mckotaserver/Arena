@@ -10,7 +10,7 @@
     data modify entity @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] Item set from storage arena_utility:temp Altar.PlacingItem[0]
 
     # スタック防止: 適当なデータを設定
-    execute store result entity @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] Item.tag.arena.Altar.DisplayData int 1 run random value 0..100000000
+    execute store result entity @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited,limit=1] Item.tag.arena.Altar.DisplayData int 1 run random value 0..100000
 
     # 未処理タグの削除
     tag @e[tag=arena.Utility.Altar.PlacedItemDisplay-Unedited] remove arena.Utility.Altar.PlacedItemDisplay-Unedited

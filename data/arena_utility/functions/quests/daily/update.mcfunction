@@ -38,5 +38,19 @@
 
 # tellraw awabi2048 {"text": "============== END OF SELECTION ============","color": "gray"}
 
-#> プレイヤーごとの記録をリセット
-data remove storage arena:quests player_data[].daily
+#> 記録をリセット
+    # 現行データを削除
+    data modify storage kota_library:player_database main[].arena.quests.daily[] set value {id:"",current_value:0,objective:0,is_completed:false}
+
+    # 初期データを作成
+    function arena_utility:quests/player_data_update/_ {type:"daily"}
+
+    # 全データに適用
+    data modify storage kota_library:player_database main[].arena.quests.daily set from storage arena_quests:temp player_data_update.out
+
+#> 告知
+    # tellraw
+    tellraw @a [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.quests.message.quest_updated_daily"}]
+
+    # 効果音
+    execute as @a at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 2

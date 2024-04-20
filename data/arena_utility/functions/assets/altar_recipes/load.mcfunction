@@ -6,6 +6,7 @@ function arena_utility:assets/altar_recipes/blazing_metal
 function arena_utility:assets/altar_recipes/spirit_eye
 function arena_utility:assets/altar_recipes/sacred_shroud
 function arena_utility:assets/altar_recipes/gars_indics
+function arena_utility:assets/altar_recipes/silence_root
 
 function arena_utility:assets/altar_recipes/dark_netherite_helmet
 function arena_utility:assets/altar_recipes/dark_netherite_chestplate

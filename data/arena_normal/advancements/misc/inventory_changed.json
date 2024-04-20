@@ -10,7 +10,7 @@
                 "condition": "minecraft:entity_properties",
                 "entity": "this",
                 "predicate": {
-                  "nbt": "{Tags:[\"arena.flags.debug\"]}"
+                  "nbt": "{Tags:[\"arena.flags.debug_mode\"]}"
                 }
               }
             }

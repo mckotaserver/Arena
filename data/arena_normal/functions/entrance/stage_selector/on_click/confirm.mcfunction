@@ -63,7 +63,7 @@ execute if data entity @e[tag=arena.normal_stage.lobby,sort=nearest,limit=1] {da
         execute if data storage arena_normal:temp {entrance:{available:false}} run return 0
 
 # 入場判定 → 可なら減算
-execute at @e[tag=arena.normal_stage.entrance,sort=nearest,limit=1] as @a[distance=..4,tag=!arena.flags.debug] run scoreboard players operation @s arena -= #entrance.APRequired arena.temp
+execute at @e[tag=arena.normal_stage.entrance,sort=nearest,limit=1] as @a[distance=..4,tag=!arena.flags.debug_mode] run scoreboard players operation @s arena -= #entrance.APRequired arena.temp
 
 #> 入場処理など
 # 前準備

@@ -28,7 +28,10 @@ data modify storage arena:assets stage_data[-1].speed set value [0.22f, 0.23f, 0
 
 #> その他ステージ情報
 # 報酬: reward
-data modify storage arena:assets stage_data[-1].reward set value [2, 2, 2]
+data modify storage arena:assets stage_data[-1].reward set value [2, 2, 2, 4]
+
+# 獲得可能経験値
+data modify storage arena:assets stage_data[-1].level_experience set value 5
 
 # 入場可能人数
 data modify storage arena:assets stage_data[-1].max_player set value 4
