@@ -21,6 +21,8 @@ execute store result score #misc.arena_level.exp_required arena.temp run data ge
     execute unless score #misc.arena_level.exp_value arena.temp >= #misc.arena_level.exp_required arena.temp run return 0
 
     # 達した → レベルアップ処理へ
+    scoreboard players operation #misc.arena_level.exp_remained arena.temp = #misc.arena_level.exp_value arena.temp
+    scoreboard players operation #misc.arena_level.exp_remained arena.temp -= #misc.arena_level.exp_required arena.temp
 
 # データベース更新
     # 必要経験値量を再設定
@@ -42,13 +44,19 @@ execute store result score #misc.arena_level.exp_required arena.temp run data ge
 
     function #kota_library:player_database with storage kota_library: player_database.in
 
-    # 現在の経験値量 = 0
-    function #kota_library:player_database {name:"@s",path:"arena.leveling.experience.current",value:0,operation:"modify.set"}
+    # 現在の経験値量 = 超過分
+    data modify storage kota_library: player_database.in set value {name:"@s",path:"arena.leveling.experience.current",value:0,operation:"modify.set"}
+    execute store result storage kota_library: player_database.in.value int 1 run scoreboard players get #misc.arena_level.exp_remained arena.temp
+
+    function #kota_library:player_database with storage kota_library: player_database.in
 
 # 通知
     # playsound
-    playsound entity.player.levelup master @s ~ ~ ~ 1 2
-    
+    execute at @s run playsound entity.player.levelup master @s ~ ~ ~ 1 2
+    execute at @s run playsound block.note_block.bit master @s ~ ~ ~ 1 2
+
+    execute at @s as @a[tag=arena.flags.display_others_announcement,distance=0.1..] at @s run playsound entity.player.levelup master @s ~ ~ ~ 1 2
+
     # tellraw
     function kota_library:misc/get_player_name
 
@@ -56,4 +64,4 @@ execute store result score #misc.arena_level.exp_required arena.temp run data ge
     scoreboard players remove #misc.arena_level.level_before arena.temp 1
 
     tellraw @s [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.leveling.message.levelup_player","with":[{"score":{"name": "#misc.arena_level.level_before","objective": "arena.temp"},"color": "yellow","bold": true},{"score":{"name": "#misc.arena_level.level","objective": "arena.temp"},"color": "yellow","bold": true}]}]
-    tellraw @a[tag=arena.flags.display_others_announcement,distance=0.1..] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.leveling.message.levelup_server","with":[{"storage":"kota_library:","nbt":"get_player_name.out"},{"score":{"name": "#misc.arena_level.level_before","objective": "arena.temp"},"color": "yellow","bold": true},{"score":{"name": "#misc.arena_level.level","objective": "arena.temp"},"color": "yellow","bold": true}]}]
+    execute at @s run tellraw @a[tag=arena.flags.display_others_announcement,distance=0.1..] [{"translate":"kota-server.arena.game.message.prefix"}," ",{"translate":"kota-server.arena.leveling.message.levelup_server","with":[{"storage":"kota_library:","nbt":"get_player_name.out"},{"score":{"name": "#misc.arena_level.level_before","objective": "arena.temp"},"color": "yellow","bold": true},{"score":{"name": "#misc.arena_level.level","objective": "arena.temp"},"color": "yellow","bold": true}]}]

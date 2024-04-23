@@ -5,13 +5,13 @@ data modify storage arena:assets stage_data append value {id:"04-slime"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:8,multiplier:1.00,condition:{wave:{min:1,max:2},difficulty:{min:0,max:2}},data:{Size:1}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:5,multiplier:1.15,condition:{wave:{min:2,max:3},difficulty:{min:0,max:2}},data:{Size:2}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:3,multiplier:1.30,condition:{wave:{min:3},difficulty:{min:1,max:2}},data:{Size:3}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.5,condition:{wave:{min:4},difficulty:{min:1,max:2}},data:{Size:4}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:8,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:3}},data:{Size:1}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:5,multiplier:1.15,condition:{wave:{min:2},difficulty:{min:0,max:3}},data:{Size:2}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:3,multiplier:1.30,condition:{wave:{min:3},difficulty:{min:1,max:3}},data:{Size:3}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.5,condition:{wave:{min:4},difficulty:{min:1,max:3}},data:{Size:4}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.00,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{Size:3,Passengers:[{id:"minecraft:slime",Size:2,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f},{id:"minecraft:slime",Size:1,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.00,condition:{wave:{min:5},difficulty:{min:2,max:2}},data:{Size:3,Passengers:[{id:"minecraft:slime",Size:2,Attributes:[{Name:"minecraft:generic.max_health",Base:80d}],Health:80f,Passengers:[{id:"minecraft:slime",Size:1,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f,Passengers:[{id:"minecraft:slime",Size:0,Attributes:[{Name:"minecraft:generic.max_health",Base:40d}],Health:40f}]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.00,condition:{wave:{min:3},difficulty:{min:2,max:3}},data:{Size:3,Passengers:[{id:"minecraft:slime",Size:2,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f},{id:"minecraft:slime",Size:1,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:slime",weight:1,multiplier:1.00,condition:{wave:{min:5},difficulty:{min:2,max:3}},data:{Size:3,Passengers:[{id:"minecraft:slime",Size:2,Attributes:[{Name:"minecraft:generic.max_health",Base:80d}],Health:80f,Passengers:[{id:"minecraft:slime",Size:1,Attributes:[{Name:"minecraft:generic.max_health",Base:60d}],Health:60f,Passengers:[{id:"minecraft:slime",Size:0,Attributes:[{Name:"minecraft:generic.max_health",Base:40d}],Health:40f}]}]}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [10, 12, 14, 16, 20]

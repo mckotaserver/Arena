@@ -5,14 +5,14 @@ data modify storage arena:assets stage_data append value {id:"05-creeper"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:5,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:2}},data:{ExplosionRadius:3}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:6,multiplier:1.10,condition:{wave:{min:2},difficulty:{min:0,max:2}},data:{ExplosionRadius:4}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:0,max:2}},data:{ExplosionRadius:3,powered:true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:5,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:3}},data:{ExplosionRadius:3}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:6,multiplier:1.10,condition:{wave:{min:2},difficulty:{min:0,max:3}},data:{ExplosionRadius:4}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:0,max:3}},data:{ExplosionRadius:3,powered:true}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{ExplosionRadius:4,powered:true}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:1,multiplier:1.00,condition:{wave:{min:4},difficulty:{min:1,max:2}},data:{ExplosionRadius:5}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:1.20,condition:{wave:{min:2},difficulty:{min:1,max:3}},data:{ExplosionRadius:4,powered:true}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:1,multiplier:1.00,condition:{wave:{min:4},difficulty:{min:1,max:3}},data:{ExplosionRadius:5}}
 
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:0.75,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:creeper",weight:3,multiplier:0.75,condition:{wave:{min:3},difficulty:{min:2,max:3}},data:{active_effects:[{amplifier:0,id:"minecraft:regeneration",duration:20}],ExplosionRadius:2,powered:true,Fuse:10,Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.2,Operation:0,UUID:[I;0,0,0,0]}]}]}}
     
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]

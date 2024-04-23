@@ -5,10 +5,10 @@ data modify storage arena:assets stage_data append value {id:"03-spider"}
 #> 召喚データ
 # Mob ID
 data modify storage arena:assets stage_data[-1].mob_data set value []
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:6,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:2}}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:cave_spider",weight:2,multiplier:1.30,condition:{wave:{min:2},difficulty:{min:1,max:2}},data:{Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.1,Operation:0,UUID:[I;0,0,0,0]}]},{Name:"minecraft:generic.attack_damage",Modifiers:[{Amount:0.1,Operation:2,UUID:[I;0,0,0,1]}]}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:1,multiplier:1.30,condition:{wave:{min:4},difficulty:{min:1,max:2}},data:{Passengers:[{id:"minecraft:skeleton",HandItems:[{id:"minecraft:bow",Count:1b,tag:{Enchantments:[{id:"minecraft:punch",lvl:2s}]}},{}],HandDropChances:[1E-40f,1E-40f]}]}}
-    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:2,multiplier:0.8,condition:{wave:{min:3},difficulty:{min:2,max:2}},data:{active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:6,multiplier:1.00,condition:{wave:{min:1},difficulty:{min:0,max:3}}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:cave_spider",weight:2,multiplier:1.30,condition:{wave:{min:2},difficulty:{min:1,max:3}},data:{Attributes:[{Name:"minecraft:generic.movement_speed",Modifiers:[{Amount:0.1,Operation:0,UUID:[I;0,0,0,0]}]},{Name:"minecraft:generic.attack_damage",Modifiers:[{Amount:0.1,Operation:2,UUID:[I;0,0,0,1]}]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:1,multiplier:1.30,condition:{wave:{min:4},difficulty:{min:1,max:3}},data:{Passengers:[{id:"minecraft:skeleton",HandItems:[{id:"minecraft:bow",Count:1b,tag:{Enchantments:[{id:"minecraft:punch",lvl:2s}]}},{}],HandDropChances:[1E-40f,1E-40f]}]}}
+    data modify storage arena:assets stage_data[-1].mob_data append value {id:"minecraft:spider",weight:2,multiplier:0.8,condition:{wave:{min:3},difficulty:{min:2,max:3}},data:{active_effects:[{amplifier:0,id:"minecraft:invisibility",duration:-1}]}}
 
 # ウェーブごと召喚数: summon_count
 data modify storage arena:assets stage_data[-1].summon_count set value [15, 18, 21, 25, 30]

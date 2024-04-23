@@ -33,4 +33,3 @@ $execute as @e[tag=arena.normal_stage.lobby_$(lobby_name)] at @s as @e[tag=arena
 # リセット処理
 $execute as @e[tag=arena.normal_stage.lobby_$(lobby_name)] if data entity @s {data:{arena:{lobby_type:normal}}} at @s positioned ^ ^-0.5 ^10 as @e[tag=arena.normal_stage.selector_core,sort=nearest,limit=1] at @s run function arena_normal:entrance/stage_selector/reset_normal
 $execute as @e[tag=arena.normal_stage.lobby_$(lobby_name)] if data entity @s {data:{arena:{lobby_type:endless}}} at @s positioned ^ ^-0.5 ^10 as @e[tag=arena.normal_stage.selector_core,sort=nearest,limit=1] at @s run function arena_normal:entrance/stage_selector/reset_endless
-

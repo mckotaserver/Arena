@@ -17,7 +17,7 @@ data modify storage arena:assets utility.altar_recipes[-1].ingredients set value
     data modify storage arena:assets utility.altar_recipes[-1].ingredients append value {id:"minecraft:soul_soil",Count:64b,tag:{}}
 
 # 成果物
-data modify storage arena:assets utility.altar_recipes[-1].product set value {"id":"minecraft:firework_star","Count":1b,tag:{display:{Name:'{"text":"スピリットアイ","color":"aqua","italic":false}'},Enchantments:[{}],CustomModelData:2010001}}
+data modify storage arena:assets utility.altar_recipes[-1].product set value {"id":"minecraft:firework_star","Count":1b,tag:{display:{Name:'{"text":"スピリットアイ","color":"aqua","italic":false}'},CustomModelData:2010001}}
 
 # 材料の順番を気にするかどうか
 data modify storage arena:assets utility.altar_recipes[-1].order_restricted set value false

@@ -15,3 +15,6 @@ execute unless data storage arena_utility:temp {misc:{item_click:{data:{id:"mine
 execute if data storage arena_utility:temp {misc:{item_click:{data:{tag:{CustomModelData:2000060}}}}} run function arena_utility:misc/enchanted_book_bundle/on_use
 execute if data storage arena_utility:temp {misc:{item_click:{data:{tag:{CustomModelData:2000061}}}}} run function arena_utility:misc/enchanted_book_bundle/on_use
 execute if data storage arena_utility:temp {misc:{item_click:{data:{tag:{CustomModelData:2000062}}}}} run function arena_utility:misc/enchanted_book_bundle/on_use
+
+execute if data storage arena_utility:temp {misc:{item_click:{data:{tag:{CustomModelData:2000063}}}}} run function arena_utility:misc/exp_boost/on_use {boost:100}
+execute if data storage arena_utility:temp {misc:{item_click:{data:{tag:{CustomModelData:2000064}}}}} run function arena_utility:misc/exp_boost/on_use {boost:200}

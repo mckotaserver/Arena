@@ -10,3 +10,7 @@ execute as @a if score @s arena.trigger = @s arena.trigger unless score @s arena
 
 # 直接エンチャント
 function arena_utility:direct_enchanting/tick
+
+# 経験値ブースト
+execute if score #misc.exp_boost arena.utility matches 1.. run scoreboard players remove #misc.exp_boost arena.utility 1
+execute if score #misc.exp_boost arena.utility matches 0 as @a at @s run function arena_utility:misc/exp_boost/on_end

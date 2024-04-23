@@ -34,6 +34,13 @@ data modify storage arena_normal:temp stage_data set from entity @s data.arena.s
         scoreboard players operation #misc.arena_level.exp_gain arena.temp *= #misc.arena_level.exp_multiplier arena.temp
         scoreboard players operation #misc.arena_level.exp_gain arena.temp /= #100 Constant
 
+        # ブースト分を計算
+        execute store result score #misc.arena_level.exp_multiplier arena.temp run data get storage arena:utility exp_boost.multiplier 100
+        scoreboard players add #misc.arena_level.exp_multiplier arena.temp 100
+
+        scoreboard players operation #misc.arena_level.exp_gain arena.temp *= #misc.arena_level.exp_multiplier arena.temp
+        execute if data storage arena:utility {exp_boost:{is_active:true}} run scoreboard players operation #misc.arena_level.exp_gain arena.temp /= #100 Constant
+
         # プレイヤー毎に逐次処理
         tag @a[tag=arena.normal_stage.player,distance=..32] add arena.temp.level_process
         execute as @r[tag=arena.temp.level_process] run function arena_utility:leveling/on_clear
