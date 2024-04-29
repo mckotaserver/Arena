@@ -1,0 +1,26 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:player_hurt_entity",
+        "conditions": {
+          "player": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{Tags:[\"arena.dungeons.player\"]}",
+                "equipment": {
+                  "mainhand": {
+                    "nbt": "{arena:{item_tag:[trigger_click]}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena_dungeons:combat/player/click_detection/left_click"
+    }
+  }

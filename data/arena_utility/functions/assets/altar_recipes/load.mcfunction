@@ -11,7 +11,12 @@ function arena_utility:assets/altar_recipes/gars_indics
 function arena_utility:assets/altar_recipes/silence_root
 function arena_utility:assets/altar_recipes/ugou
 
-function arena_utility:assets/altar_recipes/dark_netherite_helmet
-function arena_utility:assets/altar_recipes/dark_netherite_chestplate
-function arena_utility:assets/altar_recipes/dark_netherite_leggings
-function arena_utility:assets/altar_recipes/dark_netherite_boots
+function arena_utility:assets/altar_recipes/extent_flame.head
+function arena_utility:assets/altar_recipes/extent_flame.chest
+function arena_utility:assets/altar_recipes/extent_flame.legs
+function arena_utility:assets/altar_recipes/extent_flame.feet
+
+# function arena_utility:assets/altar_recipes/dark_netherite_helmet
+# function arena_utility:assets/altar_recipes/dark_netherite_chestplate
+# function arena_utility:assets/altar_recipes/dark_netherite_leggings
+# function arena_utility:assets/altar_recipes/dark_netherite_boots

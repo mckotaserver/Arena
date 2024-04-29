@@ -1,0 +1,21 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:entity_hurt_player",
+        "conditions": {
+          "player": {
+            "nbt": "{Tags:[\"arena.dungeons.player\"]}"
+          },
+          "damage": {
+            "source_entity": {
+              "nbt": "{Tags:[\"arena.dungeons.mobs.main\"]}"
+            }
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena_dungeons:combat/player/on_mob_attack"
+    }
+  }
+  

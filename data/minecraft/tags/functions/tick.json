@@ -2,6 +2,7 @@
   "values": [
     "arena_normal:tick",
     "arena_utility:tick",
-    "arena_boss:tick"
+    "arena_boss:tick",
+    "arena_dungeons:tick"
   ]
 }
