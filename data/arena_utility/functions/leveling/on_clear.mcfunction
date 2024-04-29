@@ -44,6 +44,10 @@ execute store result score #misc.arena_level.exp_required arena.temp run data ge
 
     function #kota_library:player_database with storage kota_library: player_database.in
 
+        # レベル 5以上 → エンドレス許可
+        execute if score #misc.arena_level.level arena.temp matches 5.. run function arena_normal:misc/advancements_grant {path:"flags/allow_endless"}
+        execute if score #misc.arena_level.level arena.temp matches 10.. run function arena_normal:misc/advancements_grant {path:"flags/allow_dungeons"}
+
     # 現在の経験値量 = 超過分
     data modify storage kota_library: player_database.in set value {name:"@s",path:"arena.leveling.experience.current",value:0,operation:"modify.set"}
     execute store result storage kota_library: player_database.in.value int 1 run scoreboard players get #misc.arena_level.exp_remained arena.temp

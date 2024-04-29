@@ -12,3 +12,5 @@ loot spawn ~ -63 ~ loot arena_dungeons:treasure_chest/normal
 execute as @e[tag=arena.dungeons.misc.treasure_chest_marker,sort=nearest,limit=1] positioned ~ -63 ~ run data modify entity @s data.arena.dungeons.treasure_chest.contents set from entity @e[type=item,sort=nearest,limit=1] Item
 
 execute positioned ~ -63 ~ run kill @e[type=item,sort=nearest,limit=1]
+
+kill @s

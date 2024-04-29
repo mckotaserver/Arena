@@ -1,4 +1,4 @@
-#> arena_dungeons:combat/mob/data_formatting
+#> arena_dungeons:combat/mobs/data_formatting
 # データ取得
 $data modify storage arena_dungeons:temp mob_summon.data set from storage arena:assets dungeons.mobs[{id:"$(id)"}]
 
@@ -37,4 +37,5 @@ $data modify storage arena_dungeons:temp mob_summon.data set from storage arena:
 
     data modify storage arena_dungeons:temp mob_summon.nbt.Tags set value ["arena.dungeons.mobs.main","arena.dungeons.mobs"]
     data modify storage arena_dungeons:temp mob_summon.nbt.DeathLootTable set from storage arena_dungeons:temp mob_summon.data.loot_table
+    data modify storage arena_dungeons:temp mob_summon.nbt.PersistenceRequired set value true
 

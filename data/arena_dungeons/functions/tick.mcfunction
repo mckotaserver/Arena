@@ -13,4 +13,7 @@ execute as @a[tag=arena.dungeons.player] at @s as @e[tag=arena.dungeons.misc.pro
 
 # execute at @a[tag=arena.dungeons.player] as @e[tag=arena.dungeons.misc.treasure_chest_marker,tag=arena.temp.dungeon_chest_popping,distance=..6] at @s unless entity @a[tag=arena.dungeons.player,distance=..2] run tag @s remove arena.temp.dungeon_chest_popping
 
+# spawner
+execute at @a[tag=arena.dungeons.player,tag=!arena.flags.debug] as @e[tag=arena.dungeons.mobs.spawner.core,distance=..5] at @s run function arena_dungeons:combat/mobs/spawner/on_work
+execute at @a[tag=arena.dungeons.player,tag=!arena.flags.debug] as @e[tag=arena.dungeons.misc.treasure_chest_spawner,distance=..4] at @s run function arena_dungeons:rewarding/chest/spawn with entity @s data.arena.dungeons
 
